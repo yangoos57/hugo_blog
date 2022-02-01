@@ -3,12 +3,14 @@ languageCode: en-us
 defaultContentLanguage: en
 title: Hello world!
 theme: Cupper
-googleAnalytics: G-401EKX40N0
-disqusShortname: yangoos57
+googleAnalytics: UA-218073068-1
+disqusShortname: yangoos92
 enableGitInfo: true 
 
 taxonomies:
   tag: tags
+  category : categories
+  subcategory : subcategories
 
 permalinks:
   post: /:filename/
@@ -37,6 +39,7 @@ params:
   customJs:
     - js/custom_01.js
     - js/custom_02.js
+  # themeVariant: cupper ## D:\git_local_repository\hugo_blog\static\css 폰트 바꾸기 위한 css
 
 menu:
   nav:
@@ -44,7 +47,7 @@ menu:
       url: /
       weight: 1
     - name: Blog
-      url: /post/
+      url: /posts/
       weight: 2
     - name: Tags
       url: /tags/
@@ -55,6 +58,11 @@ menu:
     - name: RSS
       url: /index.xml
       weight: 5
+    - name: category
+      url: /categories/
+      weight: 6
+    - name: python
+      url: /posts/python/
 
 markup:
   defaultMarkdownHandler: goldmark
@@ -75,7 +83,7 @@ markup:
       unsafe: true
       xHTML: false
   highlight:
-    codeFences: false
+    codeFences: false ## 초기값 false
     hl_Lines: ""
     lineNoStart: 1
     lineNos: false
