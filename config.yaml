@@ -83,14 +83,14 @@ markup:
       unsafe: true
       xHTML: false
   highlight:
-    codeFences: false ## 초기값 false
+    codeFences: true ## 초기값 false
     hl_Lines: ""
     lineNoStart: 1
     lineNos: false
-    lineNumbersInTable: true
+    lineNumbersInTable: false
     noClasses: true
     style: monokai
-    tabWidth: 4
+    tabWidth: 3
   tableOfContents:
     endLevel: 6
     startLevel: 2
