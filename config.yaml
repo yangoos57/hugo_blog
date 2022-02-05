@@ -8,9 +8,9 @@ disqusShortname: yangoos92
 enableGitInfo: true 
 
 taxonomies:
-  tag: tags
-  category : categories
-  subcategory : subcategories
+  python : python
+  Data_analytics : Data_analytics
+  Personal : Personal
 
 permalinks:
   post: /:filename/
@@ -43,26 +43,28 @@ params:
 
 menu:
   nav:
-    - name: Home
-      url: /
+    - name: Seaborn_menu
+      url: /python/Seaborn_tag
       weight: 1
-    - name: Blog
-      url: /posts/
+    - name: pandas_menu
+      url: /python/pandas
       weight: 2
-    - name: Tags
-      url: /tags/
+    - name: 기본함수
+      url: /python/기본함수
       weight: 3
-    - name: About
-      url: /about/
+    - name: 데이터 분석 이론
+      url: /Data_analytics/데이터 분석 이론
       weight: 4
-    - name: RSS
-      url: /index.xml
+    - name: 분석 실무
+      url: /Data_analytics/분석 실무
       weight: 5
-    - name: category
-      url: /categories/
+    - name: 데이터 전처리
+      url: /Data_analytics/데이터 전처리
       weight: 6
-    - name: python
-      url: /posts/python/
+    - name: 끄적끄적
+      url: /Personal/끄적끄적
+      weight: 7
+
 
 markup:
   defaultMarkdownHandler: goldmark

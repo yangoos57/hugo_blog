@@ -1,7 +1,7 @@
 ---
-title: "Seaborn test"
+title: "Seaborn_title"
 date: 2022-02-01
-Tags: '123'
+python : 'Seaborn_tag'
 ---
 ##### Markdown 단축키 M
 ##### 함수 단축키 A

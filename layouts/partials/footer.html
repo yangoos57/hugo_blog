@@ -1,14 +1,6 @@
 <footer role="contentinfo">
-  <div
-  {{ if eq .Site.Params.showThemeSwitcher false }}style="display: none;"{{ end }}
-  >
-    <label for="themer">
-      {{ T "dark_theme" }} <input type="checkbox" id="themer" class="vh">
-      <!-- Shows "on" or "off" -->
-      <span aria-hidden="true"></span>
-    </label>
+  <div> 
+     <input id="themer" class="vh">
   </div>
-  {{ with .Site.Params.footer }}
-    {{ . | markdownify }}
-  {{ end }}
+  내용을 추가합시다.
 </footer>

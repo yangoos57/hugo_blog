@@ -38,7 +38,8 @@ option,
 li + li,
 body
 .main-and-footer {
-    margin-top: 0; /**/
+    margin-top : 0;
+
 }
 p + p {
     margin-top: 0.75rem;
@@ -68,6 +69,7 @@ p img {
 figure p img {
     margin: 0;
 }
+/*
 :focus:not([tabindex="-1"]),
 [data-expands]:focus svg,
 .patterns a:focus .text,
@@ -240,6 +242,7 @@ label {
   display: inline-block;
   font-weight: bold;
 }
+/*
 [for="themer"] {
   background: #111;
   border-radius: 0.33em;
@@ -319,14 +322,14 @@ caption {
     overflow-x: hidden;
 }
 .intro-and-nav {
+    
     font-family: sans-serif;
     font-size: 1rem;
     width: 15rem;
-    height: 100vh;
+    height: 0;
     position: fixed;
     top: 0;
     left: 0;
-    border-right: 2px solid;
 }
 .intro-and-nav > div {
     padding: 2.25rem;
@@ -354,12 +357,13 @@ caption {
     max-width: 25rem;
 }
 .main-and-footer {
-    margin-left: 15rem;
+    margin-left: 18rem;
 }
 .main-and-footer > div {
-    max-width: 40rem;
-    margin: 0 auto;
-    padding: 2.25rem;
+    max-width: 50rem; /* main화면 size 설정*/
+    margin-top : 4em ;
+    /* margin: 0em; */
+    padding: 2rem;
 }
 [role="contentinfo"] {
     font-size: 0.85rem;
@@ -368,22 +372,24 @@ caption {
 }
 
 /* Patterns navigation */
+
 .patterns {
-    overflow: auto;
-    margin-top: 1.5rem;
-    min-width: max-content;
+    overflow: hidden;
+    margin-top: 10rem;
+     ;
 }
 .patterns * {
-    margin-top: 0;
+    margin-top: 0rem;
 }
 .patterns h3 {
-    font-size: 1rem;
+    font-size: 1rem; /*Nav font*/
 }
 .patterns h3 + ul {
     margin-top: 0.75rem;
 }
 .patterns li {
     line-height: 1.3;
+    font-size: 0.8rem; /*Nav font*/
     list-style: none;
 }
 .patterns li + li {
@@ -392,6 +398,7 @@ caption {
     margin-left: 0.75rem;
 }
 .pattern a {
+    text-decoration-line: none;
     border: 0;
     display: flex;
     flex-wrap: nowrap;
@@ -400,6 +407,7 @@ caption {
     padding: 0 1rem;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    
 }
 .pattern a:focus {
     outline: none;
@@ -551,6 +559,8 @@ figcaption {
 main {
     display: block;
     counter-reset: fig;
+    width :100%;
+    height :100%;
     min-height: 100vh;
 }
 figcaption::before {
@@ -884,7 +894,7 @@ h1 svg {
 .vh {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
-  overflow: hidden;
+  overflow: visible;
   position: absolute;
   white-space: nowrap;
   width: 1px;
@@ -918,13 +928,14 @@ h1 svg {
     }
     main {
       min-height: auto;
+      background-color: rgb(0, 0, 0);
     }
     #patterns-list {
       margin-top: 0.5rem;
       border: 1px solid;
     }
     .patterns h3 {
-        font-size: 1.5rem;
+        font-size: 1rem;
         padding: 1.5rem 1rem 0.75rem;
     }
     .patterns li:not(.pattern) {
@@ -1037,4 +1048,16 @@ h1 svg {
 ::selection {
   background: rgba(0,0,0,.8);
   color: #fefefe;
+}
+
+.main-recent{
+    border:1px solid; 
+    padding:10px;
+}
+.nav-box{
+    border: 1px solid #2d2d2d;
+    max-width: 300px;
+    max-height: 400px;
+    padding: 1em;
+    margin : 1em;
 }

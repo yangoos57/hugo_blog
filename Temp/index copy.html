@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <main id="main">
+  <h1>최신글</h1>
+  {{.RegularPages}}
+  {{ range .Site.RegularPages }} 
+  <div class = 'main-recent'>
+    {{$Tags := .Page | markdownify}}
+    {{$Tags}}     <!-- Page(/posts/python/Datavisualization.md) -->
+    {{$parts := path.Split $Tags}}
+    {{$parts.Dir}} <!-- Page(/posts/python/ -->
+    <ul>
+        <li>
+          {{.Date}}
+        </li>
+        <a href="{{.URL}}">{{.Title}}</a>
+    </ul>
+  </div>
+    {{ end }}
+  </main>
+{{ end }}
