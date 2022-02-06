@@ -1,35 +1,44 @@
 {{ define "main" }}
+<header>
+  <meta URIEncoding="utf-8">
+</header>
   <main id="main">
-    <h1>최신글</h1>
-    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }} 
-    <!--.
-      site.Taxonomies는 "tags" -> ["tag1", "tag2", "tag3"]) 
-      와 같이 부모 태그, 자식 태그를 불러온다.
-      $taxonomyname은 대주제 ex) Data anlytics
-      $taxonomy는 소주제 및 소주제가 포함하는 개별 글이다. ex) 데이터 분석이론, 데이터 분석이론 title
-    -->
-        {{ range $key, $value := $taxonomy }}
-        <!--
-        key는 소주제 ex) 데이터 분석 이론
-        value는 타이틀 ex) 데이터 분석 이론_title을 반환한다.
-        -->
-          {{ range $value }}
-            <div class = 'main-recent'>
-              <ul>
-                <li>
-                  {{ $taxonomyname }} | {{$key}}
-                </li>
-                <li>
-                  {{ .Date.Format "Mon, Jan 2, 2006" }}
-                </li>
-                <li>
-                  <h2><a href="{{ .Permalink }}">{{.Title}}</a></h2>
-                </li>
-              </ul>
-                  
-              </div>
-              {{ end }}
-        {{ end }}
-    {{ end }}
+  <h1>최신글</h1>
+  {{ range .Site.RegularPages }}
+  <div class = 'main-recent'>
+    <ul>
+      <li>
+        Title:{{.Title}}
+      </li>
+      <li>
+        Category: {{.File.Dir}}
+      </li>
+      <li>
+        Type: {{.Type}}
+        <li>
+          name: {{.File.BaseFileName}}
+        </li>
+        <li>
+          link: {{.Permalink}}
+        </li>
+        <li>
+          Baseurl: {{.Site.BaseURL}}
+        </li>
+        <li>
+          {{$img_path := (print "/img/" .File.Dir)}}
+          {{$img_path_1 := (print "/static/" $img_path)}}
+          {{ with os.ReadDir $img_path_1 }}
+            {{$test := os.ReadDir $img_path_1 }}
+            {{$index := index $test 1}}
+            {{$img := (print $img_path $index.Name)}}
+            <img src="{{$img}}">
+          {{ end }}
+        </li>
+        <li>
+        </li>
+    </ul>
+  </div>
+  {{ end }}
+  </div>
   </main>
 {{ end }}
