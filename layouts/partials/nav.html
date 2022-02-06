@@ -1,6 +1,6 @@
-<nav id="patterns-nav" class="patterns" role="navigation">
+<nav id = 'patterns-nav'class="patterns" role="navigation">
   <div class="nav-box">
-  <h3><a href="/">전체보기{{ .Site.RegularPages }} </a></h3>
+  <h3><a href="/" style="text-decoration-line: none" >전체보기_({{ len .Site.RegularPages }})</a></h3>
 
     <ul>
       {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }} 
@@ -11,19 +11,20 @@
         $taxonomyname은 대주제 ex) Data anlytics
         $taxonomy는 소주제 및 소주제가 포함하는 타이틀 ex) 데이터 분석이론, 데이터 분석이론 title
       -->
-        <li>
+        <li style="margin-bottom :0.3em;">
          <h3>{{ $taxonomyname }}</h3> 
           <hr>
       </li>
-      <ul>
+      <ul style="margin-left: 0;">
         {{ range $key, $value := $taxonomy }}
         <!--
         key는 소주제 ex) 데이터 분석 이론
         value는 타이틀 ex) 데이터 분석 이론_title을 반환한다.
         -->
         <li>
-          <div>
-            <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">{{ $key }}{{.Pages}} </a>
+          <div style="margin-bottom :0.2em;">
+            <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}"
+            style="text-decoration-line: none">{{ $key }}_({{len .Pages}}) </a>
           </div>
         </a>
       </li>

@@ -1,43 +1,56 @@
 {{ define "main" }}
-<header>
-  <meta URIEncoding="utf-8">
-</header>
   <main id="main">
-  <h1>최신글</h1>
+  <div style="margin-bottom : 5em;text-align: center; width: 80%;">
+    <h1>양구스 데이터 아카이브 </h1>
+    <h2 style = 'display : inline' >Yangoos Data Archive </h2>
+  </div>
+  <h2 style = 'display : inline'>최신 업로드 </h2> 
+  <h4 style = 'display : inline' >
+    <!-- 
+       가장 최신 업로드한 RegularPage를 가지고 오는 함수
+      Default 정렬 우선순위 Weight > Date > LinkTitle > FilePath
+      세부내용 => https://gohugo.io/templates/lists/#order-content
+     -->
+    {{ range first 1 .Site.RegularPages }} 
+      {{.Date.Format "Mon, Jan 2, 2006"}}
+    {{ end }}
+  </h4>
   {{ range .Site.RegularPages }}
-  <div class = 'main-recent'>
-    <ul>
-      <li>
-        Title:{{.Title}}
-      </li>
-      <li>
-        Category: {{.File.Dir}}
-      </li>
-      <li>
-        Type: {{.Type}}
-        <li>
-          name: {{.File.BaseFileName}}
-        </li>
-        <li>
-          link: {{.Permalink}}
-        </li>
-        <li>
-          Baseurl: {{.Site.BaseURL}}
-        </li>
-        <li>
-          {{$img_path := (print "/img/" .File.Dir)}}
-          {{$img_path_1 := (print "/static/" $img_path)}}
-          {{ with os.ReadDir $img_path_1 }}
+
+    <div class = 'main-recent'>
+      <a href="{{.Permalink}}" style="text-decoration-line: none;">
+      <ul style="margin: 1.5em;">
+        {{$img_path := replace .File.Dir "\\" "/"}}
+          {{$img_path := (print "/img/" $img_path)}}
+          {{$img_path_1 := (print "/static" $img_path)}}
             {{$test := os.ReadDir $img_path_1 }}
+            <!-- {{range $test}}
+            {{.Name}}
+            {{end}} -->
             {{$index := index $test 1}}
             {{$img := (print $img_path $index.Name)}}
-            <img src="{{$img}}">
-          {{ end }}
+        <div style="overflow: hidden;
+                    border: 1px solid black;
+                    margin: 1.5em;
+                    ">
+            <img src="{{$img}}" style="
+            width: 100%;
+            height: auto;
+            display: block;"> <!--사진 여백을 없애기 위해서 block으로함-->
+        </div>
+        <li style ='margin : 0; margin-top: 0.1em;'>
+          <h3>{{replace .File.Dir "\\" " "}}</h3>
         </li>
         <li>
+          <h3>{{.Date.Format "Mon, Jan 2, 2006"}}</h3>
         </li>
-    </ul>
-  </div>
+        <li>
+          <h1>{{.Title}}</h1>
+        </li>
+      </ul>
+      </a>
+    </div>
+  
   {{ end }}
   </div>
   </main>

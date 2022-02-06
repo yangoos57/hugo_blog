@@ -1,6 +1,6 @@
 ---
-title: "Seaborn_title"
-date: 2022-02-01
+title: "Seaborn에 내장되어있는 함수 기능을 알아보자."
+date: 2022-02-02
 python : 'Seaborn_tag'
 ---
 
