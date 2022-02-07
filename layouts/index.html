@@ -1,57 +1,139 @@
 {{ define "main" }}
-  <main id="main">
-  <div style="margin-bottom : 5em;text-align: center; width: 80%;">
-    <h1>양구스 데이터 아카이브 </h1>
-    <h2 style = 'display : inline' >Yangoos Data Archive </h2>
-  </div>
-  <h2 style = 'display : inline'>최신 업로드 </h2> 
-  <h4 style = 'display : inline' >
-    <!-- 
-       가장 최신 업로드한 RegularPage를 가지고 오는 함수
-      Default 정렬 우선순위 Weight > Date > LinkTitle > FilePath
-      세부내용 => https://gohugo.io/templates/lists/#order-content
-     -->
-    {{ range first 1 .Site.RegularPages }} 
-      {{.Date.Format "Mon, Jan 2, 2006"}}
-    {{ end }}
-  </h4>
-  {{ range .Site.RegularPages }}
+<style>
+  a{
+    text-decoration: none;
+  }
+  /* Main */
+  #main{
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  #main > #title{
+    margin-bottom: 2em;
+    text-align: center; 
+    width: 100%;
+  }
+  #main > #section{
+    margin : 60px;
+    width: 700px;
+    float: left;
+  }
 
-    <div class = 'main-recent'>
-      <a href="{{.Permalink}}" style="text-decoration-line: none;">
-      <ul style="margin: 1.5em;">
-        {{$img_path := replace .File.Dir "\\" "/"}}
-          {{$img_path := (print "/img/" $img_path)}}
-          {{$img_path_1 := (print "/static" $img_path)}}
+  /* Section */
+  #section .recent{
+    margin-left: 10px;
+  }
+  #section .contents{
+    padding: 1em;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-radius: 1em;
+    margin-bottom: 70px;
+  }
+  #section .contents ul{
+    margin: 0;
+  }
+  #section .contents_imgbox{
+    /* border: 1px solid black;  */
+    overflow: hidden;
+    width: 100%;
+  }
+  #section .contents_img{
+    display: block; 
+    width: 100%;
+    height: auto;
+  }
+  /* Aside */
+  #main > #aside{
+    float: left;
+    width: 250px;
+    margin-top: 90px;
+    position: relative;
+  }
+  #aside .box{
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-radius: 1em;
+    padding: 10px;
+  }
+  #aside ul, li{
+    list-style: none;
+    margin: 0;
+    display: inline;
+  }
+  #aside h5{
+    font-size: 1.1em;
+    margin-bottom:0.2em;
+  }
+  #aside h6{
+    font-size: 1em;
+    margin: 0;
+  }
+
+  /* 기타 */
+  .inline_text{
+    display: inline;
+  }
+</style>
+
+<main id="main">
+  <div id="title">
+    <h1>양구스 데이터 아카이브</h1>
+    <h2>Yangoos Data Archive</h2>
+  </div>
+  {{partial "nav.html" . }}
+    <!-- 
+            가장 최신 업로드한 날짜를 가지고 오는 함수
+            Default 정렬 우선순위 Weight > Date > LinkTitle > FilePath
+            세부내용 => https://gohugo.io/templates/lists/#order-content
+    -->                 
+  <section id='section'>
+    <!--최신 업로드 Mon, Jan 2, 2006-->
+    <div class ='recent'>        
+      <h2 class="inline_text">최신 업로드</h2>
+      <h4 class="inline_text">
+        {{ range first 1 .Site.RegularPages }} 
+          {{.Date.Format "2006-01-02"}}
+        {{ end }}
+      </h4>
+    </div>
+
+    <!--그림,분류, 날짜, 타이틀-->
+    <div id = 'boxs'>
+    {{ range .Site.RegularPages }}
+      <div class="contents">
+        <a href="{{.Permalink}}">
+          <ul>
+            <!--그림-->
+            <div class="contents_imgbox">
+            <!-- 게시글 중 제일 먼저 나오는 그림 선택-->
+            {{$img_path := replace .File.Dir "\\" "/"}} 
+            {{$img_path := (print "/img/" $img_path)}}
+            {{$img_path_1 := (print "/static" $img_path)}}
             {{$test := os.ReadDir $img_path_1 }}
             <!-- {{range $test}}
-            {{.Name}}
-            {{end}} -->
-            {{$index := index $test 1}}
+                      {{.Name}}
+                      {{end}} -->
+            {{$index := index $test 1}} 
             {{$img := (print $img_path $index.Name)}}
-        <div style="overflow: hidden;
-                    border: 1px solid black;
-                    margin: 1.5em;
-                    ">
-            <img src="{{$img}}" style="
-            width: 100%;
-            height: auto;
-            display: block;"> <!--사진 여백을 없애기 위해서 block으로함-->
-        </div>
-        <li style ='margin : 0; margin-top: 0.1em;'>
-          <h3>{{replace .File.Dir "\\" " "}}</h3>
-        </li>
-        <li>
-          <h3>{{.Date.Format "Mon, Jan 2, 2006"}}</h3>
-        </li>
-        <li>
-          <h1>{{.Title}}</h1>
-        </li>
-      </ul>
-      </a>
-    </div>
-  
-  {{ end }}
-  </div>
+              <img src="{{$img}}" class="contents_img"/>
+              <!--사진 여백을 없애기 위해서 block으로설정-->
+            </div>
+            <!--분류-->
+            <li>
+              <h3>{{replace .File.Dir "\\" " "}}</h3>
+            </li>
+            <!--업로드 날짜-->
+            <li>
+              <h3>{{.Date.Format "2006-01-02"}}</h3>
+            </li>
+            <!--제목-->
+            <li>
+              <h1>{{.Title}}</h1>
+            </li>
+          </ul>
+        </a>
+      </div>
+    {{ end }}
+    </section>  
   </main>
 {{ end }}

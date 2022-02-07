@@ -1,7 +1,29 @@
-<header class="intro-and-nav" role="banner">
-    {{ partial "nav.html" . }}
-    {{ if eq .Site.Params.moveFooterToHeader true }}
-      {{ partial "footer.html" . }}
-    {{ end }}
+<style>
+  #header {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  #header > div {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+  }
+  #header.div2 {
+    float: left;
+    flex-direction: column;
+  }
+</style>
+
+<header id="header">
+  <div>
+    <div></div>
+    <div><img src="/favicon-96x96.png" /></div>
+    <div>
+      <div>&nbsp;</div>
+      {{ partial "search.html" . }}
+      <div>&nbsp;</div>
+    </div>
   </div>
 </header>
