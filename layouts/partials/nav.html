@@ -2,8 +2,7 @@
   <aside id="aside">
     <div class ="box">
       <h5><a href="/">전체보기_({{ len .Site.RegularPages }})</a></h5>
-      <br>
-      <br>
+      <br><br>
         <!--대주제 불러오기 -->
         <ul>
           {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }} 
@@ -31,8 +30,8 @@
               </a>
             </li>
             {{ end }}
-            <br>
           </ul>
+          <br><br>
           {{ end }}
         </ul>
     </div>  

@@ -1,107 +1,29 @@
 {{ define "main" }}
-<style>
-  a{
-    text-decoration: none;
-  }
-  /* Main */
-  #main{
-    width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  #main > #title{
-    margin-bottom: 2em;
-    text-align: center; 
-    width: 100%;
-  }
-  #main > #section{
-    margin : 60px;
-    width: 700px;
-    float: left;
-  }
-
-  /* Section */
-  #section .recent{
-    margin-left: 10px;
-  }
-  #section .contents{
-    padding: 1em;
-    border: 2px solid rgba(0, 0, 0, 0.12);
-    border-radius: 1em;
-    margin-bottom: 70px;
-  }
-  #section .contents ul{
-    margin: 0;
-  }
-  #section .contents_imgbox{
-    /* border: 1px solid black;  */
-    overflow: hidden;
-    width: 100%;
-  }
-  #section .contents_img{
-    display: block; 
-    width: 100%;
-    height: auto;
-  }
-  /* Aside */
-  #main > #aside{
-    float: left;
-    width: 250px;
-    margin-top: 90px;
-    position: relative;
-  }
-  #aside .box{
-    border: 2px solid rgba(0, 0, 0, 0.12);
-    border-radius: 1em;
-    padding: 10px;
-  }
-  #aside ul, li{
-    list-style: none;
-    margin: 0;
-    display: inline;
-  }
-  #aside h5{
-    font-size: 1.1em;
-    margin-bottom:0.2em;
-  }
-  #aside h6{
-    font-size: 1em;
-    margin: 0;
-  }
-
-  /* 기타 */
-  .inline_text{
-    display: inline;
-  }
-</style>
-
 <main id="main">
-  <div id="title">
-    <h1>양구스 데이터 아카이브</h1>
-    <h2>Yangoos Data Archive</h2>
-  </div>
+
+  <div id ='recent'>        
+      <h2>최신 업로드</h2>
+      <h3>
+        {{ range first 1 .Site.RegularPages }} 
+          {{.Date.Format "2006-01-02"}}
+        {{ end }}
+      </h3>
+    </div>
+
+  
   {{partial "nav.html" . }}
     <!-- 
             가장 최신 업로드한 날짜를 가지고 오는 함수
             Default 정렬 우선순위 Weight > Date > LinkTitle > FilePath
             세부내용 => https://gohugo.io/templates/lists/#order-content
     -->                 
+
   <section id='section'>
     <!--최신 업로드 Mon, Jan 2, 2006-->
-    <div class ='recent'>        
-      <h2 class="inline_text">최신 업로드</h2>
-      <h4 class="inline_text">
-        {{ range first 1 .Site.RegularPages }} 
-          {{.Date.Format "2006-01-02"}}
-        {{ end }}
-      </h4>
-    </div>
-
     <!--그림,분류, 날짜, 타이틀-->
     <div id = 'boxs'>
     {{ range .Site.RegularPages }}
-      <div class="contents">
-        <a href="{{.Permalink}}">
+      <div OnClick="location.href ={{.Permalink}}" class="contents">
           <ul>
             <!--그림-->
             <div class="contents_imgbox">
@@ -120,20 +42,20 @@
             </div>
             <!--분류-->
             <li>
-              <h3>{{replace .File.Dir "\\" " "}}</h3>
+              <h1>{{replace .File.Dir "\\" " "}}</h1>
             </li>
             <!--업로드 날짜-->
             <li>
-              <h3>{{.Date.Format "2006-01-02"}}</h3>
+              <h2>{{.Date.Format "2006-01-02"}}</h2>
             </li>
             <!--제목-->
             <li>
-              <h1>{{.Title}}</h1>
+              <h3>{{.Title}}</h3>
             </li>
           </ul>
-        </a>
       </div>
     {{ end }}
+    </div>
     </section>  
   </main>
 {{ end }}
