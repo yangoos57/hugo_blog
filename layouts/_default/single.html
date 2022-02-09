@@ -1,9 +1,9 @@
 {{ define "main" }}
   <main id="main">
     {{partial "nav.html" . }}
-    <section id="section">
+    <section id="single">
       <h1>{{ .Title }}</h1>
-      {{.Date.Format "2006-01-02"}}
+      <h2>{{.Date.Format "2006-01-02"}}</h2>
       {{ .Content }}
     </section>
   </main>

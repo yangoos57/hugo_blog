@@ -23,10 +23,10 @@
     <!--그림,분류, 날짜, 타이틀-->
     <div id = 'boxs'>
     {{ range .Site.RegularPages }}
-      <div OnClick="location.href ={{.Permalink}}" class="contents">
+      <div OnClick="location.href ={{.Permalink}}" class="home">
           <ul>
             <!--그림-->
-            <div class="contents_imgbox">
+            <div class="home_imgbox">
             <!-- 게시글 중 제일 먼저 나오는 그림 선택-->
             {{$img_path := replace .File.Dir "\\" "/"}} 
             {{$img_path := (print "/img/" $img_path)}}
@@ -37,7 +37,7 @@
                       {{end}} -->
             {{$index := index $test 1}} 
             {{$img := (print $img_path $index.Name)}}
-              <img src="{{$img}}" class="contents_img"/>
+              <img src="{{$img}}" class="home_img"/>
               <!--사진 여백을 없애기 위해서 block으로설정-->
             </div>
             <!--분류-->
@@ -57,5 +57,6 @@
     {{ end }}
     </div>
     </section>  
+    {{partial "nav copy.html" . }}
   </main>
 {{ end }}

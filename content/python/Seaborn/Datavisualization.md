@@ -4,12 +4,20 @@ date: 2022-02-02
 python : 'Seaborn_tag'
 ---
 
-##### Markdown 단축키 M
-##### 함수 단축키 A
+# Markdown 단축키 M
+## 함수 단축키 A
+### Goal
+#### 4번째
+##### 5번째
+###### 6번째
+####### 7번째
 
+li는 line style이 있어야한다.
+P도 신경쓰자
+role region도 신경쓰기
 
-#### Goal
 * the course is aimed at those with no prior programming experience.
+* 
 * each chart uses short and simple code, making seaborn much faster and easier to use than many other data visualization tools (such as Excel, for instance).
 
 
@@ -41,11 +49,9 @@ fifa_data.head()
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
@@ -162,11 +168,9 @@ spotify_data.head()
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
@@ -246,21 +250,9 @@ spotify_data.tail()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
+    <tr style="text-align: right;">
     <tr style="text-align: right;">
       <th></th>
       <th>Shape of You</th>
@@ -426,11 +418,9 @@ flight_data
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
@@ -742,11 +732,9 @@ iris_data.head()
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
