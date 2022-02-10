@@ -1,62 +1,24 @@
 {{ define "main" }}
-<main id="main">
-
-  <div id ='recent'>        
-      <h2>최신 업로드</h2>
-      <h3>
-        {{ range first 1 .Site.RegularPages }} 
-          {{.Date.Format "2006-01-02"}}
-        {{ end }}
-      </h3>
-    </div>
-
-  
-  {{partial "nav.html" . }}
-    <!-- 
-            가장 최신 업로드한 날짜를 가지고 오는 함수
-            Default 정렬 우선순위 Weight > Date > LinkTitle > FilePath
-            세부내용 => https://gohugo.io/templates/lists/#order-content
-    -->                 
-
-  <section id='section'>
-    <!--최신 업로드 Mon, Jan 2, 2006-->
-    <!--그림,분류, 날짜, 타이틀-->
-    <div id = 'boxs'>
-    {{ range .Site.RegularPages }}
-      <div OnClick="location.href ={{.Permalink}}" class="home">
-          <ul>
-            <!--그림-->
-            <div class="home_imgbox">
-            <!-- 게시글 중 제일 먼저 나오는 그림 선택-->
-            {{$img_path := replace .File.Dir "\\" "/"}} 
-            {{$img_path := (print "/img/" $img_path)}}
-            {{$img_path_1 := (print "/static" $img_path)}}
-            {{$test := os.ReadDir $img_path_1 }}
-            <!-- {{range $test}}
-                      {{.Name}}
-                      {{end}} -->
-            {{$index := index $test 1}} 
-            {{$img := (print $img_path $index.Name)}}
-              <img src="{{$img}}" class="home_img"/>
-              <!--사진 여백을 없애기 위해서 block으로설정-->
-            </div>
-            <!--분류-->
-            <li>
-              <h1>{{replace .File.Dir "\\" " "}}</h1>
-            </li>
-            <!--업로드 날짜-->
-            <li>
-              <h2>{{.Date.Format "2006-01-02"}}</h2>
-            </li>
-            <!--제목-->
-            <li>
-              <h3>{{.Title}}</h3>
-            </li>
-          </ul>
+    <section id="section">
+      <div id="recent">
+      <h1>최신 작성글 &nbsp;</h1>
+      <h2>{{ range first 1 .Site.RegularPages }} 
+      {{.Date.Format "2006-01-02"}}
+      {{ end }}
+      </h2>
       </div>
-    {{ end }}
-    </div>
-    </section>  
-    {{partial "nav copy.html" . }}
-  </main>
+      <div class="container">
+        <div class="row">
+            <div class ='w-100'>
+            {{ range (.Paginator 5).Pages }}
+            {{ .Render "post" }}
+            {{ end }}
+            {{ template "_internal/pagination.html" . }}
+
+            </div>
+        </div>
+        </div>
+      </div>
+    </section>
 {{ end }}
+

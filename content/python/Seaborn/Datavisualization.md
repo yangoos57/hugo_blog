@@ -1,7 +1,13 @@
 ---
 title: "Seaborn에 내장되어있는 함수 기능을 알아보자."
-date: 2022-02-02
-python : 'Seaborn_tag'
+date: 2022-02-09T11:07:10+06:00
+image: "images/blog/Seaborn.jpg"
+image_webp: "images/blog/Seaborn.webp"
+description: "this is meta description"
+categories: ["photography", "videography"]
+draft: false
+series : Themes Guide
+aliases : migrate-from-jekyl
 ---
 
 # Markdown 단축키 M
@@ -10,14 +16,15 @@ python : 'Seaborn_tag'
 #### 4번째
 ##### 5번째
 ###### 6번째
-####### 7번째
+
 
 li는 line style이 있어야한다.
+
 P도 신경쓰자
+
 role region도 신경쓰기
 
 * the course is aimed at those with no prior programming experience.
-* 
 * each chart uses short and simple code, making seaborn much faster and easier to use than many other data visualization tools (such as Excel, for instance).
 
 

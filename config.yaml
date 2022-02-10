@@ -1,70 +1,57 @@
-baseURL: https://yangoos57.github.io
-languageCode: en-us
-defaultContentLanguage: en
-title: Hello world!
-theme: Cupper
-googleAnalytics: UA-218073068-1
-disqusShortname: yangoos92
-enableGitInfo: true 
-
-taxonomies:
-  python : python
-  Data_analytics : Data_analytics
-  Personal : Personal
-
-permalinks:
-  post: /:filename/
-
-imaging:
-  quality: 99
-
+baseURL: 'https://demo.gethugothemes.com/'
+relativeURLs: true
+canonifyURLs: true
+title: Yangoos Archive
+# theme: Cupper
+paginate: '5'
+summaryLength: '20'
+googleAnalytics: ''
+disqusShortname: ''
+outputs:
+  home:
+    - HTML
+    - RSS
 params:
-  description: description 
-  homeMetaContent: Hommetacontent
-  footer: footer
-  # For more date formats see https://gohugo.io/functions/format/
-  dateFormat: Jan 2, 2006
-  codePenUser: someUser
-  katex: true
-  hideHeaderLinks: false
-  search: true
-  showThemeSwitcher: true
-  # defaultDarkTheme: false
-  moveFooterToHeader: false
-  # navTitleText: Cupper Theme
-  logoAlt: An alternative text description of the logo
-  customCss:
-    - css/custom_01.css
-    - css/custom_02.css
-  customJs:
-    - js/custom_01.js
-    - js/custom_02.js
-  # themeVariant: cupper ## D:\git_local_repository\hugo_blog\static\css 폰트 바꾸기 위한 css
+  plugins:
+    js:
+      - link: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js'
+  logo: images/logo.png
+  logo_width: 100px
+  favicon: images/favicon.png
+  description: This is meta description
 
+  copyright: 'Designed & Developed By [Gethugothemes](https://gethugothemes.com/)'
+  custom_script: ''
+  variables:
+    primary_color: '#33186D'
+    body_color: '#fff'
+    text_color: '#333'
+    text_color_dark: '#000'
+    text_color_light: '#999'
+    border_color: '#e2e2e2'
+    black: '#000'
+    white: '#fff'
+    light: '#f1f1f1'
+    primary_font: 'DM Sans:400,500,700'
+    icon_font: Fontawesome 5 Free
+  cookies:
+    enable: false
+    expire_days: 2
+    
 menu:
-  nav:
-    - name: Seaborn_menu
-      url: /python/Seaborn_tag
+  main:
+    - name: About
+      url: about/
       weight: 1
-    - name: pandas_menu
-      url: /python/pandas
+    - name: Elemetns
+      url: elements/
       weight: 2
-    - name: 기본함수
-      url: /python/기본함수
+    - name: Terms & Conditions
+      url: terms-conditions/
       weight: 3
-    - name: 데이터 분석 이론
-      url: /Data_analytics/데이터 분석 이론
+    - name: Contact
+      url: contact/
       weight: 4
-    - name: 분석 실무
-      url: /Data_analytics/분석 실무
-      weight: 5
-    - name: 데이터 전처리
-      url: /Data_analytics/데이터 전처리
-      weight: 6
-    - name: 끄적끄적
-      url: /Personal/끄적끄적
-      weight: 7
-
 
 markup:
   defaultMarkdownHandler: goldmark

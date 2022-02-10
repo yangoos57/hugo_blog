@@ -1,107 +1,160 @@
-
-/* reset Page */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; } 
-
-
-
-
-
-
-
-/* Fonts */
-/* Kor */
-@font-face { font-family: 'KoPub_Dotum_Bold'; src: url(' {{ "css/fonts/KoPub_Dotum_Bold.ttf" | absURL }} '); unicode-range: U+AC00-D7A3 } 
-@font-face { font-family: 'KoPub_Dotum_Medium'; src: url(' {{ "css/fonts/KoPub_Dotum_Medium.ttf" | absURL }} '); unicode-range: U+AC00-D7A3 } 
+@font-face { font-family: 'IBM-Bold'; src: url(' {{ "css/fonts/IBM_Bold.ttf" | absURL }} '); unicode-range: U+AC00-D7A3 } 
+@font-face { font-family: 'IBM-Regular'; src: url(' {{ "css/fonts/IBM_Regular.ttf" | absURL }} '); unicode-range: U+AC00-D7A3 } 
 
 /* Eng */
 @font-face { font-family: 'San-SemiBold'; src: url(' {{ "css/fonts/SourceSansPro-SemiBold.ttf" | absURL }} '); unicode-range: U+0041-005A, U+0061-007A, U+0000-0FFF; } 
-@font-face { font-family: 'San-Regular'; src: url(' {{ "css/fonts/SourceSansPro-Regular.ttf" | absURL }} '); unicode-range: U+0041-005A, U+0061-007A U+0000-0FFF; } 
 
-/* 전역 변수 */
-img { max-width: 80%; max-height: 50vh; } 
-a { text-decoration: none; } 
-body {font-family: 'KoPub_Dotum_Medium', 'San-Regular';}
+/* custom css here */
+html,
+body, h1,h2,h3,h4,h5,h6, p{
+  height: 100%; font-family: 'IBM-Regular','San-Regular' !important ;
+}
+.h-100 {
+  height: 100%;
+}
+a{color: black !important;}
+
+
+#holy {
+  display: grid;
+  /* auto: as wide as its content
+   * fr: all available space */
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr auto 1fr ;
+  grid-template-rows: auto ;
+  grid-template-areas:
+    "header header header"
+    "sidea main sideb"
+    "footer footer footer";
+  /* margin: 0 auto; */
+  /* width: 85vw; */
+}
+#header {
+  grid-area: header;
+  margin: 40px auto;
+  width: auto;
+  place-self: none;
+}
+#main {
+  grid-area: main;
+  max-width: 800px;
+  justify-self: center;
+  padding: 20px;
+}
+/* Navigation */
+#sidea {
+  grid-area: sidea;
+  width: 250px;
+  justify-self: right;
+}
+
+#sideb {
+  grid-area: sideb;
+  width: 250px;
+  justify-self: left;
+}
+#footer {
+  grid-area: footer;
+  place-self: center stretch ;
+}
+aside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  display: block;
+  overflow-y: auto;
+}
+
+/* Menu */
+.title{margin: 0 auto; text-align: center;}
+.title h2{color: rgb(133, 135, 138); font-family: 'San-SemiBold'!important;}
+.title h1{margin: 0; font-family: 'IBM-Bold'!important;}
+
+/* Navigation */
+.nav-box{
+  /* border-right: 1px solid hsla(210,18%,87%,1); */
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+  border-top: 1px solid hsla(210,18%,87%,1);
+  margin-top: 117px;
+  padding: 35px 20px;
+  font-size: 1.1em;
+  /* font-weight: bolder; */
+}
+.nav-box h6{
+  font-size: 1.1em;
+  
+}
+.nav-box div{margin: 30px auto}
+.nav-box h5{
+  font-size: 1.25em;
+  font-weight: bolder;
+}
+.nav-box li {
+  list-style: none;;
+}
+.nav-box hr{margin: 0.3em;}
+
+/* TOC */
+#toc {
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+  border-top: 1px solid hsla(210,18%,87%,1);
+  margin-top: 117px;
+  padding: 30px 0;
+}
+#toc * {
+  list-style: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* font-family: 'KoPub_Dotum_Bold', 'San-SemiBold'; */
+  font-weight: bolder;
+}
+#toc ul {
+  padding-left: 0.8rem;
+}
+#toc li {
+  margin-top: 0.3rem;
+}
+
+/* List page */
+#section{
+  min-width: 900px;
+}
+.list-title{
+margin: 42px auto 0 auto;
+}
+/* Hompage */
+#recent{margin: 42px 0 20px 0; padding-bottom: 10px ;overflow: hidden; border-bottom: 1px solid hsla(210,18%,87%,1);}
+#recent h2{display:inline; border-bottom: 0;}
+#recent h1{display:inline; border-bottom: 0;}
 
 /* Table */
-table {width:90% ; margin-bottom: 1em; font-size: 1em; display: block; overflow: auto; ;}
+table { margin-bottom: 1em; font-size: 1em; display: block; overflow: auto; ;}
 th {font-size: 1em; font-family: 'San-SemiBold'; }
 tr:nth-child(odd) { background-color: #ffffff; }
 tr:nth-child(even) { background-color: #e7f1fc; }
 tr:hover { background-color: #ffc5c2; cursor: pointer; }
 th, tr, td {padding: 7px; text-align: center;}
 
-
-
-/* header */
- #header { margin: 70px 0 150px 0 ; text-align: center; } 
- #header .title {width: 65vw; margin: 0 auto; text-align: center;  cursor:pointer; } 
- #header h1 {font-size: 2em; padding: 0.2em; font-family: 'KoPub_Dotum_Bold';}
- #header h2 {font-size: 1.7em;}
-
- /* Search */
- /* #search { height: 2em; width: 10em; padding: 8px; border: 2px solid; line-height: 1.6; font-size: 0.8rem; }  */
-
- /* Main */
- #main { width: 65vw; margin: 0 auto; overflow: hidden; } 
- 
-
- /*Recent*/
- #recent { width: 100%; margin : 0 0 0.5em 20em; text-align: left;} 
- #recent h2{ display: inline; font-size: 2em;} 
- #recent h3{ display: inline; font-size: 1.3em;} 
-
-
- /* Homepage */
- #main > #section { margin : 0 30px; width: 55%; float:left;} 
- #section .home { padding: 1em; border: 3px solid rgba(0, 0, 0, 0.12); border-radius: 1em; margin-bottom: 70px;  } 
- #section .home ul { margin: 0; cursor: pointer; } 
- #section .home h1 { font-size:1em ; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold' ; margin : 0 0 } 
- #section .home h2 { font-size:1.1em ; margin :0.2em 0 } 
- #section .home h3 { font-size:2em ; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold'; margin :0.8em 0 } 
- #section .home_imgbox { overflow: hidden; width: 100%; } 
- #section .home_img { display: block; width: 100%; height: auto; } 
-
-
- /* single */
- #main > #single { margin : 0 30px; width: 55%; float:left; text-align: left;} 
- #single .h2-container{font-size: 1.5em;}
- #single pre[role=region] {width:90% ; display: block; overflow: hidden;}
- #single h1{font-size: 2.25em; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold';}
- #single h2{font-size:1.8em; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold';}
- #single h3{font-size: 1.5em; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold';}
- #single h4,h5,h6{font-size: 1em;}
- #single > ul, li{list-style: disc; display: block;}
- /* Code */
- .code-toolbar{ width: 90%; margin: 5em 0 2em 0;}
-
-
- /* Aside */
- #main > #aside { float: left; width: 250px; margin-top: 0; } 
- #aside .box { border: 3px solid rgba(0, 0, 0, 0.12); border-radius: 1em; padding: 10px; position: sticky; } 
- #aside ul, li { list-style: none; margin: 0; display: inline; } 
- #aside h5 { font-size: 1.3em; } 
- #aside h6 { font-size: 1.125em; margin: 0; margin-bottom: 0.3em; }  
-
-
- @media screen and (max-width: 1200px) 
- { 
-    #main { width: 80%; text-align: center; } 
-    #main > #section, #main > #single { max-width: 800px; width: 100% ; margin: 0px; display: inline-block ;vertical-align: middle; float: none; }
-    #aside, #recent, #search, #header .div_space, #header .div_search { display: none; } 
+@media screen and (max-width: 1200px) {
+  #holy {
+    display: block;
+  }
+  #header {
+    align-items: center;
+  }
+  #main {
+    max-width: 1012px;
+  }
+  #sidea {
+    display: none;
+  }
+  #section{ 
+    min-width: 0px;
+  }
+  .list-title{
+    max-width:960px
+    }
 }
-
-
-/* SVG icons */
-a svg,
-button svg,
-h1 svg,
-th svg,
-li > svg { height: 0.75em; width: 0.75em; margin-right: 0.25em; } 
-h1 svg { margin-right: 0; width: 0.85em; height: 0.85em; } 
-.wcag-icon { width: 1.25em; } 
-.bookmark-icon { vertical-align: middle; } 
-.link-icon { width: 0.75em; height: 0.75em; visibility: hidden; } 
-.tags svg, .link-icon { vertical-align: middle; } 
-.balloon-icon { width: 0.75em; margin-right: 0; } 
-.print { white-space: nowrap; font-style: normal; } 
-

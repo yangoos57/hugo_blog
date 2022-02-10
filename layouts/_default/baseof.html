@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
+  {{ partialCached "style.html" . }}
   {{ partial "head.html" . }}
+
   <body>
-    {{ partial "noscript.html" . }} {{ partial "svg.html" . }}
-    <!--Header-->
-    {{ partial "header.html" . }}
-    <!--Main-->
-    {{ block "main" . }}{{ end }}
-    <!--Footer-->
-    {{ partial "footer.html" . }}
-    <!---->
-    {{ partial "script.html" . }}
-    <!---->
-    {{ partial "katex.html" . }} 
-    <!---->
-    {{ partial "google-analytics-async.html" . }}
+    <!-- class="bg-gray" -->
+    <div id="holy">
+      <!-- class="container-lg bg-white h-100" -->
+      <header id="header" class="px-1 bg-white">
+        {{ partial "header.html" . }}
+      </header>
+
+      
+      <div id="sidea" class="px-1 bg-white">
+        {{ partial "nav.html" . }}
+      </div>
+      <main role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        <!-- class="holy-main markdown-body px-4 bg-white" -->
+        {{ block "main" . }}
+        {{ end }}
+      </main> 
+      {{if .IsPage}}
+      <div id="sideb" class="pr-1 bg-white">
+        <aside class="pr-3">
+          {{ block "side" . }}
+          <div id="toc" class="mb-3">
+          </div>
+          {{ end }}
+        </aside>
+      </div>
+      {{end}}
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        {{ partial "footer.html" . }}
+      </div>
+
+    </div>
   </body>
+
 </html>

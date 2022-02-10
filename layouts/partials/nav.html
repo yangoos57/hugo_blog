@@ -1,8 +1,8 @@
 
-  <aside id="aside">
-    <div class ="box">
-      <h5><a href="/">전체보기_({{ len .Site.RegularPages }})</a></h5>
-      <br><br>
+  <aside>
+    <div class ="nav-box">
+      <h6><a href="/">전체보기_({{ len .Site.RegularPages }})</a></h6>
+      <div></div>
         <!--대주제 불러오기 -->
         <ul>
           {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }} 
@@ -26,12 +26,13 @@
             -->
             <li>
               <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
-                <h6>{{ $key }}_({{len .Pages}})</h6>
+                {{ $key }}_({{len .Pages}})
+                <br>
               </a>
             </li>
             {{ end }}
           </ul>
-          <br><br>
+          <br>
           {{ end }}
         </ul>
     </div>  

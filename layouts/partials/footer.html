@@ -1,6 +1,11 @@
-<footer role="contentinfo">
-  <div> 
-     <input id="themer" class="vh">
+{{/* Credits and Copyright */}}
+{{ if (default true .Site.Params.ShowFooterCredits) }}
+
+  <div class="m-5 text-small text-gray">
+    {{ with .Site.Copyright }}{{ . | markdownify }} &middot; {{ end }}
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
   </div>
-  내용을 추가합시다.
-</footer>
+{{ end }}
