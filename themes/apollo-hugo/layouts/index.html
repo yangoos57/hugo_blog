@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h1 class="mb-3">{{ site.Title }}</h1>
+        <div class="content">{{site.Params.banner_content | markdownify}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <ul class="list-inline border-bottom category-list">
+          {{ $url := .Permalink }}
+          <li class="list-inline-item"><a class="{{if .IsHome}}active{{end}}" href="{{site.BaseURL}}">New</a></li>
+          {{ range $name, $items := site.Taxonomies.categories }}
+          {{ $category:= add (add (`categories/` | absLangURL) $name ) "/" }}
+          <li class="list-inline-item"><a class="{{ if eq $category $url }}active{{ end }}"
+              href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}/">{{ $name | humanize }}</a></li>
+          {{ end }}
+        </ul>
+        {{ $paginator:= .Paginate (where site.RegularPages "Section" site.Params.main_section)}}
+        {{ range $paginator.Pages }}
+        {{ .Render "post" }}
+        {{ end }}
+
+        {{ template "_internal/pagination.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

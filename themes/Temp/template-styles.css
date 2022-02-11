@@ -1,0 +1,215 @@
+
+/* reset Page */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; } 
+
+
+
+
+
+
+
+/* Fonts */
+/* Kor */
+@font-face { font-family: 'KoPub_Dotum_Bold'; src: url(' {{ "css/fonts/IBM_Bold.ttf" | absURL }} '); unicode-range: U+AC00-D7A3 } 
+@font-face { font-family: 'KoPub_Dotum_Medium'; src: url(' {{ "css/fonts/IBM_Regular.ttf" | absURL }} '); unicode-range: U+AC00-D7A3 } 
+
+/* Eng */
+@font-face { font-family: 'San-SemiBold'; src: url(' {{ "css/fonts/SourceSansPro-SemiBold.ttf" | absURL }} '); unicode-range: U+0041-005A, U+0061-007A, U+0000-0FFF; } 
+@font-face { font-family: 'San-Regular'; src: url(' {{ "css/fonts/SourceSansPro-Regular.ttf" | absURL }} '); unicode-range: U+0041-005A, U+0061-007A U+0000-0FFF; } 
+
+/* 전역 변수 */
+img { max-width: 100%; max-height: 50vh; } 
+
+/* Link */
+a {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    line-height: 150%;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    text-decoration: underline;
+    padding: 3px;
+  }
+  
+  a:link {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  a:visited {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  a:hover {
+    background: linear-gradient(#eee, #eee);
+    background-size: auto 4em;
+    background-repeat: no-repeat;
+    background-position: 0% 15px;
+  }
+  
+
+  h1 {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 52px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h3 {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h4 {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h5 {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h6 {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  p {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    line-height: 150%;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
+      "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+  }
+
+body {font-family: 'KoPub_Dotum_Medium', 'San-Regular'; font-size: 1.125em;}
+
+/* Table */
+table {width:90% ; margin-bottom: 1em; font-size: 1em; display: block; overflow: auto; ;}
+th {font-size: 1em; font-family: 'San-SemiBold'; }
+tr:nth-child(odd) { background-color: #ffffff; }
+tr:nth-child(even) { background-color: #e7f1fc; }
+tr:hover { background-color: #ffc5c2; cursor: pointer; }
+th, tr, td {padding: 7px; text-align: center;}
+
+
+
+/* header */
+ #header { margin: 70px 0 150px 0 ; text-align: center; } 
+ #header .title {width: 65vw; margin: 0 auto; text-align: center;  cursor:pointer; } 
+ #header h1 {font-size: 2em; padding: 0.2em; font-family: 'KoPub_Dotum_Bold';}
+ #header h2 {font-size: 1.7em;}
+
+ /* Search */
+ /* #search { height: 2em; width: 10em; padding: 8px; border: 2px solid; line-height: 1.6; font-size: 0.8rem; }  */
+
+ /* Main */
+ #main { width: 80vw; margin: 0 auto; overflow: hidden; } 
+ 
+
+ /*Recent*/
+ #recent { width: 100%; margin : 0 0 0.5em 20em; text-align: left;} 
+ #recent h2{ display: inline; font-size: 2em;} 
+ #recent h3{ display: inline; font-size: 1.3em;} 
+
+
+ /* Homepage */
+ #main > #section { margin : 0 30px; width: 55%; float:left;} 
+ #section .home { padding: 1em; border: 3px solid rgba(0, 0, 0, 0.12); border-radius: 1em; margin-bottom: 70px;  } 
+ #section .home ul { margin: 0; cursor: pointer; } 
+ #section .home h1 { font-size:1em ; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold' ; margin : 0 0 } 
+ #section .home h2 { font-size:1.1em ; margin :0.2em 0 } 
+ #section .home h3 { font-size:2em ; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold'; margin :0.8em 0 } 
+ #section .home_imgbox { overflow: hidden; width: 100%; } 
+ #section .home_img { display: block; width: 100%; height: auto; } 
+
+
+ /* single */
+ #main > #single { margin : 0 30px; width: 70%; float:left; text-align: left;} 
+ #single pre[role=region] {width:90% ; display: block; overflow: hidden;}
+ /* #single h1{font-size: 2em; font-family: 'KoPub_Dotum_Bold', 'San-SemiBold'; margin-bottom: 1em;}
+ #single h2{font-size:1.8em; margin: 1em auto}
+ #single h3{font-size: 1.5em; margin: 1em auto}
+ #single h4,h5,h6{font-size: 1em; margin: 1em auto;} */
+ /* #single p {margin : 1.3em auto; line-height: 1.7em;} */
+ #single li {list-style: disc; margin: 1em;}
+ #single img{max-width: 90%;}
+ #single aside{background-color: #e7f1fc;}
+ /* Code */
+ .code-toolbar{ width: 100%; margin: 2em auto;}
+/* Section links */
+.h2-container { position: relative; font-size: 1.66rem; } 
+.h2-container a { position: absolute; margin-top: 0; top: 0; line-height: 1; left: -1em; border: 0; } 
+
+
+ /* Aside */
+ #main > #aside { float: left; width: 250px; margin-top: 0; } 
+ #aside .box { border: 3px solid rgba(0, 0, 0, 0.12); border-radius: 1em; padding: 10px; position: sticky; } 
+ #aside ul li { list-style: none; margin: 0; display: inline; } 
+ #aside h5 { font-size: 1.3em; } 
+ #aside h6 { font-size: 1.125em; margin: 0; margin-bottom: 0.3em; }  
+
+
+ @media screen and (max-width: 1200px) 
+ { 
+    #main { width: 80%; text-align: center; } 
+    #main > #section, #main > #single { max-width: 800px; width: 100% ; margin: 0px; display: inline-block ;vertical-align: middle; float: none; text-align: left; }
+    #aside, #recent, #search, #header .div_space, #header .div_search { display: none; } 
+}
+
+
+/* SVG icons */
+a svg,
+button svg,
+h1 svg,
+th svg,
+li > svg { height: 0.75em; width: 0.75em; margin-right: 0.25em; } 
+h1 svg { margin-right: 0; width: 0.85em; height: 0.85em; } 
+.wcag-icon { width: 1.25em; } 
+.bookmark-icon { vertical-align: middle; } 
+.link-icon { width: 0.75em; height: 0.75em; visibility: hidden; } 
+.tags svg, .link-icon { vertical-align: middle; } 
+.balloon-icon { width: 0.75em; margin-right: 0; } 
+.print { white-space: nowrap; font-style: normal; } 
+
+
+/* Markdown */

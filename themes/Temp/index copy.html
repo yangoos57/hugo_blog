@@ -1,0 +1,76 @@
+{{ define "main" }}
+  <main id="main">
+  <h1>최신글</h1>
+  {{.RegularPages}}
+  {{ range .Site.RegularPages }} 
+  <div class = 'main-recent'>
+    {{$Tags := .Page | markdownify}}
+    <!-- {{$Tags}}     Page(/posts/python/Datavisualization.md) -->
+    {{$parts := path.Split .Page}}
+    {{$parts.Dir}} <!-- Page(/posts/python/ -->
+    < ul>
+        <li>
+          {{ .Date.Format "Mon, Jan 2, 2006" }}
+        </li>
+        <a href="{{.URL}}">{{.Title}}</a>
+    </ul>
+  </div>
+    {{ end }}
+  </main>
+{{ end }}
+
+
+<ul>
+  <li>
+    <!-- 페이지 경로 따기  -->
+    {{$img_path := replace .File.Path ".md" "/"}}
+    {{$img_path_1 := (print "/static/" $img_path)}}
+    {{ with os.ReadDir $img_path_1 }}
+      {{$test := os.ReadDir $img_path_1 }}
+      {{$index := index $test 1}}
+      {{$img := (print $img_path $index.Name)}}
+      <img src="{{$img}}">
+    {{ end }}
+    <br>
+    {{$parts := path.Dir .Page}}
+    {{replace $parts "Page(/posts/" ""}} 
+  </li>
+  <li>
+    <h5>
+      {{ .Date.Format "Mon, Jan 2, 2006" }}
+    </h5>
+  </li>
+  <li>
+    <h3>
+      <a href="{{.Permalink}}">{{.Title}}</a>
+    </h3>
+  </li>
+  
+</ul>
+
+
+{{ $pages := where site.RegularPages "Section" "python" }}
+    {{range $pages}}
+    <ul>
+      <li>
+        {{.Title}}
+      </li>
+      <li>
+        {{.Kind}}
+      </li>
+      <li>
+        {{.Type}}
+      </li>
+      <li>
+        {{.File}}
+      </li>
+      <li>
+        {{.Permalink}}
+      </li>
+      <li>
+        {{ with .Resources.GetMatch "main.jpg" }}
+        <img src="data:{{ .MediaType }};base64,{{ .Content | base64Encode }}">
+        {{ end }}
+      </li>
+    </ul>
+    {{ end }}

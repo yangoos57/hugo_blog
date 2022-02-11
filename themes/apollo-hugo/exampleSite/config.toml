@@ -1,0 +1,118 @@
+######################## default configuration ####################
+baseURL = "https://demo.gethugothemes.com/apollo/examplesite/"
+title = "Apollo | Minimal Blog Theme"
+theme = "apollo-hugo"
+# post pagination
+paginate = "5"
+# post excerpt
+summaryLength = "20"
+# google analytics
+googleAnalytics = "" # example : UA-123-45
+# disqus short name
+disqusShortname = "" # get your shortname form here : https://disqus.com
+
+
+############################# Outputs ##############################
+[outputs]
+home = ["HTML", "RSS"]
+
+[markup.goldmark.renderer]
+unsafe= true
+
+############################# Plugins ##############################
+
+# CSS Plugins
+# [[params.plugins.css]]
+# link = ""
+
+# JS Plugins
+[[params.plugins.js]]
+link = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"
+
+###################### Navigation ###########################
+
+# main menu
+[[menu.main]]
+name = "About"
+url = "about/"
+weight = 1
+  
+[[menu.main]]
+name = "Elemetns"
+url = "elements/"
+weight = 2
+  
+[[menu.main]]
+name = "Terms & Conditions"
+url = "terms-conditions/"
+weight = 3
+  
+[[menu.main]]
+name = "Contact"
+url = "contact/"
+weight = 4
+
+#################### default parameters ############################
+[params]
+logo = "images/logo.png"
+logo_width = "100px"
+favicon = "images/favicon.png"
+# Meta data
+description = "This is meta description"
+author = "Themefisher"
+# main section
+main_section = "post"
+# banner content
+banner_content = "Cras ultricies ligula sed magna dictum porta. Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem."
+# copyright
+copyright = "Designed & Developed By [Gethugothemes](https://gethugothemes.com/)"
+# custom script on header
+custom_script= ""
+
+# site variables
+[params.variables]
+primary_color = "#33186D"
+body_color = "#fff"
+text_color = "#333"
+text_color_dark = "#000"
+text_color_light = "#999"
+border_color = "#e2e2e2"
+black = "#000"
+white = "#fff"
+light = "#f1f1f1"
+
+# font variable
+# Give your font name from google font. and add font weight using comma, ex: "Roboto:400,500,900"
+primary_font = "DM Sans:400,500,700"
+icon_font = "Fontawesome 5 Free"
+
+# cookies
+[params.cookies]
+enable = false
+expire_days = 2
+
+############################# social site ########################
+[[params.social]]
+title = "facebook"
+icon = "fab fa-facebook" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[params.social]]
+title = "twitter"
+icon = "fab fa-twitter" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[params.social]]
+title = "instagram"
+icon = "fab fa-instagram" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[params.social]]
+title = "github"
+icon = "fab fa-github" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[params.social]]
+title = "linkedin"
+icon = "fab fa-linkedin" # themify icon : https://themify.me/themify-icons
+link = "#"

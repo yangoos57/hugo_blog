@@ -1,0 +1,38 @@
+/*!------------------------------------------------------------------
+PROJECT: Apollo Hugo
+AUTHOR: Gethugothemes
+AUTHOR WEBSITE: https://gethugothemes.com
+-------------------------------------------------------------------*/
+
+// Color Variables
+{{ with site.Params.variables }}
+$primary-color: {{.primary_color}};
+$text-color: {{.text_color}};
+$text-color-dark: {{.text_color_dark}};
+$text-color-light: {{.text_color_light}};
+$body-color: {{.body_color}};
+$border-color: {{.border_color}};
+$black: {{.black}};
+$white: {{.white}};
+$light: {{.light}};
+
+// Font Variables
+$primary-font: '{{ replaceRE ":[0-9,]+" "" .primary_font }}', sans-serif;
+$icon-font: '{{.icon_font}}';
+{{ end }}
+
+@import 'css-reset';
+
+@import 'mixins';
+
+@import 'typography';
+
+@import 'buttons';
+
+@import 'common';
+
+@import 'grid';
+
+@import 'navigation.scss';
+
+@import 'post.scss';
