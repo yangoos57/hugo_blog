@@ -67,7 +67,7 @@ aside {
 }
 
 /* Menu */
-.title{margin: 0 auto; text-align: center;}
+.title{margin: 0 auto; text-align: center; cursor: pointer;}
 .title h2{color: rgb(133, 135, 138); font-family: 'San-SemiBold'!important;}
 .title h1{margin: 0; font-family: 'IBM-Bold'!important;}
 
@@ -108,7 +108,6 @@ aside {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* font-family: 'KoPub_Dotum_Bold', 'San-SemiBold'; */
   font-weight: bolder;
 }
 #toc ul {
@@ -125,18 +124,12 @@ aside {
 .list-title{
 margin: 42px auto 0 auto;
 }
+
 /* Hompage */
 #recent{margin: 42px 0 20px 0; padding-bottom: 10px ;overflow: hidden; border-bottom: 1px solid hsla(210,18%,87%,1);}
-#recent h2{display:inline; border-bottom: 0;}
+#recent h2{display:inline; border-bottom: 0; font-size: 1.5em;}
 #recent h1{display:inline; border-bottom: 0;}
 
-/* Table */
-table { margin-bottom: 1em; font-size: 1em; display: block; overflow: auto; ;}
-th {font-size: 1em; font-family: 'San-SemiBold'; }
-tr:nth-child(odd) { background-color: #ffffff; }
-tr:nth-child(even) { background-color: #e7f1fc; }
-tr:hover { background-color: #ffc5c2; cursor: pointer; }
-th, tr, td {padding: 7px; text-align: center;}
 
 @media screen and (max-width: 1200px) {
   #holy {
@@ -148,7 +141,7 @@ th, tr, td {padding: 7px; text-align: center;}
   #main {
     max-width: 1012px;
   }
-  #sidea {
+  #sidea, #sideb {
     display: none;
   }
   #section{ 

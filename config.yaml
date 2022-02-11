@@ -15,6 +15,9 @@ params:
   plugins:
     js:
       - link: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js'
+    css: 
+      # - link: ''
+
   logo: images/logo.png
   logo_width: 100px
   favicon: images/favicon.png
@@ -38,20 +41,7 @@ params:
     enable: false
     expire_days: 2
     
-menu:
-  main:
-    - name: About
-      url: about/
-      weight: 1
-    - name: Elemetns
-      url: elements/
-      weight: 2
-    - name: Terms & Conditions
-      url: terms-conditions/
-      weight: 3
-    - name: Contact
-      url: contact/
-      weight: 4
+
 
 markup:
   defaultMarkdownHandler: goldmark
