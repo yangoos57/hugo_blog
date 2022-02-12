@@ -37,7 +37,7 @@
     
     {{ define "side" }}
       {{ if and (gt .WordCount 0 ) (default true .Params.toc) }}
-        <div id="toc">
+        <div id="toc" class="sticky-lg-top">
           <!-- class="Box Box--blue mb-3" -->
           <b>{{ .Title }}</b>
           {{- $toc := .TableOfContents -}}

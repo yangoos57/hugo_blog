@@ -1,18 +1,16 @@
 {{ define "main" }}
     <section id="section">
       <div id="recent">
-      <h1>최신 작성글</h1>
-      <h2>{{ range first 1 .Site.RegularPages }} 
+      <h1 class="fs-3 fw-bolder">최신 작성글 </h1>
+      <h2 class="fs-5">{{ range first 1 .Site.RegularPages }} 
       {{.Date.Format "2006-01-02"}}
       {{ end }}</h2>
       </div>
-      <div class="container">
-        <div class="row">
+      <div class="d-flex flex-column ">
             {{ range (.Paginator 5).Pages }}
             {{ .Render "post" }}
             {{ end }}
-            {{ template "_internal/pagination.html" . }}
-        </div>
+            {{ partial "pagination.html" . }}
       </div>
     </section>
 {{ end }}

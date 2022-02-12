@@ -2,17 +2,21 @@
 <html lang="{{ .Site.Language.Lang }}">
   {{ partial "head.html" . }}
 
-  <body>
+  <body class="bg-light">
     <!-- class="bg-gray" -->
-    <div id="holy">
+    <div id="holy" class="bg-white">
       <!-- class="container-lg bg-white h-100" -->
-      <header id="header" class="px-1 bg-white">
+      <header id="header" class="col-12 px-1 bg-white">
         {{ partial "header.html" . }}
       </header>
 
-      
-      <div id="sidea" class="px-1 bg-white">
+      {{if .IsPage}}
+        <div id="sidea_single">        
+        {{partial "offcanvas.html" . }}
+        {{else}}
+        <div id="sidea_list" class="px-1 bg-white">        
         {{ partial "nav.html" . }}
+      {{end}}
       </div>
       <main role="main" id="main" class="holy-main markdown-body px-4 bg-white">
         <!-- class="holy-main markdown-body px-4 bg-white" -->
