@@ -1,0 +1,48 @@
+<aside style="position: fixed; left:0% ; top:50% ">
+<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  </svg>
+</button>
+
+<!-- 내용물 -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+      <div>
+        <h6>
+          <a href="/">
+          전체보기
+          <span class="badge bg-light text-dark rounded-pill">
+            {{ len .Site.RegularPages }}
+          </span>
+          </a>
+        </h6>
+        <br>
+          <!--대주제 불러오기 -->
+          <ul class="ps-0" style="list-style: none;">
+            {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+            {{if ne $taxonomyname "tags"}}
+            <li><h5>{{ $taxonomyname }}</h5><hr></li>
+            <ul class="ps-2" style="list-style: none;">{{ range $key,   $value := $taxonomy }}
+              <li>
+              <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
+                  {{$key}}
+                <span class="badge bg-light text-dark rounded-pill">
+                  {{len .Pages}}
+                </span>
+                <br>
+              </a>
+              </li>
+              {{ end }}
+            </ul>
+            {{end}} 
+            <br>
+            {{ end }}
+          </ul>
+      </div>  
+  </div>
+</div>
+</aside>

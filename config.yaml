@@ -7,10 +7,15 @@ paginate: '5'
 summaryLength: '20'
 googleAnalytics: ''
 disqusShortname: ''
-outputs:
-  home:
-    - HTML
-    - RSS
+
+preserveTaxonomyNames: true
+
+taxonomies:
+  category: Category
+  python: Python
+  personal: Personal
+  data_analytics: Data_Analytics
+
 params:
   plugins:
     js:

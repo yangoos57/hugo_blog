@@ -11,19 +11,21 @@
     <br>
       <!--대주제 불러오기 -->
       <ul class="ps-0">
-        {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }} 
-          <li><h5>{{ $taxonomyname }}</h5><hr></li>
+        {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+        {{if ne $taxonomyname "tags"}}
+        <li><h5>{{ $taxonomyname }}</h5><hr></li>
         <ul class="ps-2 text-">{{ range $key, $value := $taxonomy }}<li>
-            <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
-              {{ $key }}
-              <span class="badge bg-light text-dark rounded-pill">
-                {{len .Pages}}
-              </span>
-              <br>
-            </a>
-          </li>
-          {{ end }}
-        </ul>
+          <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
+              {{$key}}
+            <span class="badge bg-light text-dark rounded-pill">
+              {{len .Pages}}
+            </span>
+            <br>
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+        {{end}} 
         <br>
         {{ end }}
       </ul>

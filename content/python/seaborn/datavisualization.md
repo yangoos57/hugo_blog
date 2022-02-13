@@ -4,10 +4,8 @@ date: 2022-02-09T11:07:10+06:00
 image: "images/blog/Seaborn.jpg"
 image_webp: "images/blog/Seaborn.webp"
 description: "this is meta description"
-categories: ["photography", "videography"]
+Python: "seaborn"
 draft: false
-series : Themes Guide
-aliases : migrate-from-jekyl
 ---
 
 # Markdown 단축키 M

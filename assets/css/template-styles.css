@@ -27,7 +27,7 @@ a{color: black !important; text-decoration: none !important;}
     "sidea main sideb"
     "footer footer footer";
   margin: 0 auto;
-  width: 80vw;
+  width: 85vw;
 }
 #header {
   grid-area: header;
@@ -40,13 +40,20 @@ a{color: black !important; text-decoration: none !important;}
   padding: 20px;
 }
 /* Navigation */
-#sidea_single #sidea_list {
+#sidea_single, #sidea_list {
   grid-area: sidea;
   max-width: 220px;
   justify-self: right;
 }
 
-#sideb {
+#sideb_single 
+{
+  grid-area: sideb;
+  width: 220px;
+  justify-self: left;
+  display: none;
+}
+#sideb_list {
   grid-area: sideb;
   width: 220px;
   justify-self: left;
@@ -63,7 +70,10 @@ aside {
   display: block;
   overflow-y: visible;
 }
-
+/* mobile version side_bar */
+.offcanvas{
+  width: 20% !important;
+}
 /* Menu */
 .title{margin: 0 auto; text-align: center; cursor: pointer;}
 .title h2{color: rgb(133, 135, 138); font-family: 'San-SemiBold'!important;}
@@ -159,13 +169,28 @@ margin: 42px auto 0 auto;
   #main {
     max-width: 1012px;
   }
-  #sidea_list, #sideb {
+  #sidea_list, #sideb_list {
     display: none;
   }
+  #sideb_single{display:inline;}
   #section{ 
     min-width: 0px;
   }
   .list-title{
     max-width:960px
-    }
+  }
+  .dataframe{
+    font-size: 13px;
+  }
+  .offcanvas{
+    width: 30% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .dataframe{
+    font-size: 10px;
+ }  
+ .offcanvas{
+  width: 45% !important;
+}   
 }

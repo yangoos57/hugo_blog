@@ -2,29 +2,28 @@
 <html lang="{{ .Site.Language.Lang }}">
   {{ partial "head.html" . }}
 
-  <body class="bg-light">
+  <body>
     <!-- class="bg-gray" -->
     <div id="holy" class="bg-white">
       <!-- class="container-lg bg-white h-100" -->
       <header id="header" class="col-12 px-1 bg-white">
         {{ partial "header.html" . }}
       </header>
-
-      {{if .IsPage}}
-        <div id="sidea_single">        
-        {{partial "offcanvas.html" . }}
-        {{else}}
-        <div id="sidea_list" class="px-1 bg-white">        
-        {{ partial "nav.html" . }}
-      {{end}}
-      </div>
       <main role="main" id="main" class="holy-main markdown-body px-4 bg-white">
         <!-- class="holy-main markdown-body px-4 bg-white" -->
         {{ block "main" . }}
         {{ end }}
       </main> 
       {{if .IsPage}}
-      <div id="sideb" class="pr-1 bg-white">
+      <div id="sidea_single">        
+      {{partial "offcanvas_menu.html" . }}
+      {{else}}
+      <div id="sidea_list" class="px-1 bg-white">        
+      {{ partial "nav.html" . }}
+    {{end}}
+    </div>
+      {{if .IsPage}}
+      <div id="sideb_list" class="pr-1 bg-white">
         <aside class="pr-3">
           {{ block "side" . }}
           <div id="toc" class="mb-3">
@@ -32,6 +31,7 @@
           {{ end }}
         </aside>
       </div>
+      <div id ="sideb_single">{{partial "offcanvas_toc.html" . }}</div>
       {{end}}
 
       <div id="footer" class="pt-2 pb-3 bg-white text-center">
