@@ -96,8 +96,8 @@ aside {
 
 /* TOC */
 #toc {
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-  border-top: 1px solid hsla(210,18%,87%,1);
+  border-bottom: 1px solid #f8f8f8;
+  border-top: 1px solid #f2f6fa;
   margin-top: 117px;
   padding: 30px 0;
 }

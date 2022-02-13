@@ -1,0 +1,38 @@
+  <aside>
+    <div class ="nav-box">
+      <h6><a href="/">전체보기_({{ len .Site.RegularPages }})</a></h6>
+      <br>
+        <!--대주제 불러오기 -->
+        <ul class="ps-0">
+          {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }} 
+          <!--.
+            site.Taxonomies는 "tags" -> ["tag1", "tag2", "tag3"]) 
+            와 같이 부모 태그, 자식 태그를 불러온다.
+            따라서 변수 설정을 2개로 해야한다. 
+            $taxonomyname은 대주제 ex) Data anlytics
+            $taxonomy는 소주제 및 소주제가 포함하는 타이틀 ex) 데이터 분석이론, 데이터 분석이론 title
+          -->
+            <li>
+              <h5>{{ $taxonomyname }}</h5>
+              <hr>
+            </li>
+            <!--소주제 불러오기 -->
+          <ul class="ps-0">
+           {{ range $key, $value := $taxonomy }}
+            <!--
+            key는 소주제 ex) 데이터 분석 이론
+            value는 타이틀 ex) 데이터 분석 이론_title을 반환한다.
+            -->
+            <li>
+              <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
+                {{ $key }}_({{len .Pages}})
+                <br>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+          <br>
+          {{ end }}
+        </ul>
+    </div>  
+  </aside>
