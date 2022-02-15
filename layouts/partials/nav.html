@@ -12,7 +12,7 @@
       <!--대주제 불러오기 -->
       <ul class="ps-0">
         {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-        {{if ne $taxonomyname "tags"}}
+        {{if ne $taxonomyname "Tags"}}
         <li><h5>{{ $taxonomyname }}</h5><hr></li>
         <ul class="ps-2 text-">{{ range $key, $value := $taxonomy }}<li>
           <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">

@@ -1,4 +1,5 @@
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primer -->
     <link rel="stylesheet" href="{{ `css/primer.css` | relURL }}">
     
@@ -14,4 +15,8 @@
     <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}" media="none" onload="this.media='all';">
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/prism.js" | urlize | relURL }}"></script>
 
+    {{if .IsPage}}
+    <script defer language="javascript" type="text/javascript"  src="{{ "/js/medium-zoom.js" | urlize | relURL }}"></script>
+    <script defer language="javascript" type="text/javascript"  src="{{ "/js/zoom_custom.js" | urlize | relURL }}"></script>
+    {{end}}
 </head>

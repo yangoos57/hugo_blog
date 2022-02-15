@@ -6,11 +6,7 @@
 
 /* custom css here */
 html,
-body, h1,h2,h3,h4,h5,h6, p{
-  height: 100%; font-family: 'IBM-Regular','San-Regular' !important ;
-}
-.h-100 {
-  height: 100%;
+body, h1,h2,h3,h4,h5,h6, p{ font-family: 'IBM-Regular','San-Regular' !important; font-size: 1.025em;
 }
 a{color: black !important; text-decoration: none !important;}
 
@@ -27,7 +23,7 @@ a{color: black !important; text-decoration: none !important;}
     "sidea main sideb"
     "footer footer footer";
   margin: 0 auto;
-  width: 85vw;
+  width: 80%;
 }
 #header {
   grid-area: header;
@@ -36,16 +32,25 @@ a{color: black !important; text-decoration: none !important;}
 #main {
   grid-area: main;
   max-width: 800px;
+  /* max-width: 800px; */
   justify-self: center;
   padding: 20px;
+  margin: 0 auto;
+}
+/* Home & list page */
+#section{
+  min-width: 800px;
 }
 /* Navigation */
-#sidea_single, #sidea_list {
+#sidea_list {
   grid-area: sidea;
   max-width: 220px;
   justify-self: right;
 }
-
+#sidea_single
+{
+  display: none;
+}
 #sideb_single 
 {
   grid-area: sideb;
@@ -66,7 +71,7 @@ aside {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  max-height: 100vh;
+  max-height: 100%;
   display: block;
   overflow-y: visible;
 }
@@ -75,16 +80,16 @@ aside {
   width: 20% !important;
 }
 /* Menu */
-.title{margin: 0 auto; text-align: center; cursor: pointer;}
+.title{margin: 5em 0 2em 0 ; text-align: center; cursor: pointer;}
 .title h2{color: rgb(133, 135, 138); font-family: 'San-SemiBold'!important;}
 .title h1{margin: 0; font-family: 'IBM-Bold'!important;}
 
 /* Navigation */
 .nav-box{
   /* border-right: 1px solid hsla(210,18%,87%,1); */
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-  border-top: 1px solid hsla(210,18%,87%,1);
-  margin-top: 117px;
+  border-bottom: 1px solid #d8d8d8;
+  border-top: 1px solid #d8d8d8;
+  margin-top: 110px;
   padding: 35px 20px;
   font-size: 1em;
   /* font-weight: bolder; */
@@ -104,11 +109,17 @@ aside {
 
 .nav-box hr{margin: 0.3em;}
 
+/* DataFrame */
+.dataframe{
+  font-size: 12px;
+  text-align: center;
+}
+
 /* TOC */
 #toc {
-  border-bottom: 1px solid #f8f8f8;
-  border-top: 1px solid #f2f6fa;
-  margin-top: 117px;
+  border-bottom: 1px solid #d8d8d8;
+  border-top: 1px solid #d8d8d8;
+  margin-top: 110px;
   padding: 30px 0;
 }
 #toc * {
@@ -127,9 +138,6 @@ aside {
 }
 
 /* List page */
-#section{
-  min-width: 900px;
-}
 .list-title{
 margin: 42px auto 0 auto;
 }
@@ -140,57 +148,71 @@ margin: 42px auto 0 auto;
 #recent h1{display:inline; border-bottom: 0;}
 
 
-.code {
-  background-color: #f1f1f1;
-  padding: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 5px;
-  margin-right: 5px;
-  font-size: 17px;
-  font-family: monospace;
-  border-radius: 3px;
-  line-height: 1.25;
-}
-
-
 /* Pagination */
 .pagination {
   justify-content: center;
 }
 
-@media screen and (max-width: 1200px) {
+/* Offcanvas */
+.offcan-right{
+position: fixed; right:0 ; top:50% 
+}
+.offcan-left{
+position: fixed; left:0 ; top:50% ;
+}
+
+
+@media screen  and (max-width: 1200px) {
   #holy {
     display: block;
+    width: 100%;
   }
   #header {
     align-items: center;
   }
-  #main {
-    max-width: 1012px;
-  }
   #sidea_list, #sideb_list {
     display: none;
   }
-  #sideb_single{display:inline;}
+  #sidea_single, #sideb_single{display:inline;}
   #section{ 
-    min-width: 0px;
+    min-width: 0;
   }
-  .list-title{
-    max-width:960px
-  }
-  .dataframe{
-    font-size: 13px;
+  #toc{
+    margin: 0;  
   }
   .offcanvas{
-    width: 30% !important;
+    width: 230px !important;
+    margin: auto 0;
   }
+  .offcan-left{
+    position: fixed; left:1% ; top:2%;
+    display:block;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255,0.3);
+    }
+  .offcan-right{
+    position: fixed; right:1% ; top:2% ;
+    }
 }
-@media screen and (max-width: 768px) {
-  .dataframe{
-    font-size: 10px;
- }  
- .offcanvas{
-  width: 45% !important;
-}   
+
+@media screen and (max-width: 500px) {
+  .summary{display: none !important}
+  .float-md-right{margin:10px 0 0 0;}
+  .card-body > h2{font-size: 1.1em;} 
+  div > .post-date{font-size: 0.7em;} 
+  #recent > h1 {font-size: 1.2em !important;}
+  #recent > h2 {font-size: 1em !important;}
+
 }
+  
+
+
+
+
+
+/* @media screen and (min-width:500px) {
+  .col-md-3{flex: 0 0 auto; width: 25%;}
+  .col-md-8{flex: 0 0 auto; width: 25%;}
+  
+} */

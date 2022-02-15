@@ -13,32 +13,29 @@
         <!-- class="holy-main markdown-body px-4 bg-white" -->
         {{ block "main" . }}
         {{ end }}
-      </main> 
-      {{if .IsPage}}
+      </main>
       <div id="sidea_single">        
-      {{partial "offcanvas_menu.html" . }}
-      {{else}}
-      <div id="sidea_list" class="px-1 bg-white">        
-      {{ partial "nav.html" . }}
-    {{end}}
-    </div>
+        {{partial "offcanvas_menu.html" . }}
+      </div>
+      {{if ne .IsPage}}
+        <div id="sidea_list" class="px-1 bg-white">        
+        {{ partial "nav.html" . }}
+        </div>
+      {{end}}
       {{if .IsPage}}
       <div id="sideb_list" class="pr-1 bg-white">
         <aside class="pr-3">
           {{ block "side" . }}
-          <div id="toc" class="mb-3">
-          </div>
+          <div id="toc" class="mb-3"></div>
           {{ end }}
         </aside>
       </div>
       <div id ="sideb_single">{{partial "offcanvas_toc.html" . }}</div>
       {{end}}
-
-      <div id="footer" class="pt-2 pb-3 bg-white text-center">
-        {{ partial "footer.html" . }}
-      </div>
-
     </div>
   </body>
-
+  <div id="footer" class="pt-2 pb-3 bg-white text-center">
+    {{ partial "footer.html" . }}
+  </div>
+  {{ template "_internal/google_analytics.html" . }}
 </html>

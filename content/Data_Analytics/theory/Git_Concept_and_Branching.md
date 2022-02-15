@@ -1,10 +1,11 @@
 ---
 title: "Git Concept and Branching"
 date: 2022-02-09
-image: "images/blog/Git.jpg"
-image_webp: "images/blog/Git.webp"
+image: "images/home/Git_black.jpg"
+image_webp: "images/home/Git_black.webp"
 description: "this is meta description"
-categories: ["photography", "videography"]
+Data_Analytics: "theory"
+Tags: ['coffee','Pizza','back-drop']
 draft: false
 ---
 ### Git Concept
@@ -13,11 +14,11 @@ draft: false
     
     Git은 다른 버전관리 프로그램과 다르게 snapshot이라는 개념을 사용한다.  다른 버전관리 시스템은 (내가 안써봐서 어떤 식으로 진행되는지 잘 모르겠으나) 버전 관리를 할 때 파일별로 버전관리를 하는데 반면(그림 1참조) Git은 매번 전체 그림을 저장한다.(그림 2참조) Git은 효율을 위해 수정되지 않은 파일들은 Pointer로 연결해 놓는다.  이러한 개념은 Git Branch에서 위력을 발휘한다.
     
-    ![그림 1 기존 버전 관리 프로그램의 개념](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled.png)
+    ![그림 1 기존 버전 관리 프로그램의 개념](Git_Concept_and_Branching/Untitled.png)
     
     그림 1 기존 버전 관리 프로그램의 개념 
     
-    ![그림 2 Git만의 버전 관리 개념](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%201.png)
+    ![그림 2 Git만의 버전 관리 개념](Git_Concept_and_Branching/Untitled%201.png)
     
     그림 2 Git만의 버전 관리 개념
     
@@ -52,11 +53,11 @@ draft: false
     
     하위 항목들을 checksum한 뒤 tree object라고 리스트 형태 파일 하나와 메타데이터와 이전 버전 포인터들을 포함한 commit object를 생성한다. 
     
-    ![Commit obejct 1개 Tree obeject 1개, Blob 3개 총 5개](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%202.png)
+    ![Commit obejct 1개 Tree obeject 1개, Blob 3개 총 5개](Git_Concept_and_Branching/Untitled%202.png)
     
     Commit obejct 1개 Tree obeject 1개, Blob 3개 총 5개
     
-    ![여러가지 버전이 이와같이 저장된다.](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%203.png)
+    ![여러가지 버전이 이와같이 저장된다.](Git_Concept_and_Branching/Untitled%203.png)
     
     여러가지 버전이 이와같이 저장된다.
     
@@ -65,7 +66,7 @@ draft: false
 
     Branch는 포인터다. Commit할 때마다 포인터는 가장 최신 버전을 향해 바뀐다. Default branch를 master라고 하는데, git init을 할때 master라는 이름의 branch가 생긴다. 물론 Master를 다른 이름으로 바꿀 수 있다.
     
-    ![master라는 이름의 branch가 가장 최신 commit을 향해 있다.](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%204.png)
+    ![master라는 이름의 branch가 가장 최신 commit을 향해 있다.](Git_Concept_and_Branching/Untitled%204.png)
     
     master라는 이름의 branch가 가장 최신 commit을 향해 있다.
     
@@ -73,7 +74,7 @@ draft: false
     
     Git에서는 여러 개의 branch를 사용 할 수 있다. Branch가 하나라면 굳이 HEAD라는 용어를 고민할 필요가 없다. 하지만 Branch가 두 개 이상이라면 HEAD에 대해 알아야 한다.  HEAD 또한 Branch와 마찬가지로 Pointer이다. 다만 HEAD는 우리가 직접 만지는 포인터라고 보면 된다. 다시말해 우리는 HEAD를 이용해 Branch를 건드리고 그 브런치를 통해 Commit을 관리한다. 
     
-    ![두 개 이상의 Brunch로 버전관리하기](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%205.png)
+    ![두 개 이상의 Brunch로 버전관리하기](Git_Concept_and_Branching/Untitled%205.png)
     
     두 개 이상의 Brunch로 버전관리하기
     
@@ -86,7 +87,7 @@ draft: false
         현재 브랜치 위치가 어디에 있는지 알려주는 커맨드. 현재 pointing 하는 branch만 볼 수 있음. branch 명을 안다면 git log <branch_name>을 쓰면되고 모든 branch를 보려면 git log --all를 하면 된다. 
         
     
-    ![다중 branch 사용 시 새로운 commit을 하면 HEAD가 가리키는 branch만 옮겨짐](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%206.png)
+    ![다중 branch 사용 시 새로운 commit을 하면 HEAD가 가리키는 branch만 옮겨짐](Git_Concept_and_Branching/Untitled%206.png)
     
     다중 branch 사용 시 새로운 commit을 하면 HEAD가 가리키는 branch만 옮겨짐
     
@@ -94,7 +95,7 @@ draft: false
     
     이후 내용을 수정해 다시 commit을 올리게 된다면  다음 그림과 같이 brunch가 분화된다. 
     
-    ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%207.png)
+    ![Untitled](Git_Concept_and_Branching/Untitled%207.png)
     
     - git log -- oneline -- decorater -- graph --all
         
@@ -114,11 +115,11 @@ draft: false
     
     - 새로운 버전을 만들기 위해 iss53 branch를 만든다.
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%208.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%208.png)
         
     - 현재까지 완성된 내용은 C2이고 Issue53 관련 내용을 작성하여 일부분을 Commit 했다.
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%209.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%209.png)
         
     - 작업하던 중 현재 운영중인 버전(C2)에서 버그가 발견됐다는 연락을 받고 빠르게 핫픽스를 만들어야한다. 먼저 이슈 53건에 대해 작업중인 내용 전부를 commit 해서 폴더 내modified 된 자료들이 없어야한다.
         
@@ -129,7 +130,7 @@ draft: false
         
     - Hotfix를 위해 새로운 브런치(hotfix)를 만든다. 그리고 수정사항을 반영해서 commit한다. c4 commit이 생성된다.
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%2010.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%2010.png)
         
     - 다시 master branch로 checkout한 뒤 git merge hotfix 명령어를 쓴다. 
     이때 물리적으로 Merge하지 않고 hotfix branch를 master branch로 대체한다.
@@ -145,21 +146,21 @@ draft: false
         
         Fast-forward 의미: Fast-Forward는 master branch가 hotfix branch를 pointing 하는 행위다. 
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%2011.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%2011.png)
         
     - git branch -d hotffix로 branch를 지우면 master가 C4를 직접 지목한다.
         
         다시 checkout으로 iss53으로 돌아가 작업을 하면 된다. 만약 C4 내용을 다음 Commit(C5)에 반영하고 싶으면 hotfix를 merge한 방식과 같이 master로 돌아간 뒤 merge하면 된다.
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%2012.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%2012.png)
         
     - 분화된 Branch를 Merging 하기 위해서는 3개의 snapshot을 비교한다. (개념으로만 알고 있자.)
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%2013.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%2013.png)
         
     - C6를 만든 뒤 다시 issue 53을 작업해도 되고 만약 쓸 필요가 없다면 iss53을 제거한다.
         
-        ![Untitled](/img/Data_Aanlytics/theory/Git_Concept_and_Branching/Untitled%2014.png)
+        ![Untitled](Git_Concept_and_Branching/Untitled%2014.png)
         
 - Merge Conflicts
     

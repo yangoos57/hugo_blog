@@ -1,6 +1,6 @@
-<aside style="position: fixed; left:0% ; top:50% ">
+<aside class="offcan-left">
 <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
   </svg>
 </button>
@@ -24,7 +24,7 @@
           <!--대주제 불러오기 -->
           <ul class="ps-0" style="list-style: none;">
             {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-            {{if ne $taxonomyname "tags"}}
+            {{if ne $taxonomyname "Tags"}}
             <li><h5>{{ $taxonomyname }}</h5><hr></li>
             <ul class="ps-2" style="list-style: none;">{{ range $key,   $value := $taxonomy }}
               <li>

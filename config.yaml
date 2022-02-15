@@ -1,4 +1,6 @@
 baseURL: 'https://yangoos57.github.io/'
+googleAnalytics: G-303512006
+disqusShortname: yangoos92
 relativeURLs: true
 canonifyURLs: true
 title: Yangoos Archive
@@ -11,11 +13,10 @@ disqusShortname: ''
 preserveTaxonomyNames: true
 
 taxonomies:
-  category: Category
   python: Python
-  personal: Personal
+  # personal: Personal
   data_analytics: Data_Analytics
-
+  tags : Tags
 params:
   plugins:
     js:

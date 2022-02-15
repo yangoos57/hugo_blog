@@ -1,9 +1,8 @@
 ---
 title: "Seaborn에 내장되어있는 함수 기능을 알아보자."
 date: 2022-02-09T11:07:10+06:00
-image: "images/blog/Seaborn.jpg"
-image_webp: "images/blog/Seaborn.webp"
-description: "this is meta description"
+image: "images/home/Git_blue.jpg"
+image_webp: "images/home/Git_blue.webp"
 Python: "seaborn"
 draft: false
 ---
@@ -154,8 +153,6 @@ sns.lineplot(data=fifa_data)
 
     
 ![png](/Datavisualization_files/Datavisualization_6_1.png)
-    
-
 
 ### Practice
 
