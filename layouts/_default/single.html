@@ -32,7 +32,6 @@
         {{ end }}
       </section>
     </article>
-    {{partial "disqus.html" . }}
     {{ end }}    
     
     {{ define "side" }}
@@ -46,5 +45,7 @@
           {{- safeHTML $toc -}}
         </div>
       {{ end }}
+
+      {{partial "disqus.html" . }}
     {{ end }}
 

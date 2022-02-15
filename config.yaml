@@ -1,6 +1,6 @@
 baseURL: 'https://yangoos57.github.io/'
 googleAnalytics: G-303512006
-disqusShortname: yangoos92
+DisqusShortname: yangoos92
 relativeURLs: true
 canonifyURLs: true
 title: Yangoos Archive
