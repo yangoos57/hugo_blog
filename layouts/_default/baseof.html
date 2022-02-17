@@ -4,12 +4,12 @@
 
   <body>
     <!-- class="bg-gray" -->
-    <div id="holy" class="bg-white">
+    <div id="holy" style="background-color: #ffffff;">
       <!-- class="container-lg bg-white h-100" -->
-      <header id="header" class="col-12 px-1 bg-white">
+      <header id="header" class="col-12 px-1">
         {{ partial "header.html" . }}
       </header>
-      <main role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+      <main role="main" id="main" class="holy-main markdown-body mt-2 px-4">
         <!-- class="holy-main markdown-body px-4 bg-white" -->
         {{ block "main" . }}
         {{ end }}
@@ -17,13 +17,10 @@
       <div id="sidea_single">        
         {{partial "offcanvas_menu.html" . }}
       </div>
-      {{if ne .IsPage}}
-        <div id="sidea_list" class="px-1 bg-white">        
-        {{ partial "nav.html" . }}
-        </div>
-      {{end}}
+        <!-- <div id="sidea_list" class="px-1 bg-white" style="position: fixed">        
+        {{ partial "nav.html" . }} -->
       {{if .IsPage}}
-      <div id="sideb_list" class="pr-1 bg-white">
+      <div id="sideb_list" class=" mt-2 pr-1 bg-white">
         <aside class="pr-3">
           {{ block "side" . }}
           <div id="toc" class="mb-3"></div>

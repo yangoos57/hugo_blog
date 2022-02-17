@@ -1,48 +1,62 @@
 <aside class="offcan-left">
-<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-  </svg>
-</button>
-
-<!-- 내용물 -->
-<div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+  <div class='menu-icon_mobile'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+    </svg>
   </div>
-  <div class="offcanvas-body">
-      <div>
-        <h6>
-          <a href="/">
-          전체보기
-          <span class="badge bg-light text-dark rounded-pill">
-            {{ len .Site.RegularPages }}
-          </span>
-          </a>
-        </h6>
-        <br>
-          <!--대주제 불러오기 -->
-          <ul class="ps-0" style="list-style: none;">
-            {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-            {{if ne $taxonomyname "Tags"}}
-            <li><h5>{{ $taxonomyname }}</h5><hr></li>
-            <ul class="ps-2" style="list-style: none;">{{ range $key,   $value := $taxonomy }}
-              <li>
-              <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
-                  {{$key}}
-                <span class="badge bg-light text-dark rounded-pill">
-                  {{len .Pages}}
-                </span>
-                <br>
-              </a>
-              </li>
+  <div class='menu-icon_pc'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="50" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+    </svg>
+  </div>
+  </button>
+
+  <!-- 내용물 -->
+  <div class="offcanvas offcanvas-start " data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-body nav-box">
+        <div>
+          <h4>
+            <a href="/"><text class="text-stroke-fill" text-anchor="middle" x="30%" y="30%" dy=".35em">🌌</text>
+            전체보기
+            <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+              {{ len .Site.RegularPages }}
+            </span>
+            </a>
+          </h4>
+          <br>
+            <!--대주제 불러오기 -->
+            <ul class="ps-0" style="list-style: none;">
+              {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+              {{if ne $taxonomyname "Tags"}}
+              <li><h5> <text class="text-stroke-fill" text-anchor="middle" x="30%" y="30%" dy=".35em">🔗&nbsp;</text>{{$taxonomyname}}</h5></li>
+              
+              <ul class="ps-2" style="list-style: none;">{{ range $key,   $value := $taxonomy }}
+                <li>
+                  <h6>
+                    <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
+                      <text class="text-stroke-fill" text-anchor="middle" x="10%" y="10%" dy=".1em">‣ </text>{{$key}}&nbsp;
+                      <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                        
+                        {{len .Pages}}
+                      </span>
+                      <br>
+                    </a>
+                  </h6>
+                </li>
+                {{ end }}
+              </ul>
+              {{end}} 
+              <br>
               {{ end }}
             </ul>
-            {{end}} 
-            <br>
-            {{ end }}
-          </ul>
-      </div>  
+        </div>  
+    </div>
   </div>
-</div>
 </aside>
+<script>$(document).mouseup(function (e){
+  var LayerPopup = $(".offcanvas");
+  if(LayerPopup.has(e.target).length === 0){
+    LayerPopup.removeClass("show");
+  }
+});</script>

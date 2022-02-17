@@ -8,9 +8,6 @@
 
 
 <div class="offcanvas offcanvas-end" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
   <div class="offcanvas-body">
     {{ if and (gt .WordCount 0 ) (default true .Params.toc) }}
     <div id="toc" class="sticky-lg-top">
@@ -18,7 +15,7 @@
       <b>{{ .Title }}</b>
       {{- $toc := .TableOfContents -}}
       {{- $toc := replaceRE `<nav id="TableOfContents">\n<ul>\n<li>\n<ul>` `<nav id="TableOfContents"><ul>` $toc -}}
-      {{- $toc := replaceRE `</ul>\n</li>\n</ul>\n</nav>` `</ul>\n</nav>` $toc -}}
+      {{- $toc := replaceRE `</ul>\n</li>\n</ul>\n</nav>` `</ul>asdasd\n</nav>` $toc -}}
       {{- safeHTML $toc -}}
     </div>
   {{ end }}
