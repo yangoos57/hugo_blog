@@ -18,5 +18,10 @@
     {{if .IsPage}}
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/medium-zoom.js" | urlize | relURL }}"></script>
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/zoom_custom.js" | urlize | relURL }}"></script>
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    <link rel="stylesheet" href="{{ `css/notion.css` | relURL }}">
     {{end}}
 </head>

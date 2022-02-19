@@ -1,12 +1,12 @@
 
 <!-- categories -->
 {{ range first 2 (split .Page.File.Dir "\\" ) }}
-<span class="badge rounded-pill text-dark " style="background-color: rgb(245, 245, 245);">{{ . }}</span>
+<span class="badge  text-dark " style="background-color: #d9e8f5b9;">{{ . }}</span>
 {{end}}
 <!-- tags -->
 {{ with .Params.Tags }}{{ range . }}
 <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}' class="muted-link">
-  <span class="badge rounded-pill bg-secondary ">{{ . }}</span>
+  <span class="badge text-white" style="background-color: #84aec4;" >{{ . }}</span>
 </a>
 {{ end }}{{ end }}
 

@@ -1,6 +1,6 @@
 <article class="card border-0 p-1 mb-3 shadow-sm" >
   <div class="row g-0 align-items-center">
-    <div class="img-box col-3 p-3">
+    <div class="img-box col-3 p-1">
       <a href="{{.Permalink}}">
         <img loading="lazy" class="img-fluid" src="{{ .Params.image_webp | absURL }}"
           onerror="this.onerror=null;this.src='{{ .Params.image | absURL }}'" alt="{{.Title}}">
@@ -9,7 +9,7 @@
     <div class="col-9">
       <div class="card-body">
         {{ range first 2 (split .Page.File.Dir "\\" ) }}
-        <span class="badge rounded-pill text-dark " style="background-color: rgb(245, 245, 245);">{{ . }}</span>{{end}}
+        <span class="badge text-dark " style="background-color: rgb(245, 245, 245);">{{ . }}</span>{{end}}
         <h2 class="card-title mt-1 mb-1 fw-bolder"><a href="{{.Permalink}}">{{.Title}}</a></h2>
         <div>
           <span class="post-date">{{.PublishDate.Format "02 Jan, 2006"}}&nbsp;</span>

@@ -29,10 +29,11 @@ a{color: #37352f !important; text-decoration: none !important;}
 #header {
   grid-area: header;
   place-self: center stretch ;
+  /* background-color: #91bed4a8; */
   background-color: #91bed4a8;
   padding: 20px;
   min-height: 200px;
-  /* max-width: 1500px; */
+  /* max-width: 1000px; */
   /* margin: 0 auto; */
   box-shadow: 1px 3px 7px #c4c4c4;
 }
@@ -75,7 +76,7 @@ a{color: #37352f !important; text-decoration: none !important;}
 }
 aside {
   position: -webkit-sticky;
-  position: sticky;
+  position: relative;
   top: 0;
   max-height: 100%;
   display: block;
@@ -143,6 +144,7 @@ aside {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.97em;
   /* font-weight: bold; */
 }
 #toc ul {
@@ -179,13 +181,13 @@ position: fixed; right:0 ; top:50%
 position: fixed; left:5% ; top:50% ;
 }
 
+.img_box{padding: 0px;}
 
 @media screen  and (max-width: 1200px) {
-  #main{padding: 0;}
   #holy {
     display: block;
-    width: 100%;
   }
+  #main{padding: 0; width: 95%;}
   #header { 
     display: block;
   }
