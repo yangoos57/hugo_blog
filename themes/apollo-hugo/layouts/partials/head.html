@@ -25,3 +25,9 @@
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/google_analytics.html" . }}
 {{ site.Params.custom_script | safeHTML }}
+
+
+{{if .IsPage}}  <!-- Single Page에만 작동하도록 설정 -->
+    <script defer language="javascript" type="text/javascript"  src="{{ "/js/medium-zoom.js" | urlize | relURL }}"></script>
+		<script defer language="javascript" type="text/javascript"  src="{{ "/js/zoom_custom.js" | urlize | relURL }}"></script>
+{{end}}

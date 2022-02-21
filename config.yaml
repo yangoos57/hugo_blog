@@ -11,10 +11,11 @@ enableEmoji: true
 preserveTaxonomyNames: true
 
 taxonomies:
-  python: Python
-  # personal: Personal
-  data_analytics: Data_Analytics
+  # md에 쓰이는 제목 : nav에 쓰이는 제목
+  # python: Python
+  # data_analytics: Data_Analytics
   tags : Tags
+  hugo : HUGO
 params:
   plugins:
     js:
@@ -25,7 +26,7 @@ params:
   logo: images/logo.png
   logo_width: 100px
   favicon: images/favicon.png
-  description: This is meta description
+  description: '데이터 관리'
 
   copyright: 'Designed & Developed By [Gethugothemes](https://gethugothemes.com/)'
   custom_script: ''

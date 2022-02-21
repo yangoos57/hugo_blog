@@ -2,13 +2,12 @@
     <!-- Title -->
     <div class="Subhead">
       <div class="Subhead-heading">
-        <div class="h1 mt-3 mb-1">{{ .Title }}</div>
+        <div class="h1 mt-3 mb-3">{{ .Title }}</div>
       </div>
       <div class="Subhead-description">
         {{ partial "taxonomy.html" . }}
-    
         {{ if ( default true .Params.showDate ) }}
-        <div class="float-md-right">
+        <div class="float-end"> 
           <span title="Lastmod: {{ .Lastmod.Format "2006-01-02" }}. Published at: {{ .PublishDate.Format "2006-01-02" }}.">
             {{ if ne .Lastmod .PublishDate }}
               Lastmod: {{ dateFormat ( default "2006-01-02" .Site.Params.dateFormat ) .Lastmod }}

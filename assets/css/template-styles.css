@@ -5,11 +5,11 @@
 @font-face { font-family: 'San-SemiBold'; src: url(' {{ "css/fonts/SourceSansPro-SemiBold.ttf" | absURL }} '); unicode-range: U+0041-005A, U+0061-007A, U+0000-0FFF; } 
 
 /* custom css here */
-html,
-body, h1,h2,h3,h4,h5,h6, p{ font-family: 'IBM-Regular','San-Regular' !important; font-size: 1.025em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f;
-}
-a{color: #37352f !important; text-decoration: none !important;}
+html, .markdown-body ul> li,
+body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f;
+text-decoration: none;}
 
+a{color: #37352f !important; text-decoration: none !important;}
 
 #holy {
   display: grid;

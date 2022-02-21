@@ -1,7 +1,7 @@
 
 <!-- categories -->
 {{ range first 2 (split .Page.File.Dir "\\" ) }}
-<span class="badge  text-dark " style="background-color: #d9e8f5b9;">{{ . }}</span>
+<span class="badge  text-dark " style="background-color: #d9e8f5b9;font-size: 0.85em;">{{ . }}</span>
 {{end}}
 <!-- tags -->
 {{ with .Params.Tags }}{{ range . }}
