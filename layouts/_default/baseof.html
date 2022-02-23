@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
-  {{ partial "head.html" . }}
+
+<!-- Head 
+     Body
+    Footer
+-->
+{{ partial "head.html" . }}
 
   <body>
-    <!-- class="bg-gray" -->
     <div id="holy">
-      <!-- class="container-lg bg-white h-100" -->
       <header id="header" class="col-12 px-1">
         {{ partial "header.html" . }}
       </header>
+      <div id="sidea_list"></div>
       <main role="main" id="main" class="holy-main markdown-body mt-2 px-4">
-        <!-- class="holy-main markdown-body px-4 bg-white" -->
         {{ block "main" . }}
         {{ end }}
       </main>
-      <div id="sidea_single">        
-        {{partial "offcanvas_menu.html" . }}
-      </div>
         <!-- <div id="sidea_list" class="px-1 bg-white" style="position: fixed">        
         {{ partial "nav.html" . }} -->
       {{if .IsPage}}
-      <div id="sideb_list" class=" mt-2 pr-1 bg-white">
+      <div id="sideb_list" class=" mt-2 pr-1">
         <aside class="pr-3">
           {{ block "side" . }}
-          <div id="toc" class="mb-3"></div>
+          <div id="toc" class="mb-3 border border-primary"></div>
           {{ end }}
         </aside>
       </div>
       <div id ="sideb_single">{{partial "offcanvas_toc.html" . }}</div>
       {{end}}
     </div>
+    <div id="sidea_single">        
+      {{partial "offcanvas_menu.html" . }}
+    </div>
   </body>
+
   <div id="footer" class="pt-2 pb-3 bg-white text-center">
     {{ partial "footer.html" . }}
   </div>
+  
   {{ template "_internal/google_analytics.html" . }}
 </html>
