@@ -6,10 +6,10 @@
 
 /* custom css here */
 html, .markdown-body ul> li,
-body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f;
-text-decoration: none;}
+body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f; text-decoration: none;}
 
-a{color: #37352f !important; text-decoration: none !important;}
+a{ color: #0969da ;text-decoration: none !important;}
+blockquote > p {font-size: 0.85em; color:#57606a !important; font-weight: 600;}
 
 #holy {
   display: grid;
@@ -86,6 +86,8 @@ a{color: #37352f !important; text-decoration: none !important;}
 #footer {
   grid-area: footer;
   place-self: center stretch ;
+  background-color: #f6f8fa;
+
 }
 aside {
   position: -webkit-sticky;

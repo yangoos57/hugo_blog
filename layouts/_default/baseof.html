@@ -12,7 +12,9 @@
       <header id="header" class="col-12 px-1">
         {{ partial "header.html" . }}
       </header>
+      {{if .IsPage}}
       <div id="sidea_list"></div>
+      {{end}}
       <main role="main" id="main" class="holy-main markdown-body mt-2 px-4">
         {{ block "main" . }}
         {{ end }}
@@ -35,7 +37,7 @@
     </div>
   </body>
 
-  <div id="footer" class="pt-2 pb-3 bg-white text-center">
+  <div id="footer" class="pt-2 pb-3 text-center">
     {{ partial "footer.html" . }}
   </div>
   

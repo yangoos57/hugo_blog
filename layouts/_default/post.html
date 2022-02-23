@@ -1,4 +1,4 @@
-<article class="card border-0 p-1 mb-3 shadow-sm" >
+<article class="card border-0 p-1 mb-3 shadow-sm" style="  background-color: #ffffff;">
   <div class="row g-0 align-items-center">
     <div class="img-box col-3 p-1">
       <a href="{{.Permalink}}">
@@ -10,7 +10,7 @@
       <div class="card-body">
         {{ range first 2 (split .Page.File.Dir "\\" ) }}
         <span class="badge text-dark" style="background-color: #d9e8f5;">{{ . }}</span>{{end}}
-        <h2 class="card-title mt-1 mb-1 fw-bolder"><a href="{{.Permalink}}">{{.Title}}</a></h2>
+        <h2 class="card-title mt-1 mb-1 fw-bolder"><a href="{{.Permalink}}" style="color:#37352f !important;">{{.Title}}</a></h2>
         <div>
           <span class="post-date">{{.PublishDate.Format "02 Jan, 2006"}}&nbsp;</span>
         </div >
@@ -19,3 +19,5 @@
     </div>
   </div>
 </article>
+
+
