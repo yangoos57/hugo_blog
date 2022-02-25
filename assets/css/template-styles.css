@@ -207,8 +207,13 @@ position: fixed; left:5% ; top:50% ;
 .markdown-body pre {background-color: #f2f2f2;}
 .markdown-body pre > code {font-size: 1em !important; font-family: 'IBM-Regular';}
 
+/* Related Posts */
+.rel-post{margin: 0 auto; border: 2px solid #c4c4c470; padding : 25px 40px;}
+.rel-post h2 { margin: 50px 0 10px 5px}
 
 
+/* ********************************* */
+/* ********************************* */
 @media screen  and (max-width: 1200px) {
   #holy {
     display: block;

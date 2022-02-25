@@ -10,10 +10,7 @@
         {{else}}
         {{ range .Pages}}
         {{ .Render "post" }}
-        {{end}}
-        {{end}}        
-
-        {{end}}
+        {{end}} {{end}} {{end}}
         {{ partial "pagination.html" . }}
       </div>
 </section>
