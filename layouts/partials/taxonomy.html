@@ -1,37 +1,21 @@
 
 <!-- categories -->
-{{ range first 2 (split .Page.File.Dir "\\" ) }}
-<span class="badge  text-dark " style="background-color: #d9e8f5b9;font-size: 0.85em;">{{ . }}</span>
-{{end}}
+{{$current_Type := replace (replace .File.Dir .Type "" ) "\\" "" | upper}}
+
+{{with .Site.GetPage "section" .Section}}
+<a href="{{.Permalink}}">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">{{.Type | upper}}</span>
+</a>
+<!-- {{.RelPermalink}} -->
+{{range .Pages}}
+{{if eq (.Type | upper) $current_Type}}
+<a href="{{.Permalink}}">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">{{.Type | upper}}</span>
+</a>
+{{end}}{{end}}{{end}}
 <!-- tags -->
 {{ with .Params.Tags }}{{ range . }}
 <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}' class="muted-link">
-  <span class="badge text-white" style="background-color: #84aec4;" >{{ . }}</span>
+  <span class="badge text-white" style="background-color: #84aec4;" >{{ . | upper }}</span>
 </a>
 {{ end }}{{ end }}
-
-<!-- {{with .Site.Taxonomies}}{{range . }}
-{{.}}
-<br>
-<br>
-{{end}}{{end}} -->
-
-
-
-<!-- {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-{{if ne $taxonomyname "tags"}}
-<li><h5>{{ $taxonomyname }}</h5><hr></li>
-<ul class="ps-2 text-">{{ range $key, $value := $taxonomy }}<li>
-  <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
-      {{$key}}
-    <span class="badge bg-light text-dark rounded-pill">
-      {{len .Pages}}
-    </span>
-    <br>
-  </a>
-</li>
-{{ end }}
-</ul>
-{{end}} 
-<br>
-{{ end }} -->

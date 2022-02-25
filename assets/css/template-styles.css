@@ -116,23 +116,24 @@ aside {
 
 /* Navigation */
 .nav-box div{margin: 10px auto}
-.nav-box h4{
-  font-size: 1.2em; 
+.nav-box h4 > a {
+  font-size: 0.8em; 
   font-weight: bold;
+  display: block;
   padding: 20px 0 10px 0px;
-
+  color:#37352f !important;
 }
-.nav-box h5{
-  font-size: 1em; 
+.nav-box h5 > a{
+  font-size: 0.9em; 
   color:#8b8b8b;
   font-family: 'San-SemiBold' !important;
 }
 .nav-box h6 > a{
   display: block;
   padding-left: 10px;
-  font-size: 0.9em;
+  font-size: 0.85em;
   font-weight: bold;
-  color:#8b8b8b !important;
+  color:#37352f !important;
 }
 
 .offcanvas-backdrop{background-color: #ffffff57 !important;}
@@ -172,10 +173,10 @@ aside {
 #toc li {
   margin-top: 0.3rem;
 }
-.toc_line{
+/* .toc_line{
   border-left: 3.5px solid #8C8C8C;
   padding-left: 7px;
-}
+} */
 /* List page */
 .list-title{
 margin: 42px auto 0 auto;
@@ -194,13 +195,19 @@ margin: 42px auto 0 auto;
 
 /* Offcanvas */
 .offcan-right{
-position: fixed; right:0 ; top:50% 
+position: fixed; right:0% ; top:0.5% 
 }
 .offcan-left{
 position: fixed; left:5% ; top:50% ;
 }
 
 .img_box{padding: 0px;}
+
+/* Markdown-body */
+.markdown-body pre {background-color: #f2f2f2;}
+.markdown-body pre > code {font-size: 1em !important; font-family: 'IBM-Regular';}
+
+
 
 @media screen  and (max-width: 1200px) {
   #holy {
@@ -234,7 +241,7 @@ position: fixed; left:5% ; top:50% ;
     background-color: #f2f2f246;
     }
   .offcan-right{
-    position: fixed; right:0% ; top:0% ;
+    position: fixed; right:1% ; top:0.5% ;
     }
 }
 

@@ -17,29 +17,35 @@
     <div class="offcanvas-body nav-box">
         <div>
           <h4>
-            <a href="/">🌏 전체보기
+            <a href="/"><text class="text-stroke-fill" text-anchor="middle" x="30%" y="30%" dy=".35em">🌏</text>
+            전체보기
             <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
               {{ len .Site.RegularPages }}
             </span>
             </a>
           </h4>
           <br>
-          <ul class="ps-0" style="list-style: none;">
-            {{range .Site.Sections}}
-            <li>
-              <h5><a href="/{{ .Type | urlize }}">🔗&nbsp;{{.Type | upper}}</a> </h5>
-            </li>
-            <ul class="ps-2" style="list-style: none;">{{ range .Pages }}
-              <li>
-                <h6><a href="{{.Permalink}}">‣ {{.Type | upper }}&nbsp;
-                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
-                      {{len .Pages}}
-                    </span>
-                  </a>
-                </h6>
-              </li>
-            {{ end }}
-           </ul>
+            <!--대주제 불러오기 -->
+            <ul class="ps-0" style="list-style: none;">
+              {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+              {{if ne $taxonomyname "Tags"}}
+              <li><h5> <a href="/{{ $taxonomyname | urlize }}"><text class="text-stroke-fill" text-anchor="middle" x="30%" y="30%" dy=".35em">🔗&nbsp;</text>{{$taxonomyname}}</a> </h5></li>
+              
+              <ul class="ps-2" style="list-style: none;">{{ range $key,   $value := $taxonomy }}
+                <li>
+                  <h6>
+                    <a href="/{{ $taxonomyname | urlize }}/{{ $key | urlize}}">
+                      <text class="text-stroke-fill" text-anchor="middle" x="10%" y="10%" dy=".1em">‣ </text>{{$key | upper}}&nbsp;
+                      <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                        {{len .Pages}}
+                      </span>
+                      <br>
+                    </a>
+                  </h6>
+                </li>
+                {{ end }}
+              </ul>
+              {{end}} 
               <br>
               {{ end }}
             </ul>
@@ -53,4 +59,3 @@
     LayerPopup.removeClass("show");
   }
 });</script>
-

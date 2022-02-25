@@ -1,21 +1,19 @@
 baseURL: 'https://yangoos57.github.io/'
 googleAnalytics: G-K109LYQBX3
 DisqusShortname: yangoos92
+pluralizelisttitles: "false"
 relativeURLs: true
 canonifyURLs: true
 title: Leeway
-# theme: Cupper
-paginate: '10'
+paginate: '5'
 summaryLength: '20'
 enableEmoji: true
 preserveTaxonomyNames: true
+enableRobotsTXT: true
 
 taxonomies:
-  # md에 쓰이는 제목 : nav에 쓰이는 제목
-  # python: Python
-  # data_analytics: Data_Analytics
   tags : Tags
-  hugo : HUGO
+
 params:
   plugins:
     js:
@@ -27,26 +25,10 @@ params:
   logo_width: 100px
   favicon: images/favicon.png
   description: '데이터 관리'
-
-  copyright: 'Designed & Developed By [Gethugothemes](https://gethugothemes.com/)'
-  custom_script: ''
-  variables:
-    primary_color: '#33186D'
-    body_color: '#fff'
-    text_color: '#333'
-    text_color_dark: '#000'
-    text_color_light: '#999'
-    border_color: '#e2e2e2'
-    black: '#000'
-    white: '#fff'
-    light: '#f1f1f1'
-    primary_font: 'DM Sans:400,500,700'
-    icon_font: Fontawesome 5 Free
+  icon_font: Fontawesome 5 Free
   cookies:
     enable: false
     expire_days: 2
-    
-
 
 markup:
   defaultMarkdownHandler: goldmark

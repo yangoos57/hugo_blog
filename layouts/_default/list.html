@@ -1,13 +1,20 @@
 {{ define "main" }}
 <section id="section">
     <div class="list-title">
-    <h1>{{ .Title }}</h1>
+    <h1>{{ .Title | upper }}</h1>
     </div>
       <div class="d-flex flex-column ">
-        {{ range (.Paginator 5).Pages }}
+        {{ range .Pages }}
+        {{if eq .Section .Type}}
         {{ .Render "post" }}
-        {{ end }}
+        {{else}}
+        {{ range .Pages}}
+        {{ .Render "post" }}
+        {{end}}
+        {{end}}        
+
+        {{end}}
         {{ partial "pagination.html" . }}
-    </div>
+      </div>
 </section>
 {{ end }}
