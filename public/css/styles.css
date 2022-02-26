@@ -1,0 +1,273 @@
+@font-face { font-family: 'IBM-Bold'; src: url(' https://yangoos57.github.io/css/fonts/IBM_Bold.ttf '); unicode-range: U+AC00-D7A3 } 
+@font-face { font-family: 'IBM-Regular'; src: url(' https://yangoos57.github.io/css/fonts/Noto-Regular.otf '); unicode-range: U+AC00-D7A3 } 
+
+/* Eng */
+@font-face { font-family: 'San-SemiBold'; src: url(' https://yangoos57.github.io/css/fonts/SourceSansPro-SemiBold.ttf '); unicode-range: U+0041-005A, U+0061-007A, U+0000-0FFF; } 
+
+/* custom css here */
+html, .markdown-body ul> li,
+body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f; text-decoration: none;}
+
+a{ color: #0969da ;text-decoration: none !important;}
+blockquote > p {font-size: 0.85em; color:#57606a !important; font-weight: 600;}
+
+#holy {
+  display: grid;
+  /* auto: as wide as its content
+   * fr: all available space */
+  /* grid-column-gap: 10px; */
+  grid-template-columns: 1fr auto 1fr ;
+  grid-template-rows: auto ;
+  grid-template-areas:
+    "header header header"
+    "sidea main sideb"
+    "footer footer footer";
+  margin: 0 auto;
+  /* width: 60%; */
+  background-color: #f6f8fa;
+}
+#header {
+  grid-area: header;
+  place-self: center stretch ;
+  /* background-color: #91bed4a8; */
+  background-color: #91bed4a8;
+  padding: 20px;
+  min-height: 200px;
+  /* max-width: 1000px; */
+  /* margin: 0 auto; */
+  box-shadow: 1px 3px 7px #c4c4c4;
+}
+#main {
+  grid-area: main;
+  max-width: 800px;
+  /* max-width: 800px; */
+  justify-self: center;
+  padding: 10px;
+  margin: 0 auto;
+  /* box-shadow: 0px 2px 7px #c4c4c4;  */
+  background-color:#FBFBFB;
+}
+/* Home & list page */
+/* #section{
+  min-width: 800px;
+} */
+/* Navigation */
+/* #sidea_list {
+  grid-area: sidea;
+  max-width: 220px;
+  justify-self: right;
+  font-size: 1.125em;
+} */
+#sidea_single{}
+
+#sideb_single 
+{
+  width: 220px;
+  justify-self: left;
+  display: none;
+}
+
+#sidea_list {
+  background-color:#FBFBFB ;
+  width: 100px;
+  justify-self: right;
+  border-left: 2px solid #c4c4c43f ;
+  margin-top: 10px;
+}
+#sideb_list {
+  grid-area: sideb;
+  width: 270px;
+  justify-self: left;
+  padding-left: 25px;
+  background-color:#FBFBFB ;
+  border-right: 2px solid #c4c4c43f ;
+  margin-top: 20px;
+}
+#footer {
+  grid-area: footer;
+  place-self: center stretch ;
+  background-color: #f6f8fa;
+
+}
+aside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  max-height: 100%;
+  display: block;
+  overflow-y: visible;
+}
+/* mobile version side_bar */
+.offcanvas{
+  width: 230px !important;
+  max-height: 87% !important;
+  box-shadow: 2px 2px 10px #737373a9;
+  border: 1px solid #dddada;
+  margin: auto 0;
+}
+.offcanvas-end{
+  box-shadow: -1px 2px 10px #737373a9;
+}
+/* Menu */
+.title{ margin: 10px auto; text-align: center; cursor: pointer;}
+.title h2{color:#EFF5FF; font-family: 'San-SemiBold'!important;}
+.title h1{color:#EFF5FF;margin: 0; font-family: 'IBM-Bold'!important;}
+/* {color: #EFF5FF;-webkit-text-stroke: 0px #EFF5FF;} */
+
+/* Navigation */
+.nav-box div{margin: 10px auto}
+.nav-box h4 > a {
+  font-size: 0.8em; 
+  font-weight: bold;
+  display: block;
+  padding: 20px 0 10px 0px;
+  color:#37352f !important;
+}
+.nav-box h5 > a{
+  font-size: 0.9em; 
+  color:#8b8b8b;
+  font-family: 'San-SemiBold' !important;
+}
+.nav-box h6 > a{
+  display: block;
+  padding-left: 10px;
+  font-size: 0.85em;
+  font-weight: bold;
+  color:#37352f !important;
+}
+
+.offcanvas-backdrop{background-color: #ffffff57 !important;}
+
+.nav-box hr{margin: 0.3em;}
+
+.menu-icon_mobile{display: none;}
+.menu-icon_pc{}
+
+/* DataFrame */
+.dataframe{
+  font-size: 12px;
+  text-align: center;
+}
+
+/* TOC */
+#toc {
+  /* margin-top: 139px; */
+  padding: 30px 10px 30px 5px;
+  /* border: 2px #91bed4a8 solid;
+  border-top: 2px #91bed4a8 solid;
+  border-left: 2px #91bed4a8 solid; */
+}
+#toc * {
+  list-style: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.97em;
+  
+  /* font-weight: bold; */
+}
+#toc ul {
+  padding-left: 0.8rem;
+}
+#toc li {
+  margin-top: 0.3rem;
+}
+/* .toc_line{
+  border-left: 3.5px solid #8C8C8C;
+  padding-left: 7px;
+} */
+/* List page */
+.list-title{
+margin: 42px auto 0 auto;
+}
+
+/* Hompage */
+#recent{margin: 42px 0 20px 0; padding-bottom: 10px ;overflow: hidden; border-bottom: 2px solid#D9D9D9; }
+#recent h2{display:inline; border-bottom: 0; font-size: 1.5em;}
+#recent h1{display:inline; border-bottom: 0;}
+
+
+/* Pagination */
+.pagination {
+  justify-content: center;
+}
+
+/* Offcanvas */
+.offcan-right{
+position: fixed; right:0% ; top:0.5% 
+}
+.offcan-left{
+position: fixed; left:5% ; top:50% ;
+}
+
+.img_box{padding: 0px;}
+
+/* Markdown-body */
+.markdown-body pre {background-color: #f2f2f2;}
+.markdown-body pre > code {font-size: 1em !important; font-family: 'IBM-Regular';}
+
+/* Related Posts */
+.rel-post{margin: 0 auto; border: 2px solid #c4c4c470; padding : 25px 40px;}
+.rel-post h2 { margin: 50px 0 10px 5px}
+
+
+/* ********************************* */
+/* ********************************* */
+@media screen  and (max-width: 1200px) {
+  #holy {
+    display: block;
+  }
+  #main{padding: 0; width: 95%;}
+  #header { 
+    display: block;
+  }
+  .title{
+    margin-top: 40px;
+  }
+  .title_img{width: 90% !important;}
+  #sidea_list, #sideb_list {
+    display: none;
+  }
+  #sidea_single, #sideb_single{display:inline;}
+  #section{ 
+    min-width: 0;
+  }
+  #toc{
+    margin: 0;  
+  }
+  .menu-icon_mobile{display: block;}
+  .menu-icon_pc{display: none;}
+  .offcan-left{
+    position: fixed; left:0%;top:0%;
+    display:block;
+    width: 100%;
+    height: 50px;
+    background-color: #f2f2f246;
+    }
+  .offcan-right{
+    position: fixed; right:1% ; top:0.5% ;
+    }
+}
+
+@media screen and (max-width: 500px) {
+  #section > article{margin-bottom: 0;}
+  .summary{display: none !important}
+  .float-md-right{margin:10px 0 0 0;}
+  .card-body > h2{font-size: 1.1em;} 
+  div > .post-date{font-size: 0.7em;} 
+  #recent > h1 {font-size: 1.2em !important;}
+  #recent > h2 {font-size: 1em !important;}
+  #header{min-height: 150px;}
+}
+
+
+
+
+
+
+/* @media screen and (min-width:500px) {
+  .col-md-3{flex: 0 0 auto; width: 25%;}
+  .col-md-8{flex: 0 0 auto; width: 25%;}
+  
+} */
