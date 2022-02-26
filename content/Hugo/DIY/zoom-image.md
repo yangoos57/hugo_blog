@@ -7,13 +7,13 @@ Tags: ['medium-zoom', 'post','Do It Yourself']
 draft: false
 Description: 'Hugo 게시글에서 이미지 파일을 확대 할수 있는 기능을 추가한다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 쉽게 따라할 수 있도록 작성하였다. 이 블로그에 적용된 확대 기능도 이 글에서 설명하는 medium-zoom을 사용했다.'
 ---
-
+asda
 
 <br>
 
 ## 구현하고자 하는 기능
 
-![Honeycam 2022-02-21 13-50-00.gif](zoom-image_1/Honeycam_2022-02-21_13-50-00.gif)
+![Honeycam 2022-02-21 13-50-00.gif](zoom-image_1/Honeycam_2022-02-21_13-50-00.gifs)
 
 <br><br>
 
