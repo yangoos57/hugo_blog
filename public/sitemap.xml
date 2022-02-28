@@ -2,22 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yangoos57.github.io/asd/</loc>
-    <lastmod>2022-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/hugo/diy/</loc>
-    <lastmod>2022-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/hugo_2/diy_2/</loc>
-    <lastmod>2022-02-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://yangoos57.github.io/tags/do-it-yourself/</loc>
-    <lastmod>2022-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/hugo/</loc>
-    <lastmod>2022-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/hugo_2/</loc>
     <lastmod>2022-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yangoos57.github.io/</loc>
@@ -32,10 +17,11 @@
     <loc>https://yangoos57.github.io/tags/</loc>
     <lastmod>2022-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yangoos57.github.io/hugo/diy/zoom-image/</loc>
+    <loc>https://yangoos57.github.io/hugo/coffee/tips/zooming-images/</loc>
     <lastmod>2022-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yangoos57.github.io/hugo_2/diy_2/zoom-image/</loc>
-    <lastmod>2022-02-21T00:00:00+00:00</lastmod>
+    <loc>https://yangoos57.github.io/hugo/</loc>
+  </url><url>
+    <loc>https://yangoos57.github.io/hugo/coffee/tips/</loc>
   </url>
 </urlset>

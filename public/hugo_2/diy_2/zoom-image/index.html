@@ -109,7 +109,15 @@
       <section class="markdown-body">
         <br>
 <h2 id="구현하고자-하는-기능">구현하고자 하는 기능</h2>
-<p><img src="zoom-image_1_2/Honeycam_2022-02-21_13-50-00.gif" alt="Honeycam 2022-02-21 13-50-00.gif"></p>
+<p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image_1_2/Honeycam_2022-02-21_13-50-00.gif">
+</p>
 <p><br><br></p>
 <h2 id="들어가기에-앞서">들어가기에 앞서</h2>
 <p>지금 이 블로그를 만들기까지 많은 시행착오를 겪었다. Hugo를 접하기 전만해도 HTML과 CSS에 대해 전혀 알지 못했기에 원하는 기능을 구현하기까지 상당히 많은 시간을 투자했다. 특히 Hugo 관련 한글 자료를 찾기 어려워 내가 원하는 기능을 어떤 방법으로 어떻게 구현해야하는지 이해하는데 오랜 시간이 걸렸다.</p>
@@ -128,7 +136,15 @@
 </li>
 <li>
 <p><strong>Normal</strong> → 마우스 우클릭 다른 이름으로 링크 저장 → 다운로드</p>
-<p><img src="zoom-image_1_2/Untitled.png" alt="Untitled"></p>
+<p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image_1_2/Untitled.png">
+</p>
 </li>
 </ul>
 <p><br><br></p>
@@ -143,7 +159,15 @@
 <blockquote>
 <p><em>내가 설치한 블로그 폴더명은 <code>hugo_blog</code> 이다. 파일을 어디에 넣어야 할지 모르겠다면 아래 그림에 나와있는 경로를 보고 저장하자.</em></p>
 </blockquote>
-<p><img src="zoom-image_1_2/Untitled%201.png" alt="Untitled"></p>
+<p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image_1_2/Untitled%201.png">
+</p>
 </li>
 </ul>
 <p><br><br></p>
@@ -164,7 +188,15 @@
   template<span style="color:#f92672">:</span> null, <span style="color:#75715e">/* The template element to display on zoom */</span>
   <span style="color:#66d9ef">background</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgba(0, 0, 0, 0.5)&#39;</span> <span style="color:#75715e">/* 확대 중 배경색 조정*/</span>
 }<span style="color:#f92672">);</span>
-</code></pre></div><p><img src="zoom-image_1_2/Untitled%202.png" alt="Untitled"></p>
+</code></pre></div><p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image_1_2/Untitled%202.png">
+</p>
 </li>
 </ul>
 <p><br><br></p>
@@ -176,7 +208,15 @@
 <blockquote>
 <p><em>layouts 폴더에 partials 폴더가 없다면 만든다.</em></p>
 </blockquote>
-<p><img src="zoom-image_1_2/Untitled%205.png" alt="Untitled"></p>
+<p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image_1_2/Untitled%205.png">
+</p>
 </li>
 <li>
 <p>Theme 안에 있는 html 파일을 굳이 밖으로 끌고오는 이유는 hugo의 관습 때문이다. 현재 사용하고 있는 template 원본을 훼손하지 않기 위한 목적이기도 하고 제작자를 존중한다는 의미라기도 한다.</p>
@@ -193,12 +233,28 @@
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ &#34;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">zoom_custom</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">urlize</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">relURL</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
     <span style="color:#75715e">&lt;!-- 저장된 경로가 static/js/zoom_custom.js이 아니라면 src 경로를 수정해야한다. --&gt;</span>
 {{end}}
-</code></pre></div><p><img src="zoom-image/Untitled%204.png" alt="Untitled"></p>
+</code></pre></div><p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image/Untitled%204.png">
+</p>
 </li>
 </ul>
 <p><br><br></p>
 <h3 id="5-작동-여부-확인">5. 작동 여부 확인</h3>
-<p><img src="zoom-image/Honeycam_2022-02-21_16-16-32.gif" alt="Honeycam 2022-02-21 16-16-32.gif"></p>
+<p>
+
+
+
+
+
+
+<img src="../../../images/post/hugo_2/diy_2/zoom-image/Honeycam_2022-02-21_16-16-32.gif">
+</p>
 
         <br><br><br><br><br>
         <div class ='rel-post'>

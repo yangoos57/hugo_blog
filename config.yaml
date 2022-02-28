@@ -11,6 +11,17 @@ enableEmoji: true
 preserveTaxonomyNames: true
 enableRobotsTXT: true
 
+related:
+  includeNewer: true
+  indices:
+  - name: image
+    weight: 100
+  - name: Tags
+    weight: 50
+  threshold: 50
+  toLower: false
+
+
 taxonomies:
   tags : Tags
 
@@ -20,10 +31,11 @@ params:
       - link: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js'
     css: 
       # - link: ''
-
-  logo: images/logo.png
+  Github: 'https://github.com/yangoos57'
+  
+  logo: images/icon/icon.webp
   logo_width: 100px
-  favicon: images/favicon.png
+  favicon: images/icon/icon.webp
   description: '데이터 관리'
   icon_font: Fontawesome 5 Free
   cookies:

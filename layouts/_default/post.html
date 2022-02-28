@@ -10,6 +10,7 @@
       <div class="card-body">
 
         {{$current_Type := replace (replace .File.Dir .Type "" ) "\\" "" | upper}}
+
         {{with .Site.GetPage "section" .Section}}
         <a href="{{.Permalink}}">
           <span class="badge text-dark" style="background-color: #d9e8f5;">{{.Type | upper}}</span>

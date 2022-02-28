@@ -3,7 +3,6 @@
     <div class="list-title">
     <h1>{{ .Title | upper }}</h1>
     </div>
-      <div class="d-flex flex-column ">
         {{ range .Pages }}
         {{if eq .Section .Type}}
         {{ .Render "post" }}

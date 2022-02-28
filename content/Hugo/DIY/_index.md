@@ -1,4 +1,0 @@
----
-title: DIY
-type: DIY
----
