@@ -1,0 +1,43 @@
+<style>
+/* Notes and warnings */
+.note {
+  border-left: 0.5em solid;
+  font-size: 0.85rem;
+}
+.note .sign {
+  height: 2.25rem;
+  width: 2.25rem;
+}
+.note > div {
+  margin-left: 0.75rem;
+}
+.note > div > img:first-child {
+  height: 1.5rem;
+}
+.note > div >:first-child + * {
+  margin-top: 0;
+}
+.note.warning {
+  border-left: 0;
+  background-size: 0.5rem auto;
+  background-repeat: repeat-y;
+  background-color: inherit;
+  background-image: url({{ "/images/shortcodes/stripe.svg" | absURL }});
+}
+.note.warning > div {
+  margin-left: 1.25rem;
+}
+</style>
+
+
+
+<div aria-label="warning" class="note warning">
+  <div style="margin: 0 40px 0 20px">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:inline" width="30" height="30" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+      <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+      <h3 style="display: inline; margin-left: 5px;">{{.Get "title" | markdownify }}</h3>
+      
+      <p style="margin: 10px 0 0 40px ">{{ .Get "content" | markdownify }}</p>
+
+  </div>
+</div>
