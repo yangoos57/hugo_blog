@@ -8,7 +8,7 @@
 </a>
 <!-- {{.RelPermalink}} -->
 {{range .Pages}}
-{{if eq (.Type | upper) $current_Type}}
+{{if eq (.Title | upper) $current_Type}}
 <a href="{{.Permalink}}">
   <span class="badge text-dark" style="background-color: #d9e8f5;">{{.Type | upper}}</span>
 </a>

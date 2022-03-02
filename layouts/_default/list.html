@@ -1,9 +1,11 @@
 {{ define "main" }}
 <section id="section">
     <div class="list-title">
-    <h1>{{ .Title | upper }}</h1>
+    <h1>{{ .Type | upper }}</h1>
     </div>
+        <br>
         {{ range .Pages }}
+        <br>
         {{if eq .Section .Type}}
         {{ .Render "post" }}
         {{else}}
@@ -12,5 +14,9 @@
         {{end}} {{end}} {{end}}
         {{ partial "pagination.html" . }}
       </div>
+      
+<h1>{{ with .Site.GetPage "section" "tips" }}
+  <a href="{{.Permalink}}">site</a>{{ end }}</h1>
+<!-- 마지막 페이지 : {{.RelPermalink}}---{{.Page.Section}} --- {{.Type}} -- {{.Kind}} -->
 </section>
 {{ end }}

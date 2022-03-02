@@ -1,4 +1,0 @@
----
-title: tips
-type: tips
----

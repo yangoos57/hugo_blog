@@ -8,10 +8,10 @@
     <lastBuildDate>Mon, 21 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yangoos57.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>게시글에 사진 확대기능 추가하기</title>
-      <link>https://yangoos57.github.io/hugo/coffee/tips/zooming-images/</link>
+      <link>https://yangoos57.github.io/hugo/tips/zooming-images/</link>
       <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yangoos57.github.io/hugo/coffee/tips/zooming-images/</guid>
+      <guid>https://yangoos57.github.io/hugo/tips/zooming-images/</guid>
       <description>구현하고자 하는 기능 
 들어가기에 앞서 지금 이 블로그를 만들기까지 많은 시행착오를 겪었다. Hugo를 접하기 전만해도 HTML과 CSS에 대해 전혀 알지 못했기에 원하는 기능을 구현하기까지 상당히 많은 시간을 투자했다.</description>
     </item>
