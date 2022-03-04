@@ -12,8 +12,7 @@
       <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yangoos57.github.io/hugo/tips/zooming-images/</guid>
-      <description>구현하고자 하는 기능 
-들어가기에 앞서 지금 이 블로그를 만들기까지 많은 시행착오를 겪었다. Hugo를 접하기 전만해도 HTML과 CSS에 대해 전혀 알지 못했기에 원하는 기능을 구현하기까지 상당히 많은 시간을 투자했다.</description>
+      <description>Hugo 게시글에서 이미지를 확대하는 기능을 추가한다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 쉽게 따라할 수 있도록 작성하였다. 이미지 확대를 위해 medium-zoom을 활용한다.</description>
     </item>
     
   </channel>

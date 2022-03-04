@@ -6,6 +6,7 @@ image_webp: "images/home/hugo.webp"
 Tags: ['Hugo Documentation','Do It Yourself','공식 문서 활용하기','폴더 구조']     
 draft: false
 Description: 'Hugo로 나만의 블로그를 만들기 위해서는 휴고 공식 문서(Hugo Documentation)를 활용해야 한다. Hugo 설치와 테마 설치에 관해서는 한글로된 자료가 많지만 내 입맛에 맞게 블로그를 꾸미기 위한 기본적인 자료들은 거의 찾아보기 힘들다. 설령 있다해도 프론트 앤드 개발자 또는 HTML, CSS에 익숙한 사용자들을 대상으로 작성된 글이다보니 Hugo를 통해 처음 관련 문법을 접하는 개인에게는 Hugo가 어떤 방식으로 작동되는지 이해하기도 쉽지 않다.'
+Summary: 'Hugo로 나만의 블로그를 만들기 위해서는 휴고 공식 문서(Hugo Documentation)를 활용해야 한다. Hugo 설치와 테마 설치에 관해서는 한글로된 자료가 많지만 내 입맛에 맞게 블로그를 꾸미기 위한 기본적인 자료들은 거의 찾아보기 힘들다.'
 ---
 <br>
 
@@ -37,7 +38,7 @@ Hugo를 설치하면 아래와 같은 구조의 폴더가 생성된다. 기본 �
 <br>
 
 
-![Untitled](documentation/Untitled.png)
+![Untitled](docu_1/Untitled.png)
 
 ### archetypes
 
@@ -47,9 +48,9 @@ Hugo를 설치하면 아래와 같은 구조의 폴더가 생성된다. 기본 �
     
     Dash( - )로 둘러 쌓인 내용을  `Front Matter`라 부른다. `Fornt Matter`는 Hugo 문법에서 다양하게 활용된다. 관련 내용은 2부에서 자세히 설명한다.
     
-    ![Untitled](documentation/Untitled%201.png)
+    ![Untitled](docu_1/Untitled%201.png)
     
-    ![Untitled](documentation/Untitled%202.png)
+    ![Untitled](docu_1/Untitled%202.png)
     
 
 <br><br><br>
@@ -107,7 +108,7 @@ layouts 폴더를 이해하기 위해서는 Hugo가 페이지를 어떻게 구�
     
     Hugo는 Baseof.html를 바탕으로 다른 html 파일을 불러온 뒤 이를 조합해 최종적으로 페이지를 구성한다. 쉽게 말해 Baseof.html은 일종의 메인보드 역할을 수행한다. 메인보드에 램이나 하드, cpu 등을 연결하듯 네모 박스쳐져있는 여러 html 파일들이 baseof.html에 포함되어 페이지가 만들어진다.
 
-    ![Untitled](documentation/Untitled%203.png)
+    ![Untitled](docu_1/Untitled%203.png)
     
     
 
@@ -122,7 +123,7 @@ layouts 폴더를 이해하기 위해서는 Hugo가 페이지를 어떻게 구�
      `Taxonomy`는 게시글에 포함된 태그를 기반으로 분류하는 방법이다. 인스타그램 # 태그처럼 게시글에 원하는 키워드 포함시키면 같은 태그를 가진 게시글을 한번에 모아 볼수 있다. 
   
     
-    ![Untitled](documentation/Untitled%204.png)
+    ![Untitled](docu_1/Untitled%204.png)
     
 
 <br>
@@ -131,7 +132,7 @@ layouts 폴더를 이해하기 위해서는 Hugo가 페이지를 어떻게 구�
     
     `single page`도 파란색 영역을 제외하고는 이전 페이지와 크게 달라진게 없다. 게시글은 모두 Single page로 간주된다. Single page를 수정하기 위해서는 `Single.html`을 건드리자.
     
-    ![Untitled](documentation/Untitled%205.png)
+    ![Untitled](docu_1/Untitled%205.png)
     
     <br>
     
@@ -143,7 +144,7 @@ layouts 폴더를 이해하기 위해서는 Hugo가 페이지를 어떻게 구�
 
     > 하얀색으로 블럭쳐져있는 영역을 보자.  이 공간에 index.html, list.html, single.html를 불러온다. 
     
-    ![Untitled](documentation/Untitled%206.png)
+    ![Untitled](docu_1/Untitled%206.png)
     
 
 <br>
@@ -166,7 +167,7 @@ layouts 폴더를 이해하기 위해서는 Hugo가 페이지를 어떻게 구�
 
 > 아래 그림처럼 static 폴더에 있는 hugo1.jpg는 자동으로 url주소를 갖는다.
 
-![Untitled](documentation/Untitled%207.png)
+![Untitled](docu_1/Untitled%207.png)
 
 <br><br><br>
 
@@ -182,7 +183,7 @@ layouts 폴더를 이해하기 위해서는 Hugo가 페이지를 어떻게 구�
 
 theme 폴더에는 데모버전을 운영할 수 있는 자료들이 있다. 해당 자료들을 활용하면 사이트에서 봤던 화면을 똑같이 띄울 수 있다. 자료들은 설치한 theme 내 `exampleSite`폴더에 위치해있다. 폴더 안에 있는 자료를 모두를 복사해 블로그가 설치된 폴더에 붙여넣기 하자. 중복된다고 아무 일도 일어나지 않으니 `대상 폴더의 파일 덮어쓰기(R)`를 누르자.  
 
-![Untitled](documentation/Untitled%208.png)
+![Untitled](docu_1/Untitled%208.png)
 
 <br>
 
@@ -199,7 +200,7 @@ theme 폴더에는 데모버전을 운영할 수 있는 자료들이 있다. 해
     Error: module "hugo-primer-master" not found; either add it as a Hugo Module or store 
     it in "D:\\git_local_repository\\new_blog\\themes".: module does not exist
     ```
-    ![Untitled](documentation/Untitled%209.png)
+    ![Untitled](docu_1/Untitled%209.png)
     
     <br>
     
@@ -232,7 +233,7 @@ theme 폴더에는 데모버전을 운영할 수 있는 자료들이 있다. 해
         
     2번 방법 : 그럼에도 여전히 같은 오류가 발생한다면 Hugo Extension을 설치하자. 일반버전에는 SCSS를 변환하는 기능이 없기 때문에 이런 오류가 발생한다고 한다. | [다운로드 링크](https://github.com/gohugoio/hugo/releases)
         
-    ![Untitled](documentation/Untitled%2010.png)
+    ![Untitled](docu_1/Untitled%2010.png)
 
 <br>
 
@@ -273,10 +274,10 @@ config를 어떻게 사용하는지 이해해보자. 아래 그림은 disqus.htm
 
 작동 원리는 간단하다. Html 파일에서 `{{.Site. 변수명(DisqusShortname) }}` 명령어를 작성하면 config 내 변수(name)를 불러온다. 이처럼 html을 직접 건드리지 않아도 config를 통해 아이디를 간단하게 변경 할 수 있다.  이런 방식으로 config 사용하니 블로그 제작 시 config를 종종 활용해보자.
 
-![Untitled](documentation/Untitled%2011.png)
+![Untitled](docu_1/Untitled%2011.png)
 
 <br><br><br><br>
 
 
 
-&nbsp; &nbsp; **[2부 Hugo 문법정리](/content/hugo/documentation/Documentation_2)**
+&nbsp; &nbsp; **[2부 Hugo 문법정리](hugo/documentation/documentation_2/)**

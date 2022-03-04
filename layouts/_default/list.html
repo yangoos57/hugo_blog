@@ -14,9 +14,7 @@
         {{end}} {{end}} {{end}}
         {{ partial "pagination.html" . }}
       </div>
-      
-<h1>{{ with .Site.GetPage "section" "tips" }}
-  <a href="{{.Permalink}}">site</a>{{ end }}</h1>
+
 <!-- 마지막 페이지 : {{.RelPermalink}}---{{.Page.Section}} --- {{.Type}} -- {{.Kind}} -->
 </section>
 {{ end }}

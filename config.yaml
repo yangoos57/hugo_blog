@@ -2,14 +2,13 @@ baseURL: 'https://yangoos57.github.io/'
 googleAnalytics: G-K109LYQBX3
 DisqusShortname: yangoos92
 pluralizelisttitles: "false"
-relativeURLs: true
 canonifyURLs: true
+relativeURLs: true
 title: Leeway
 paginate: '5'
 summaryLength: '20'
 enableEmoji: true
 preserveTaxonomyNames: true
-enableRobotsTXT: true
 
 related:
   includeNewer: true

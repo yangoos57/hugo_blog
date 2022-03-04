@@ -6,6 +6,7 @@ image_webp: "images/home/hugo.webp"
 Tags: ['Hugo Documentation','Do It Yourself','공식 문서 활용하기','Hugo 문법']     
 draft: false
 Description: '휴고 공식 문서(Hugo Documentation)를 활용하기 위해 필요한 문법과 용어를 설명한다. Hugo 문법은 HTML과 Hugo에 익숙하지 않는 사용자라면 어느 구문이 오류인지도 모를정도로 이해하기 어렵다. 그렇다고 공식 문서를 보더라도 이해가 쉽게 되지는 않는다. 이 글은 Hugo에 익숙하지 않는 사용자가 공식 문서를 읽기 위해 필요한 수준의 지식을 갖추도록 돕기 위해 작성했다. '
+Summary: '휴고 공식 문서를 활용하기 위해 필요한 문법과 용어를 설명한다. Hugo 문법은 HTML과 Hugo에 익숙하지 않는 사용자라면 어느 구문이 오류인지도 모를정도로 이해하기 어렵다.'
 ---
 <br>
 
@@ -39,14 +40,14 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
 - **Laoyouts 폴더 복사하기**
     
     apollo-hugo에 있는 layouts 폴더를 블로그 설치 폴더(new_blog)로 붙여넣자. 
-    ![Untitled](Documentation_2/Untitled%2028.png)
+    ![Untitled](docu_2/Untitled%2028.png)
     
 <br>
  
 - **Index.html 정리하기**
     
    모든 코드는 index.html에서 실행했다. layouts 폴더에 있는 index.html에 들어가 `{{ define "title" }} {{ end }}`를 제외하고 모두 지우자. 코드 수정은 `vscode`에서 이뤄졌다. `vscode`를 사용하지 않는다면 이번 기회에 사용해보자. 
-   ![Untitled](Documentation_2/Untitled%201.png)
+   ![Untitled](docu_2/Untitled%201.png)
 
     <br>
 
@@ -84,7 +85,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
   
     코드 변경사항을 편리하게 보기 위한 팁이다. `윈도우키` + `방향키`를 누르면 아래 그림과 같이 화면을 구분해서 사용할 수 있다. 예시 코드를 붙여넣은 뒤 코드를 수정해가면서 구조를 이해하자.
     
-    ![Untitled](Documentation_2/Untitled%2022.png)
+    ![Untitled](docu_2/Untitled%2022.png)
 
 <br><br>
 
@@ -118,7 +119,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     {{ end }}
     ```
     
-    ![Untitled](Documentation_2/Untitled%202.png)
+    ![Untitled](docu_2/Untitled%202.png)
 
 <br>
 
@@ -136,7 +137,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     {{ end }}
     ```
     
-    ![Untitled](Documentation_2/Untitled%203.png)
+    ![Untitled](docu_2/Untitled%203.png)
     
 
 <br>
@@ -192,7 +193,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
         {{ end }}
         ```
         
-        ![Untitled](Documentation_2/Untitled%204.png)
+        ![Untitled](docu_2/Untitled%204.png)
         
         <br>
 
@@ -223,7 +224,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
         {{ end }}
         ```
         
-        ![Untitled](Documentation_2/Untitled%205.png)
+        ![Untitled](docu_2/Untitled%205.png)
         
     - 비교 연산자
         
@@ -255,7 +256,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
         {{ end }}
         ```
         
-        ![Untitled](Documentation_2/Untitled%206.png)
+        ![Untitled](docu_2/Untitled%206.png)
 
 <br>
 
@@ -280,7 +281,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     </div>
     {{ end }}
     ```
-    ![Untitled](Documentation_2/Untitled%2029.png)
+    ![Untitled](docu_2/Untitled%2029.png)
 
 
 <br>
@@ -313,7 +314,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
         </div>
         {{ end }}
   ```
-  ![Untitled](Documentation_2/Untitled%2021.png)
+  ![Untitled](docu_2/Untitled%2021.png)
 
 - **페이지 한번에 불러오기**
     
@@ -366,7 +367,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
         {{ end }}
     ```
         
-    ![Untitled](Documentation_2/Untitled%207.png)
+    ![Untitled](docu_2/Untitled%207.png)
     
     <br>
 
@@ -428,7 +429,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     {{ end }}
     ```
         
-    ![Untitled](Documentation_2/Untitled%208.png)
+    ![Untitled](docu_2/Untitled%208.png)
     
     <br>
     
@@ -456,7 +457,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
         {{ end }}
     ```
     
-    ![Untitled](Documentation_2/Untitled%2024.png)
+    ![Untitled](docu_2/Untitled%2024.png)
         
 
 <br>
@@ -507,7 +508,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     {{ end }}
     ```
     
-    ![Untitled](Documentation_2/Untitled%2010.png)
+    ![Untitled](docu_2/Untitled%2010.png)
 
 <br>
 
@@ -584,7 +585,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     {{ end }}
     ```
     
-    ![Untitled](Documentation_2/Untitled%2011.png)
+    ![Untitled](docu_2/Untitled%2011.png)
 
     
     <br>
@@ -627,7 +628,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
     {{ end }}
     ```
 
-    ![Untitled](Documentation_2/Untitled%2012.png)
+    ![Untitled](docu_2/Untitled%2012.png)
     
 
     - File 변수와 함께 자주 사용되는 함수(print, replace)
@@ -666,7 +667,7 @@ Hugo가 익숙하지 않은 사람이라면 연습용으로 사용중인 Theme�
             </div>
             {{ end }}
         ```
-        ![Untitled](Documentation_2/Untitled%2023.png)
+        ![Untitled](docu_2/Untitled%2023.png)
 
 <br>
 
@@ -763,7 +764,7 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
         {{ end }}
     ```
 
-    ![Untitled](Documentation_2/Untitled%2026.png)
+    ![Untitled](docu_2/Untitled%2026.png)
 
 
 <br>
@@ -779,11 +780,11 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     
     Section은 파일이 저장된 경로와 관련있다. 같은 폴더에 분류된 자료들은 같은 주제에 속한다. Section의 폴더구조는 아래 그림과 같이 Homepage, Section, Conetnt Page로 구성된다. 
 
-    ![Untitled](Documentation_2/Untitled%2013.png)
+    ![Untitled](docu_2/Untitled%2013.png)
 
     content 폴더 구조를 애플 제품에 대입해보자. 애플/아이폰/프로/에 속한 11과 12는 모두 아이폰 프로라고 불려도 무방하다. 하지만 아이폰 프로 11과 아이폰 맥스 11은 구분된다. 개별 게시글은 하나의 경로만 가지고 있다.
 
-    ![Untitled](Documentation_2/Untitled%2014.png)
+    ![Untitled](docu_2/Untitled%2014.png)
 
 
   - _index.md
