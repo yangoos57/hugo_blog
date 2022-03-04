@@ -5,7 +5,7 @@ image: "images/home/hugo1.jpg"
 image_webp: "images/home/hugo.webp"
 Tags: ['medium-zoom', 'post','Do It Yourself']
 draft: false
-Description: 'Hugo 게시글에서 이미지 파일을 확대 할수 있는 기능을 추가한다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 쉽게 따라할 수 있도록 작성하였다. 이 블로그에 적용된 확대 기능도 이 글에서 설명하는 medium-zoom을 사용했다.'
+Description: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 쉽게 따라할 수 있도록 작성하였다. 이미지 확대를 위해 medium-zoom을 활용한다.'
 ---
 <br>
 

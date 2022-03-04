@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>폴더 구조 on Leeway</title>
+    <link>https://yangoos57.github.io/tags/%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0/</link>
+    <description>Recent content in 폴더 구조 on Leeway</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 04 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yangoos57.github.io/tags/%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1부 Hugo Docs 활용을 위한 폴더 구조 이해</title>
+      <link>https://yangoos57.github.io/hugo/documentation/documentation/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yangoos57.github.io/hugo/documentation/documentation/</guid>
+      <description>Hugo 공식 문서는 친절한 듯 친절하지 않다. 예시 코드를 제공하나 해당 코드가 어떤 역할을 하는지 적용해보지 않고선 알 방법이 없다.</description>
+    </item>
+    
+  </channel>
+</rss>
