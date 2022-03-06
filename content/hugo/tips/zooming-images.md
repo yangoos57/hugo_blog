@@ -12,7 +12,7 @@ Summary: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다.
 
 ## 구현하고자 하는 기능
 
-![a](zooming/Honeycam_2022-02-21_13-50-00.gif)
+![a](hugo/tips/zooming/Honeycam_2022-02-21_13-50-00.gif)
 
 <br><br>
 
@@ -38,7 +38,7 @@ Summary: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다.
 
 - **Normal** → 마우스 우클릭 다른 이름으로 링크 저장 → 다운로드
     
-    ![Untitled](zooming/Untitled.png)
+    ![Untitled](hugo/tips/zooming/Untitled.png)
     
 
 <br><br>
@@ -55,7 +55,7 @@ Summary: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다.
     > *내가 설치한 블로그 폴더명은 `hugo_blog` 이다. 파일을 어디에 넣어야 할지 모르겠다면 아래 그림에 나와있는 경로를 보고 저장하자.*
 
     
-    ![Untitled](zooming/Untitled%201.png)
+    ![Untitled](hugo/tips/zooming/Untitled%201.png)
     
 
 <br><br>
@@ -78,7 +78,7 @@ Summary: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다.
       background: 'rgba(0, 0, 0, 0.5)' /* 확대 중 배경색 조정*/
     });
     ```
-    ![Untitled](zooming/Untitled%202.png)
+    ![Untitled](hugo/tips/zooming/Untitled%202.png)
     
 
 <br><br>
@@ -91,7 +91,7 @@ Summary: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다.
 
     > *layouts 폴더에 partials 폴더가 없다면 만든다.*
     
-    ![Untitled](zooming/Untitled%205.png)
+    ![Untitled](hugo/tips/zooming/Untitled%205.png)
     
 - Theme 안에 있는 html 파일을 굳이 밖으로 끌고오는 이유는 hugo의 관습 때문이다. 현재 사용하고 있는 template 원본을 훼손하지 않기 위한 목적이기도 하고 제작자를 존중한다는 의미라기도 한다.
     
@@ -110,10 +110,10 @@ Summary: 'Hugo 게시글에서 이미지를 확대하는 기능을 추가한다.
         <!-- 저장된 경로가 static/js/zoom_custom.js이 아니라면 src 경로를 수정해야한다. -->
     {{end}}
     ```
-    ![Untitled](zooming/Untitled%204.png)
+    ![Untitled](hugo/tips/zooming/Untitled%204.png)
 
 <br><br>
 
 ### 5. 작동 여부 확인
 
-![Honeycam 2022-02-21 16-16-32.gif](zooming/Honeycam_2022-02-21_16-16-32.gif)
+![Honeycam 2022-02-21 16-16-32.gif](hugo/tips/zooming/Honeycam_2022-02-21_16-16-32.gif)
