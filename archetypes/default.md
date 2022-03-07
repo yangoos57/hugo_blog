@@ -1,8 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-image: "images/home/{{.Name}}.jpg"
-image_webp: "images/home/{{.Name}}.webp"
+image: "images/home/{{.Name}}.png"
 Tags: ["",""]
 draft: true
 ---
