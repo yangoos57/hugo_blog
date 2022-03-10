@@ -22,12 +22,12 @@
     <link rel="stylesheet" href="{{ `css/bootstrap.css` | relURL }}">
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/bootstrap.js" | urlize | relURL }}"></script>
 
+    <!--Page 전용 Script-->
+    {{ if .IsPage }}
     <!--Prism-->
     <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}" media="none" onload="this.media='all';">
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/prism.js" | urlize | relURL }}"></script>
 
-    <!--Page 전용 Script-->
-    {{if .IsPage}}
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/medium-zoom.js" | urlize | relURL }}"></script>
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/zoom_custom.js" | urlize | relURL }}"></script>
     <!-- Scripts -->

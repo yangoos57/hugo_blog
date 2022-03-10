@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://yangoos57.github.io/hugo/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/hugo/tips/prism/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/tags/prism/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/tags/syntax-highlighter/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/tags/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/hugo/tips/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yangoos57.github.io/tags/%EC%BD%94%EB%93%9C-%EB%B0%95%EC%8A%A4/</loc>
+    <lastmod>2022-03-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://yangoos57.github.io/hugo/documentation/documentation/</loc>
     <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,19 +38,10 @@
     <loc>https://yangoos57.github.io/hugo/documentation/</loc>
     <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yangoos57.github.io/hugo/</loc>
-    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://yangoos57.github.io/tags/hugo-documentation/</loc>
     <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yangoos57.github.io/tags/hugo-%EB%AC%B8%EB%B2%95/</loc>
-    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/</loc>
-    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/tags/</loc>
     <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yangoos57.github.io/tags/%EA%B3%B5%EC%8B%9D-%EB%AC%B8%EC%84%9C-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0/</loc>
@@ -39,9 +54,6 @@
     <lastmod>2022-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yangoos57.github.io/tags/post/</loc>
-    <lastmod>2022-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yangoos57.github.io/hugo/tips/</loc>
     <lastmod>2022-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yangoos57.github.io/hugo/tips/zooming-images/</loc>
