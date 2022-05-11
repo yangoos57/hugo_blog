@@ -70,7 +70,7 @@ blockquote > p {font-size: 0.85em; color:#57606a !important; font-weight: 600;}
 #sidea_list {
   grid-area: sidea;
   background-color:#FBFBFB ;
-  width: 100px;
+  width: 250px;
   justify-self: right;
   border-left: 2px solid #c4c4c43f ;
   margin-top: 10px;

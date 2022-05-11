@@ -187,7 +187,7 @@ theme 폴더에는 데모버전을 운영할 수 있는 자료들이 있다. 해
 
 <br>
 
-**로컬 서버 실행 시 에러 발생**
+**트러블 슈팅 : 로컬 서버 실행 시 에러 발생**
 
 `Examplesite`를 붙여넣은 뒤 로컬 서버가 작동하지 않는다면 원인은 둘 중 하나다. 
 
@@ -238,7 +238,7 @@ theme 폴더에는 데모버전을 운영할 수 있는 자료들이 있다. 해
 <br>
 
 - md 파일 오류  
-  데모 버전을 테스트하기 위해서는 거의 발생하지 않는 오류이긴 한데, 업데이트가 오랫동안 되지 않은 Theme을 쓰다보면 간혹 이런 문제가 발생한다. [primer css template](https://github.com/qqhann/hugo-primer)가 그 예시다. 
+  데모 버전을 테스트하기 위해서는 거의 발생하지 않는 오류이긴 한데, 업데이트가 오랫동안 되지 않은 Theme을 쓰다보면 간혹 이런 문제가 발생한다. 내가 지금 사용중인 [primer css template](https://github.com/qqhann/hugo-primer)가 그렇다.
 
   에러 내용을 읽어보면`rich-content.md`가 문제라는 것을 알 수 있다. 아래와 같은 문제가 발생한다면 해당 파일을 지우고 다시 실행하면 정상적으로 작동된다.
 
@@ -280,4 +280,4 @@ config를 어떻게 사용하는지 이해해보자. 아래 그림은 disqus.htm
 
 
 
-&nbsp; &nbsp; **[2부 Hugo 문법정리](hugo/documentation/documentation_2/)**
+<!-- &nbsp; &nbsp; **[2부 Hugo 문법정리](hugo/documentation/documentation_2/)** -->

@@ -8,19 +8,18 @@ draft: false
 Description: '휴고 공식 문서(Hugo Documentation)를 활용하기 위해 필요한 문법과 용어를 설명한다. Hugo 문법은 HTML과 Hugo에 익숙하지 않는 사용자라면 어느 구문이 오류인지도 모를정도로 이해하기 어렵다. 그렇다고 공식 문서를 보더라도 이해가 쉽게 되지는 않는다. 이 글은 Hugo에 익숙하지 않는 사용자가 공식 문서를 읽기 위해 필요한 수준의 지식을 갖추도록 돕기 위해 작성했다. '
 Summary: '휴고 공식 문서를 활용하기 위해 필요한 문법과 용어를 설명한다. Hugo 문법은 HTML과 Hugo에 익숙하지 않는 사용자라면 어느 구문이 오류인지도 모를정도로 이해하기 어렵다.'
 ---
+
+
 <br>
+<!-- **HTML과 CSS**
 
-**HTML과 CSS**
+<!-- 본인이 현재 HTML과 CSS를 전혀 모르는 상태라면 행운이 찾아왔다고 생각하자. Hugo는 HTML과 CSS를 배울 수 있는 좋은 기회이기 때문이다. 나도 Hugo로 블로그를 만들면서 처음 HTML과 CSS를 알게 됐다. 나만의 블로그를 만들면서 정말 많은 연습이 됐다.
 
-<!-- 본인이 현재 HTML과 CSS를 전혀 모르는 상태라면 행운이 찾아왔다고 생각하자. Hugo는 HTML과 CSS를 배울 수 있는 좋은 기회이기 때문이다. 나도 Hugo로 블로그를 만들면서 처음 HTML과 CSS를 알게 됐다. 나만의 블로그를 만들면서 정말 많은 연습이 됐다. -->
-
-Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다. Hugo로 블로그를 만들기 위해서는 HTML에 대해 기본적인 이해가 필요하다. 반면 Hugo와 CSS는 관련이 없다. 이해할 필요 없다는 말은 아니고 CSS를 위한 Hugo 문법이 존재하지 않는다는 말이다. 하지만 블로그를 꾸미기 위해서는 CSS가 필수이므로 당연히 알아야한다. 다행이 Hugo와 같이 사용자가 CSS를 쓰기 쉽게 돕는 도구가 있다. Bootstrap, Primer가 대표적이다.
+Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다. 그러므로 Hugo로 블로그를 만들기 위해서는 HTML에 대해 기본적인 이해가 필요하다. 반면 Hugo와 CSS는 관련이 없다. 몰라도 된다는 말은 아니고 Hugo 문법에는 CSS 관련 내용이 없다는 의미이다. 물론 우리가 기본 구조만 블로그를 꾸미기 위해서는 CSS가 필수이므로 당연히 알아야한다. 다행이 Hugo와 같이 사용자가 CSS를 쓰기 쉽게 돕는 도구가 있다. Bootstrap, Primer가 대표적이다. -->
 
 
 
 2부에서는 Hugo 문법에 대해 설명한다. Hugo를 처음 사용하거나 폴더 별 기능을 모른다면 1부를 먼저 읽은 뒤 이 글을 읽자.  
-
-<br>
 
 **[1부 폴더구조](/hugo/documentation/documentation)**
 
@@ -816,8 +815,8 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     </div>
     {{ end }}
     ```
-    ![Untitled](Documentation_2/Untitled%2030.png)
-
+    ![Untitled](hugo/documentation/docu_2/Untitled%2030.png)
+  
 
     현재 이런 상황이라면 아마 `{{range .Pages}}`를 활용해서 페이지가 구성되어 있을거다. 이 명령어는 바로 아래 게층에 있는 페이지만 불러오기 때문에 프로, 맥스와 같은 하위 section만 불러온다. 이때 `{{range .Pages}}`를 한번 더 사용한다면 하위 section에 있는 게시글 모두 불러오게 되므로 아이폰으로 분류된 모든 게시글을 불러올 수 있다.
 
@@ -838,8 +837,7 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     </div>
     {{ end }}
     ```
-    ![Untitled](Documentation_2/Untitled%2031.png)
-
+    ![Untitled](hugo/documentation/docu_2/Untitled%2031.png)  
 
 <br>
 
@@ -848,16 +846,16 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     
     Taxonomy는 태그를 활용해 게시글을 분류하는 방법이다. Taxonomy 계층은 Taxonomy - Term - Value이다. Section과 다른 점은 하나의 게시글이 여러 Term에 포함 될 수 있다는 것이다. 
     
-    ![Untitled](Documentation_2/Untitled%2015.png)
+    ![Untitled](hugo/documentation/docu_2/Untitled%2015.png)
     
 
   - Front matter에 categories 추가하기
    
     기본 Taxonomy로 제공되는 변수로는 tags와 categories가 있다. Front matter에 tags 또는 cetogories를 입력한 뒤 원하는 태그를 작성하면 taxonomy 페이지가 자동 생성 된다.
 
-      ![Untitled](Documentation_2/Untitled%2032_1.png)
+      ![Untitled](hugo/documentation/docu_2/Untitled%2032_1.png)
 
-      ![Untitled](Documentation_2/Untitled%2033.png)
+      ![Untitled](hugo/documentation/docu_2/Untitled%2033.png)
 
   - Taxonomy 불러오기
   
@@ -895,14 +893,14 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     </div>
     {{ end }}
     ```
-    ![Untitled](Documentation_2/Untitled%2034.png)
+    ![Untitled](hugo/documentation/docu_2/Untitled%2034.png)
 
 
   - 게시글에 태그 표현하기
 
     현재 게시글에 포함된 taxonomy를 표시하고 링크로 연결하는 방법이다. 
 
-    ![Untitled](Documentation_2/Untitled%2016.png)
+    ![Untitled](hugo/documentation/docu_2/Untitled%2016.png)
 
     ```html
     {{ define "main" }}
@@ -941,7 +939,7 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     
      페이지 개수를 표시하고 싶을 때 사용한다.
     
-    ![Untitled](Documentation_2/Untitled%2019.png)
+    ![Untitled](hugo/documentation/docu_2/Untitled%2019.png)
     
     ```html
     <!--하위 페이지 별 페이지 개수 불러오기-->
@@ -987,6 +985,12 @@ Front matter은 게시글의 metadata를 관리하는 영역이다. matadata는 
     {{ end }}
     ```
 
-    ![Untitled](Documentation_2/Untitled%2020.png)
+    ![Untitled](hugo/documentation/docu_2/Untitled%2020.png)
 
-<br><br><br><br><br><br>
+<br>
+
+<br>
+
+#### 이상으로 Hugo 기본 문법에 대해 다뤘다. 이 글을 읽고 Hugo를 이해하는데 작은 도움이라도 됐으면 좋겠다.
+
+<br><br><br><br><br>
