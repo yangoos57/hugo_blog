@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>boolean masking on Leeway</title>
+    <link>https://yangoos57.github.io/tags/boolean-masking/</link>
+    <description>Recent content in boolean masking on Leeway</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 14 May 2022 16:55:07 +0900</lastBuildDate><atom:link href="https://yangoos57.github.io/tags/boolean-masking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>상황에 맞는 filtering 함수 사용하기 </title>
+      <link>https://yangoos57.github.io/python/pandas/row_filtering/</link>
+      <pubDate>Sat, 14 May 2022 16:55:07 +0900</pubDate>
+      
+      <guid>https://yangoos57.github.io/python/pandas/row_filtering/</guid>
+      <description>데이터 분석에서 일상적으로 사용하는 fitering 함수 세가지를 소개한다. pandas는 다양한 filtering 방법을 지원하고 있는데, 이중 연산속도가 빠르고 가독성이 좋은 query, boolean masking, isin를 상황에 맞게 사용하는 방법을 설명한다.</description>
+    </item>
+    
+  </channel>
+</rss>

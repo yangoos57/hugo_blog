@@ -5,11 +5,12 @@
 @font-face { font-family: 'San-SemiBold'; src: url(' https://yangoos57.github.io/css/fonts/SourceSansPro-SemiBold.ttf '); unicode-range: U+0041-005A, U+0061-007A, U+0000-0FFF; } 
 
 /* custom css here */
-html, .markdown-body ul> li,
-body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f; text-decoration: none;}
+html,
+body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1.1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f; text-decoration: none;}
 
 a{ color: #0969da ;text-decoration: none !important;}
-blockquote > p {font-size: 0.85em; color:#57606a !important; font-weight: 600;}
+blockquote > p {font-size: 1em; color:#57606a !important; font-weight: 600;}
+blockquote > ul > li > p {font-size: 0.9em !important }
 
 #holy {
   display: grid;
@@ -70,7 +71,7 @@ blockquote > p {font-size: 0.85em; color:#57606a !important; font-weight: 600;}
 #sidea_list {
   grid-area: sidea;
   background-color:#FBFBFB ;
-  width: 250px;
+  width: 50px;
   justify-self: right;
   border-left: 2px solid #c4c4c43f ;
   margin-top: 10px;
@@ -78,7 +79,7 @@ blockquote > p {font-size: 0.85em; color:#57606a !important; font-weight: 600;}
 }
 #sideb_list {
   grid-area: sideb;
-  width: 270px ;
+  width: 50px ;
   justify-self: left;
   padding-left: 25px;
   background-color:#FBFBFB ;
@@ -148,8 +149,8 @@ aside {
 
 /* DataFrame */
 .dataframe{
-  font-size: 12px;
-  text-align: center;
+  font-size: 14px;
+  /* text-align: center; */
 }
 
 /* TOC */
@@ -210,11 +211,13 @@ position: fixed; left:1% ; top:40% ;
 .img_box{padding: 0px;}
 
 /* Markdown-body */
-.markdown-body pre {background-color: #f2f2f2;}
-.markdown-body pre > code {font-size: 1em !important; font-family: 'IBM-Regular';}
+.markdown-body pre code {font-size: 14px !important ;background-color: #2e3440;}
+
+.markdown-body pre {padding : 0 !important}
+.markdown-body .markdown-body li>p {font-size: 1em;}
 
 /* Related Posts */
-.rel-post{margin: 0 auto; border: 2px solid #c4c4c470; padding : 25px 40px;}
+.rel-post{margin: 0 auto; border: 2px solid #d8d6d6fa; padding : 25px 40px;}
 .rel-post h2 { margin: 50px 0 10px 5px}
 
 /*Shortcodes*/

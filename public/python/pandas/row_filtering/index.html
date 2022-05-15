@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>상황에 맞는 filtering 함수 사용하기 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="데이터 분석에서 일상적으로 사용하는 fitering 함수 세가지를 소개한다. pandas는 다양한 filtering 방법을 지원하고 있는데, 이중 연산속도가 빠르고 가독성이 좋은 query, boolean masking, isin를 상황에 맞게 사용하는 방법을 설명한다.">
+    
+    <meta name="google-site-verification" content="cGIJ_4UB82a6wkT0s71AkXfCqej5-Svsic6s2N0YrLk" />  
+
+    
+    <link rel="shortcut icon" href="https://yangoos57.github.io/images/icon/icon.webp" type="image/x-icon">
+    <link rel="icon" href="https://yangoos57.github.io/images/icon/icon.webp" type="image/x-icon">
+
+
+    
+    <link rel="stylesheet" href="../../../css/primer.css">
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="../../../css/styles.css">
+
+    
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script defer language="javascript" type="text/javascript"  src="../../../js/bootstrap.js"></script>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../../css/nord.min.css">
+    <script src="../../../js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script defer language="javascript" type="text/javascript"  src="../../../js/medium-zoom.js"></script>
+    <script defer language="javascript" type="text/javascript"  src="../../../js/zoom_custom.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+
+    
+    <link rel="stylesheet" type="text/css" href='https://yangoos57.github.io/css/lightgallery.min.css' />
+    <link rel="stylesheet" type="text/css" href='https://yangoos57.github.io/css/lightslider.min.css' />
+    
+
+    
+
+
+</head>
+
+
+
+  <body>
+    <div id="holy">
+      <header id="header" class="col-12 px-1">
+        <div OnClick="location.href ='/'" class = "title">
+    <div class='title_img'style="width: 55%; margin: 25px auto;">
+      <img src="\images\title\Picture7.png" class="img-fluid" ></a>
+    </div>
+</div>
+      </header>
+      
+      <div id="sidea_list"></div>
+      
+      <main role="main" id="main" class="holy-main markdown-body mt-2 px-4">
+        
+
+    
+    <div class="Subhead">
+      <div class="Subhead-heading">
+        <div class="h1 mt-3 mb-3">상황에 맞는 filtering 함수 사용하기 </div>
+      </div>
+      <div class="Subhead-description">
+        
+
+
+
+
+<a href="https://yangoos57.github.io/python/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PYTHON</span>
+</a>
+
+
+
+<a href="https://yangoos57.github.io/python/pandas/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PANDAS</span>
+</a>
+
+
+
+<a href='../../../tags/query' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >QUERY</span>
+</a>
+
+<a href='../../../tags/isin' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >ISIN</span>
+</a>
+
+<a href='../../../tags/boolean-masking' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >BOOLEAN MASKING</span>
+</a>
+
+<a href='../../../tags/filter' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >FILTER</span>
+</a>
+
+        
+        <div class="float-end"> 
+          <span title="Lastmod: 2022-05-14. Published at: 2022-05-14.">
+            
+              Published: 2022-05-14
+            
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <article>
+      
+      <section class="markdown-body">
+        <br>
+<h2 id="배경">배경</h2>
+<p>데이터를 다루는 사람에게 데이터를 필터링은 일상이다. pandas 라이브러리에도 필터링 관련 함수가 여럿 존재하고 많은 사람들이 2~3개 방법 정도는 알고 있다.</p>
+<p>한번 정도 필터링 하는 경우야 어떤 방법이든 오래 걸리지 않다보니 본인에게 가장 편한 방법을 주로 사용한다. 하지만 조금이라도 큰 데이터를 다룰때 하나의 방법으로만 필터링을 하게되면 이곳 저곳에서 비효율이 발생하기 시작한다.</p>
+<p>이 글에서는 가독성과 연산속도에 도움되는 세 종류의 filter 함수를 추천한다. 소개한 함수를 상황에 맞게 사용한다면 필터링 중 발생하는 비효율을 줄일 수 있다.
+<br><br><br></p>
+<h2 id="dataframequery">DataFrame.query()</h2>
+<p>query 함수는 filter용으로 안성맞춤인 것에 비해 사람들이 많이 쓰지 않는 기능이다. 보통은 100,000개 이상 row를 다룰 때 성능이 좋다고 알려져있는데, 성능보다는 어떤 조건으로 필터링을 했는지 직관적으로 알 수 있고, 코드를 짧게 쓸 수 있어 가독성이 좋아지는 점이 이 함수를 쓰는 주된 이유이다.
+<br><br></p>
+<blockquote>
+<h3 id="장점">장점</h3>
+</blockquote>
+<ul>
+<li>
+<p><strong>필터링을 단순하게 표현할 수 있다.</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+  <span class="c1"># row 100만개, column 3개 df 생성</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mf">60.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000000</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> 
+  <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">,</span><span class="s1">&#39;num2&#39;</span><span class="p">,</span><span class="s1">&#39;num3&#39;</span><span class="p">]</span>
+  <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;float_format&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+  <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+  <span class="c1"># +-------+-------------+-------------+-------------+</span>
+  <span class="c1"># |       |         num |        num2 |        num3 |</span>
+  <span class="c1"># +-------+-------------+-------------+-------------+</span>
+  <span class="c1"># | count |   1000000   |   1000000   |   1000000   |</span>
+  <span class="c1"># +-------+-------------+-------------+-------------+</span>
+  <span class="c1"># |  min  | -282.352587 | -287.677283 | -300.389316 |</span>
+  <span class="c1"># +-------+-------------+-------------+-------------+</span>
+  <span class="c1"># |  50%  |   9.997371  |  10.014887  |   9.953583  |</span>
+  <span class="c1"># +-------+-------------+-------------+-------------+</span>
+  <span class="c1"># |  max  |  308.740897 |  292.197571 |  294.566926 |</span>
+  <span class="c1"># +-------+-------------+-------------+-------------+</span>
+
+
+  <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">  필터링 조건 
+</span><span class="s1">  10 &lt; num &lt; 100
+</span><span class="s1">  0.5 &lt; num2 &lt; 10
+</span><span class="s1">  255 &lt; num3 &lt; 50
+</span><span class="s1">  &#39;&#39;&#39;</span>
+
+  <span class="c1"># query</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;10 &lt; num &lt; 100 &amp; 0.5 &lt; num2 &lt; 10 &amp; 25&lt; num3 &lt; 50&#39;</span><span class="p">)</span>
+
+  <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="o">&gt;&gt;&gt;</span>  <span class="mi">3982</span>
+
+
+  <span class="c1"># boolean mask</span>
+  <span class="n">BM</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+  <span class="n">BM2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="n">BM3</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num3&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num3&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">BM</span> <span class="o">&amp;</span> <span class="n">BM2</span> <span class="o">&amp;</span> <span class="n">BM3</span><span class="p">]</span>
+
+  <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="o">&gt;&gt;&gt;</span>  <span class="mi">3982</span> 
+
+</code></pre></div></li>
+</ul>
+<br>
+<ul>
+<li>
+<p><strong>검색용으로 훌륭하다.</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 서울 공공데이터 지하철정보</span>
+<span class="n">sub_station</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;\sub_station.csv&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;CP949&#39;</span><span class="p">)</span> 
+
+<span class="n">sub_station</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;역사명 == &#34;김포공항&#34;&#39;</span><span class="p">)</span>
+
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe" style="margin-left : 10px">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>역사_ID</th>
+      <th>역사명</th>
+      <th>호선</th>
+      <th>경도</th>
+      <th>위도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>4929</td>
+      <td>김포공항</td>
+      <td>김포골드라인</td>
+      <td>126.801868</td>
+      <td>37.562360</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>4207</td>
+      <td>김포공항</td>
+      <td>공항철도1호선</td>
+      <td>126.801904</td>
+      <td>37.561842</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>4102</td>
+      <td>김포공항</td>
+      <td>9호선</td>
+      <td>126.802152</td>
+      <td>37.561916</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>2513</td>
+      <td>김포공항</td>
+      <td>5호선</td>
+      <td>126.801292</td>
+      <td>37.562384</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</li>
+</ul>
+  <br>
+<ul>
+<li>
+<p><strong>한번에 여러 values를 검색할 수 있다.</strong></p>
+<p>Boolean mask는 하나의 조건문에 하나의  value만 검색 가능하다. 그러다보니 코드가 한도없이 길어질 수 있다. query는 column에서 찾고자 하는 value를 list나 array 등으로 묶어주기만 하면 간단하게 검색할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">    <span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;김포공항&#39;</span><span class="p">,</span> <span class="s1">&#39;신논현&#39;</span><span class="p">]</span>
+    <span class="n">sub_station</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;역사명 == @stations&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># @를 붙이면 변수 취급</span>
+</code></pre></div><div style='margin-left : 10px'>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>역사_ID</th>
+      <th>역사명</th>
+      <th>호선</th>
+      <th>경도</th>
+      <th>위도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>107</th>
+      <td>4125</td>
+      <td>신논현</td>
+      <td>9호선</td>
+      <td>127.025060</td>
+      <td>37.504598</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4929</td>
+      <td>김포공항</td>
+      <td>김포골드라인</td>
+      <td>126.801868</td>
+      <td>37.562360</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>4207</td>
+      <td>김포공항</td>
+      <td>공항철도1호선</td>
+      <td>126.801904</td>
+      <td>37.561842</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>4102</td>
+      <td>김포공항</td>
+      <td>9호선</td>
+      <td>126.802152</td>
+      <td>37.561916</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>2513</td>
+      <td>김포공항</td>
+      <td>5호선</td>
+      <td>126.801292</td>
+      <td>37.562384</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</li>
+</ul>
+<p><br><br></p>
+  <!-- * **직관적으로 좋고 대용량 자료라도 느리지 않다.** 
+  
+    pandas 공식문서에서도 처리속도를 빠르게 하는 방법중 하나로 query를 추천하고 있다.
+    <br><br><br> -->
+<blockquote>
+<h3 id="단점">단점</h3>
+</blockquote>
+<ul>
+<li>
+<p><strong>for문을 써야하는 경우 처리속도가 느리다.</strong></p>
+<p>처리속도 관련해서는 boolean mask에서 다루겠다.</p>
+ <br>
+</li>
+<li>
+<p><strong>사용가능한 문법이 제한된다.</strong></p>
+<p>사실 사용가능한 문법이 적을뿐이지 필요한 기능은 전부 갖추고 있다. 필터링이 필요한 대부분 상황은 query 하나로 해결가능하다. query 함수가 문법이 제한적인 이유는 처리절차 내에 eval() 함수를 사용하기 때문이다.</p>
+  <br>
+<p><strong>These operations are supported by pandas.eval():</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>Arithmetic operations except for the left shift (<code>&lt;&lt;</code>) and right shift (<code>&gt;&gt;</code>) operators, e.g., <code>df + 2 * pi / s ** 4 % 42 - the_golden_ratio</code></p>
+</li>
+<li>
+<p>Comparison operations, including chained comparisons, e.g., <code>2 &lt; df &lt; df2</code></p>
+</li>
+<li>
+<p>Boolean operations, e.g., <code>df &lt; df2 and df3 &lt; df4 or not df_bool</code></p>
+</li>
+<li>
+<p><code>list</code> and <code>tuple</code> literals, e.g., <code>[1, 2]</code> or <code>(1, 2)</code></p>
+</li>
+<li>
+<p>Attribute access, e.g., <code>df.a</code></p>
+</li>
+<li>
+<p>Subscript expressions, e.g., <code>df[0]</code></p>
+</li>
+<li>
+<p>Simple variable evaluation, e.g., <code>pd.eval(&quot;df&quot;)</code> (this is not very useful)</p>
+</li>
+<li>
+<p>Math functions: <code>sin</code>, <code>cos</code>, <code>exp</code>, <code>log</code>, <code>expm1</code>, <code>log1p</code>, <code>sqrt</code>, <code>sinh</code>, <code>cosh</code>, <code>tanh</code>, <code>arcsin</code>, <code>arccos</code>, <code>arctan</code>, <code>arccosh</code>, <code>arcsinh</code>, <code>arctanh</code>, <code>abs</code>, <code>arctan2</code> and <code>log10</code>.</p>
+</li>
+</ul>
+</blockquote>
+  <br>
+<p><strong>This Python syntax is not allowed:</strong></p>
+<blockquote>
+<p>Expressions</p>
+<ul>
+<li>
+<p>Function calls other than math functions.</p>
+</li>
+<li>
+<p><code>is/is not</code> operations</p>
+</li>
+<li>
+<p><code>if</code> expressionslambda expressions</p>
+</li>
+<li>
+<p><code>list/set/dict</code>comprehensions</p>
+</li>
+<li>
+<p>Literal <code>dict</code> and <code>set</code> expressions</p>
+</li>
+<li>
+<p><code>yield</code> expressions</p>
+</li>
+</ul>
+<p>Generator expressions</p>
+<ul>
+<li>
+<p>Boolean expressions consisting of only scalar values</p>
+</li>
+<li>
+<p>Statements</p>
+</li>
+<li>
+<p>Neither simple nor compound statements are allowed.</p>
+</li>
+<li>
+<p>This includes things like <code>for, while, and if</code>.</p>
+</li>
+</ul>
+</blockquote>
+<p>출처 : <a href="https://pandas.pydata.org/docs/user_guide/enhancingperf.html#supported-syntax">Pandas 공식홈페이지</a></p>
+</li>
+</ul>
+<p><br><br><br><br></p>
+<h2 id="boolean-masking">boolean masking</h2>
+<blockquote>
+<h3 id="장점-1">장점</h3>
+</blockquote>
+<ul>
+<li>
+<p><strong>처리속도가 빠르다.</strong></p>
+<p>필터 함수를 한번만 사용한다면 세가지 중 어떠한 함수를 사용해도 체감상 차이가 없다. 하지만 데이터 분석을 하다보면 loop와 filter 함수를 함께 사용하는 경우가 많다.</p>
+<p>그런 경우에 boolean masking이 빛을 발한다. 아래 그래프는 row가 1200만개인 데이터를 가지고, 300번 반복처리한 결과이다. 단위는 초당 loop를 처리한 횟수이다.</p>
+<p>boolean masking은 초당 10회의 loop를 수행한 반면 query는 초당 5회로 연산속도가 2배나 차이난다. 연산속도가 중요하지 않을땐 query를 사용하고 그 외에는 isin과 boolean masking을 사용하면 효율적이다.</p>
+<br>
+<p>
+
+<div style="background-color: white;border: 1px solid black; text-align: center; padding: 2px">
+
+<img src="https://yangoos57.github.io/images/Python/Pandas/output_1.png">
+
+
+</div>
+</p>
+<p><br><br></p>
+</li>
+</ul>
+<blockquote>
+<h3 id="단점-1">단점</h3>
+</blockquote>
+<ul>
+<li>
+<p><strong>한 번에 하나의 필터링만 가능하다</strong><br>
+query나 isin은 같은 column 내에 있는 여러 value를 한번에 처리할 수 있다. 하지만 boolean masking은 values별로 일일히 변수를 만들어야한다. 보기엔 간단해 보여도 막상 쓰다보면 실수도 많이 발생하고, 조건을 자주 바꿔서 검색할때 불편함이 이만저만이 아니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="c1"># boolean mask</span>
+  <span class="n">BM1</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;김포공항&#39;</span>
+  <span class="n">BM2</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;신논현&#39;</span>
+  <span class="n">BM3</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;여의도&#39;</span>
+  <span class="n">BM4</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;여의나루&#39;</span>
+  <span class="n">BM4</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;샛강&#39;</span>
+
+  <span class="n">sub_station</span><span class="p">[</span><span class="n">BM1</span> <span class="o">|</span> <span class="n">BM2</span> <span class="o">|</span> <span class="n">BM3</span> <span class="o">|</span> <span class="n">BM4</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div><p><br><br> <br><br></p>
+</li>
+</ul>
+<h2 id="dataframeisinlist">Dataframe.isin(list())</h2>
+<blockquote>
+<h3 id="장점-2">장점</h3>
+</blockquote>
+<ul>
+<li>
+<p><strong>빠른속도로 여러 value를 한 번에 처리할 수 있다.</strong></p>
+<p>isin은 query와 boolean mask의 중간 위치에있다. boolean mask가 가지고 있는 단점을 보완하며, query와 마찬가지로 하나의 column의 여러 value에 대한 처리가 가능하다. boolean mask보다는 처리속도가 느리지만 query보다는 빠르다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;김포공항&#39;</span><span class="p">,</span> <span class="s1">&#39;신논현&#39;</span><span class="p">,</span><span class="s1">&#39;여의도&#39;</span><span class="p">,</span><span class="s1">&#39;여의나루&#39;</span><span class="p">]</span>
+
+  <span class="c1"># query </span>
+  <span class="n">sub_station</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;역사명 == @stations&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+  <span class="c1"># isin</span>
+  <span class="n">BM</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">stations</span><span class="p">)</span>
+  <span class="n">sub_station</span><span class="p">[</span><span class="n">BM</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+  <span class="c1"># boolean mask</span>
+  <span class="n">BM1</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;김포공항&#39;</span>
+  <span class="n">BM2</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;신논현&#39;</span>
+  <span class="n">BM3</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;여의도&#39;</span>
+  <span class="n">BM4</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;여의나루&#39;</span>
+  <span class="n">sub_station</span><span class="p">[</span><span class="n">BM1</span> <span class="o">|</span> <span class="n">BM2</span> <span class="o">|</span> <span class="n">BM3</span> <span class="o">|</span> <span class="n">BM4</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>  <div style='margin-left : 10px'>
+  <style scoped>
+      .dataframe tbody tr th:only-of-type {
+          vertical-align: middle;
+      }
+<pre><code>  .dataframe tbody tr th {
+      vertical-align: top;
+  }
+
+  .dataframe thead th {
+      text-align: right;
+  }
+</code></pre>
+<p></style></p>
+  <table border="1" class="dataframe">
+    <thead>
+      <tr style="text-align: right;">
+        <th></th>
+        <th>역사_ID</th>
+        <th>역사명</th>
+        <th>호선</th>
+        <th>경도</th>
+        <th>위도</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>117</th>
+        <td>4115</td>
+        <td>여의도</td>
+        <td>9호선</td>
+        <td>126.924030</td>
+        <td>37.521760</td>
+      </tr>
+      <tr>
+        <th>338</th>
+        <td>2527</td>
+        <td>여의도</td>
+        <td>5호선</td>
+        <td>126.924357</td>
+        <td>37.521747</td>
+      </tr>
+      <tr>
+        <th>337</th>
+        <td>2528</td>
+        <td>여의나루</td>
+        <td>5호선</td>
+        <td>126.932901</td>
+        <td>37.527098</td>
+      </tr>
+      <tr>
+        <th>107</th>
+        <td>4125</td>
+        <td>신논현</td>
+        <td>9호선</td>
+        <td>127.025060</td>
+        <td>37.504598</td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>4929</td>
+        <td>김포공항</td>
+        <td>김포골드라인</td>
+        <td>126.801868</td>
+        <td>37.562360</td>
+      </tr>
+      <tr>
+        <th>88</th>
+        <td>4207</td>
+        <td>김포공항</td>
+        <td>공항철도1호선</td>
+        <td>126.801904</td>
+        <td>37.561842</td>
+      </tr>
+      <tr>
+        <th>130</th>
+        <td>4102</td>
+        <td>김포공항</td>
+        <td>9호선</td>
+        <td>126.802152</td>
+        <td>37.561916</td>
+      </tr>
+      <tr>
+        <th>352</th>
+        <td>2513</td>
+        <td>김포공항</td>
+        <td>5호선</td>
+        <td>126.801292</td>
+        <td>37.562384</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<br><br> 
+</li>
+</ul>
+<blockquote>
+<h3 id="단점-2">단점</h3>
+</blockquote>
+<ul>
+<li>
+<p><strong>가독성이 떨어진다.</strong></p>
+<p>isin 역시 boolean mask와 마찬가지로 필터링이 직관적이지 않다는 단점이 있다. 그래도 변수를 줄이는 장점이 있어서 boolean mask보다는 상대적 가독성이 좋다.
+<br><br><br><br></p>
+</li>
+</ul>
+<h2 id="정리">정리</h2>
+<ul>
+<li>
+<p>대부분 경우는 query를 사용하자. query로 구현할 수 없는 조건이거나 반복문과 함께 쓸 땐 isin 또는 boolean masking 중 선택하자.</p>
+</li>
+<li>
+<p>column에서 찾아야하는 value가 2개 이상일 경우 isin을 추천하며, 빠른속도가 필요하거나 하나의 value만 찾는 경우엔 boolean mask를 추천한다.</p>
+</li>
+</ul>
+<br>
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">함수</th>
+<th style="text-align:center">반복문 x</th>
+<th style="text-align:center">반복문 0, 값 =1</th>
+<th style="text-align:center">반복문 0 , 값 &gt; 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>query</strong></td>
+<td style="text-align:center">O</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">△</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>boolean_mask</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">O</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>isin</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">O</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+        <br><br><br><br><br>
+        <div class ='rel-post'>
+  <h3 style="display: inline;">🕊️</h3>
+
+
+
+
+<a href="https://yangoos57.github.io/python/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PYTHON</span>
+</a>
+
+
+
+<a href="https://yangoos57.github.io/python/pandas/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PANDAS</span>
+</a>
+
+
+
+<a href='../../../tags/query' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >QUERY</span>
+</a>
+
+<a href='../../../tags/isin' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >ISIN</span>
+</a>
+
+<a href='../../../tags/boolean-masking' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >BOOLEAN MASKING</span>
+</a>
+
+<a href='../../../tags/filter' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >FILTER</span>
+</a>
+ 
+  <h2>😶‍🌫️ Related Posts</h2>
+  <div>
+     
+    
+  </div>
+
+  <br>
+
+      </section>
+    
+      <section>
+        
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yangoos92" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+      </section>
+    </article>
+    
+      </main>
+      
+      
+      <div id="sideb_list" class="mt-2 pr-1">
+        <aside class="pr-3">
+          
+      
+        
+      
+ 
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function () {
+    
+    
+    if (window.location.hostname == "localhost") return;
+
+    var dsq = document.createElement("script");
+    dsq.type = "text/javascript";
+    dsq.async = true;
+    var disqus_shortname = "yangoos92";
+    dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    (
+      document.getElementsByTagName("head")[0] ||
+      document.getElementsByTagName("body")[0]
+    ).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+        </aside>
+      </div>
+      <div id="sideb_single"><aside class="offcan-right" style="z-index: 10;">
+<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+  </svg>
+</button>
+
+
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+  <div class="offcanvas-body">
+    
+    <div id="toc" class="sticky-lg-top">
+      
+      <b>상황에 맞는 filtering 함수 사용하기 </b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#배경">배경</a></li>
+    <li><a href="#dataframequery">DataFrame.query()</a>
+      <ul>
+        <li><a href="#장점">장점</a></li>
+        <li><a href="#단점">단점</a></li>
+      </ul>
+    </li>
+    <li><a href="#boolean-masking">boolean masking</a>
+      <ul>
+        <li><a href="#장점-1">장점</a></li>
+        <li><a href="#단점-1">단점</a></li>
+      </ul>
+    </li>
+    <li><a href="#dataframeisinlist">Dataframe.isin(list())</a>
+      <ul>
+        <li><a href="#장점-2">장점</a></li>
+        <li><a href="#단점-2">단점</a></li>
+      </ul>
+    </li>
+    <li><a href="#정리">정리</a></li>
+  </ul>
+</nav></div>
+  
+  </div>
+</div>
+</div>
+      
+    </div>
+    <div id="sidea_single">  <aside class="offcan-left">
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+    <div class='menu-icon_mobile'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </div>
+    <div class='menu-icon_pc'>
+      <svg style = "position:absolute; top:30%; left :35%;"version="1.0" xmlns="http://www.w3.org/2000/svg" fill = "gray"width="55" height="55" viewBox="0 0 512 512"><path d="M11.2 1.7C9.9 2 7.1 3.9 5.1 5.9-1.2 12.2-1.3 19.7 5 26c2 2 5.2 4 7 4.3 1.8.4 63.1.7 136.2.7 111.7 0 133.4.2 136.2 1.4 4.9 2 11.2 8.1 13.5 13 2.1 4.2 2.1 4.3 2.1 210.4 0 172.8-.2 206.8-1.4 209.6-1.8 4.3-6.8 10-11.4 12.8l-3.7 2.3-136.5.5-136.5.5-3.1 2.2C2.7 487 .6 490.9.6 496c0 5.1 2.1 9 6.8 12.3l3.1 2.2H147c129.4 0 136.8-.1 142.5-1.8a57.14 57.14 0 0 0 38.2-38.2c1.7-5.7 1.8-15.3 1.8-214.5 0-199.6-.1-208.8-1.8-214.5C322 23 308.8 9.6 290 3.4c-5.2-1.8-12.5-1.9-141-2-74.5-.1-136.5 0-137.8.3z"/><path d="M11.2 81.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 161.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM413.7 161.8c-3.8.5-10.3 7.1-10.9 11.1-1.2 8.1-1.8 7.3 37 46.3l36.6 36.8-36.6 36.7c-38.8 39.1-38.2 38.3-37 46.4.6 4.2 6.9 10.5 11.1 11.1 8.2 1.2 6.8 2.4 53.2-44.1 36.7-36.6 43.8-44.1 44.1-46.9 1.1-8.4 2.2-7-42.1-51.5-22.9-23-42.7-42.6-44.1-43.6-2.8-2-7.1-2.9-11.3-2.3zM11.2 241.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 321.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 401.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3z"/></svg>
+    </div>
+    </button>
+  
+  <div class="offcanvas offcanvas-start"  data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-body nav-box">
+        <div>
+          <h4>
+            <a href="../../../">🌏 전체보기
+            <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+              6
+            </span>
+            </a>
+          </h4>
+          
+
+          <br><br>
+          <ul class="ps-0" style="list-style: none;">
+            
+            <li>
+              <h5><a href="../../../python">🔗&nbsp;PYTHON</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../../hugo">🔗&nbsp;HUGO</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/hugo/tips/">‣ DO IT YOURSELF&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+              <li>
+                <h6><a href="https://yangoos57.github.io/hugo/documentation/">‣ 공식문서 활용하기&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../../ml">🔗&nbsp;ML</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/ml/data_viz/">‣ 데이터 시각화&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      0
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../../statistics">🔗&nbsp;STATISTICS</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/statistics/basic/">‣ BASIC&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      0
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            </ul>
+        </div>  
+    </div>
+  </div>
+
+</aside>
+<script>$(document).mouseup(function (e){
+  var LayerPopup = $(".offcanvas");
+  if(LayerPopup.has(e.target).length === 0){
+    LayerPopup.removeClass("show");
+  }
+});</script>
+
+</div>
+    <div id="footer" class="pt-2 pb-3 text-center">
+      
+
+
+  <div class="m-5 text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </div>
+
+
+    </div>
+  </body>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K109LYQBX3"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-K109LYQBX3', { 'anonymize_ip': false });
+}
+</script>
+
+  
+</html>

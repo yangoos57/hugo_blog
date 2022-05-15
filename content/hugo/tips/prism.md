@@ -1,22 +1,21 @@
 ---
-title: "Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 "
+title: "Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 "
 date: 2022-03-10
 image: "images/home/hugo1.jpg"
-Tags: ['코드 박스', 'syntax highlighter','prism']
+Tags: ['코드 블럭', 'syntax highlighter','prism','code block']
 draft: false
-Description: 'Hugo 게시글 내 syntax highlighter를 변경하는 글이다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 이 글을 보고 설치할 수 있도록 작성했다. syntax highlighter로 prism을 활용한다.'
+Description: 'Hugo 게시글 내 syntax highlighter를 변경하는 글이다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 이 글을 보고 설치할 수 있도록 작성했다. syntax highlighter로 prism을 활용한다. code block, 코드블록, 코드블럭'
 Summary: 'Hugo 게시글 내 syntax highlighter를 변경하는 글이다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 이 글을 보고 설치할 수 있도록 작성했다. syntax highlighter로 prism을 활용한다.'
 ---
 <br>
 
 ## 구현하고자 하는 기능
 
-**Syntax highlighter 예시**
+### Syntax highlighter 예시
+
 ```python
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import os
 
 ### 현재 경로
@@ -30,17 +29,6 @@ print(bycontinentyear_df.loc['Asia',[2010,2019]])
 ### 옵션
 markers_options = ['o','^','p','8','s','p','*']
 
-### lineplot 구현
-for i, c in enumerate(continent_poss):
-    plt.plot([2010,2019], bycontinentyear_df.loc[c,[2010,2019]], label=c, marker = markers_options[i])
-
-### plot 수정
-plt.xticks([2010,2019])
-plt.legend(bbox_to_anchor=(1.05, 1.0))
-plt.title('Perceptions_of_corruption')
-
-
-plt.show()
 ```
 
 <br><br>

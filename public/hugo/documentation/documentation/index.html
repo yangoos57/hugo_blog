@@ -27,14 +27,16 @@
     
     
     
-    <link rel="stylesheet" href="../../../css/prism.css" media="none" onload="this.media='all';">
-    <script defer language="javascript" type="text/javascript"  src="../../../js/prism.js"></script>
-
+    <link rel="stylesheet" href="../../../css/nord.min.css">
+    <script src="../../../js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
     <script defer language="javascript" type="text/javascript"  src="../../../js/medium-zoom.js"></script>
     <script defer language="javascript" type="text/javascript"  src="../../../js/zoom_custom.js"></script>
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
 
     
@@ -353,8 +355,8 @@
 <p>module does not exist.</p>
 <p>이런 에러 코드가 발생하면  <code>Config</code> 내 Theme 이름과 Theme의 폴더 이름이 매칭되는지 확인해보자.
 대소문자, 띄어쓰기도 구분하니 똑같은 제목이 들어가도록 신경쓰자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-bash" data-lang="bash">Error: module <span style="color:#e6db74">&#34;hugo-primer-master&#34;</span> not found; either add it as a Hugo Module or store 
-it in <span style="color:#e6db74">&#34;D:\\git_local_repository\\new_blog\\themes&#34;</span>.: module does not exist
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Error: module <span class="s2">&#34;hugo-primer-master&#34;</span> not found<span class="p">;</span> either add it as a Hugo Module or store 
+it in <span class="s2">&#34;D:\\git_local_repository\\new_blog\\themes&#34;</span>.: module does not exist
 </code></pre></div><p>
 
 <div style="background-color: white;border: 1px solid black; text-align: center; padding: 2px">
@@ -371,12 +373,12 @@ it in <span style="color:#e6db74">&#34;D:\\git_local_repository\\new_blog\\theme
 <p>일부 Theme은 CSS대신 SCSS 또는 SASS를 사용한다. 2부 문법을 설명할 때 설치한 apollo Theme도 이런 오류를 발생시킨다.</p>
 <p>이 문제를 해결하기 위해서는 두 가지 방법이 있다. 우리는 데모버전을 실행시키는게 목적이므로 대부분 첫번째 방법으로 해결된다. Apollo Theme에서 발생하는 오류도 첫번째 방법으로 해결된다.</p>
 <p>다른 Theme을 사용중이라면 첫번째 방법으로 해결되지 않을 수 있다. 첫번째 방법을 적용했음에도 <strong>같은 내용의 오류</strong>가 발생한다면 2번 방법인 hugo extension 버전을 설치해야한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-bash" data-lang="bash">Error: Error building site: TOCSS: failed to transform <span style="color:#e6db74">&#34;style.scss&#34;</span> <span style="color:#f92672">(</span>text/x-scss<span style="color:#f92672">)</span>. 
-Check your Hugo installation; you need the extended version to build SCSS/SASS.: 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Error: Error building site: TOCSS: failed to transform <span class="s2">&#34;style.scss&#34;</span> <span class="o">(</span>text/x-scss<span class="o">)</span>. 
+Check your Hugo installation<span class="p">;</span> you need the extended version to build SCSS/SASS.: 
 this feature is not available in your current Hugo version,
-see https://goo.gl/YMrWcn <span style="color:#66d9ef">for</span> more information
+see https://goo.gl/YMrWcn <span class="k">for</span> more information
 </code></pre></div><p>1번 방법 : 블로그 폴더에 있는 config 파일에 아래 명령어 추가하기. theme 폴더 config와 착각하지 말자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-markdown" data-lang="markdown">config.toml 일 경우
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">config.toml 일 경우
 relativeURLs = true
 canonifyURLs = true
 
@@ -401,13 +403,13 @@ canonifyURLs: true
 <p>md 파일 오류<br>
 데모 버전을 테스트하기 위해서는 거의 발생하지 않는 오류이긴 한데, 업데이트가 오랫동안 되지 않은 Theme을 쓰다보면 간혹 이런 문제가 발생한다. 내가 지금 사용중인 <a href="https://github.com/qqhann/hugo-primer">primer css template</a>가 그렇다.</p>
 <p>에러 내용을 읽어보면<code>rich-content.md</code>가 문제라는 것을 알 수 있다. 아래와 같은 문제가 발생한다면 해당 파일을 지우고 다시 실행하면 정상적으로 작동된다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-bash" data-lang="bash">ignoreErrors <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;error-missing-instagram-accesstoken&#34;</span><span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">ignoreErrors</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;error-missing-instagram-accesstoken&#34;</span><span class="o">]</span>
 
-WARN 2022/02/27 00:11:09 The <span style="color:#e6db74">&#34;twitter_simple&#34;</span> shortcode will soon require two named parameters: 
+WARN 2022/02/27 00:11:09 The <span class="s2">&#34;twitter_simple&#34;</span> shortcode will soon require two named parameters: 
 
-user and id. See <span style="color:#e6db74">&#34;D:\git_local_repository\new_blog\content\blog\rich-content.md:35:1&#34;</span>
+user and id. See <span class="s2">&#34;D:\git_local_repository\new_blog\content\blog\rich-content.md:35:1&#34;</span>
 
-Error: Error building site: logged <span style="color:#ae81ff">1</span> error<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+Error: Error building site: logged <span class="m">1</span> error<span class="o">(</span>s<span class="o">)</span>
 </code></pre></div></li>
 </ul>
 <p><br><br><br></p>
@@ -524,13 +526,13 @@ Error: Error building site: logged <span style="color:#ae81ff">1</span> error<sp
           <div class="img-box col-2 p-1">
             <a href="https://yangoos57.github.io/hugo/tips/prism/">
               <img loading="lazy" class="img-fluid" src="https://yangoos57.github.io/"
-                onerror="this.onerror=null;this.src='https:\/\/yangoos57.github.io\/images\/home\/hugo1.jpg'" alt="Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 ">
+                onerror="this.onerror=null;this.src='https:\/\/yangoos57.github.io\/images\/home\/hugo1.jpg'" alt="Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 ">
             </a>
           </div>
           <div class="col-10">
             <div class="card-body">
     
-              <h3 class="card-title mt-1 mb-1 fw-bolder"><a href="https://yangoos57.github.io/hugo/tips/prism/" style="color:#37352f !important;">Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </a></h3>
+              <h3 class="card-title mt-1 mb-1 fw-bolder"><a href="https://yangoos57.github.io/hugo/tips/prism/" style="color:#37352f !important;">Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 </a></h3>
       
               <div>
                 <span class="post-date">10 Mar, 2022&nbsp;</span>
@@ -580,26 +582,7 @@ Error: Error building site: logged <span style="color:#ae81ff">1</span> error<sp
         <aside class="pr-3">
           
       
-        <div id="toc" class="sticky-lg-top">
-          <div class="toc_line" >
-            
-            <b>1부 Hugo Docs 활용을 위한 폴더 구조 이해</b><nav id="TableOfContents">
-  <ul>
-    <li><a href="#폴더-구조-이해하기">폴더 구조 이해하기</a>
-      <ul>
-        <li><a href="#archetypes">archetypes</a></li>
-        <li><a href="#content">content</a></li>
-        <li><a href="#data">data</a></li>
-        <li><a href="#layouts">layouts</a></li>
-        <li><a href="#static">Static</a></li>
-        <li><a href="#themes">Themes</a></li>
-        <li><a href="#assets">Assets</a></li>
-        <li><a href="#configtomlor-yaml">Config.toml(or yaml)</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-        </div>
+        
       
  
       <div id="disqus_thread"></div>
@@ -678,7 +661,7 @@ Error: Error building site: logged <span style="color:#ae81ff">1</span> error<sp
           <h4>
             <a href="../../../">🌏 전체보기
             <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
-              4
+              6
             </span>
             </a>
           </h4>
@@ -687,6 +670,22 @@ Error: Error building site: logged <span style="color:#ae81ff">1</span> error<sp
           <br><br>
           <ul class="ps-0" style="list-style: none;">
             
+            <li>
+              <h5><a href="../../../python">🔗&nbsp;PYTHON</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
             <li>
               <h5><a href="../../../hugo">🔗&nbsp;HUGO</a> </h5>
             </li>

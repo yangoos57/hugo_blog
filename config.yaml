@@ -65,8 +65,8 @@ markup:
     lineNoStart: 1
     lineNos: false
     lineNumbersInTable: false
-    noClasses: true
-    style: monokai
+    noClasses: false # false를 걸어줘야 code background가 기본으로 설정되지 않는다.
+    # style: monokai
     tabWidth: 3
   tableOfContents:
     endLevel: 6

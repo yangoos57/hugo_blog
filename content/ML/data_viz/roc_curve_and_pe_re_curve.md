@@ -1,22 +1,28 @@
 ---
-title: "ROC, PE/RC curve를 그려보며 confusion matrix 이해하기"
+title: "예시에 나오는 ROC Curve, Precision-Recall Curve 그려보기"
 date: 2022-05-11T13:47:07+09:00
 image: "images/home/statistic.png"
 Tags: ['Confusion Matrix','Data Visualization']
 draft: true
 ---
+<br><br>
+
+# ROC Curve와 Precision-Recall Curve 
+
 <br>
 
-# ROC Curve와 PE/RC Curve 
+![untitle](/ML/data_viz/main_1.png) 
+
+<br>
+
 이번에 그릴 그래프는 confusion matrix에 기반해. 많이 들어봤겠지만 confusion matrix는 classification 모델의 성능을 비교할때 사용해 그중에서도 대표적으로 ROC Curve나 PE/RE Curve를 활용하지.
 <br><br>
 
 두 그래프는 confusion matrix에서 모델 성능과 관련된 부분을 그린거라 confusion matrix를 이해하고 있는 사람들에게는 잘 활용돼 하지만 이게 단점이기도 해 직관적으로 이해되기에는 confusion matrix를 잘알아야 하고 용어도 잘 알아야해  근데 우리가 상대해야할 사람은 data를 잘 알고 있지 못하는 사람들이잖아. 그래서 이를 직관적으로 이해할수 있도록 약간 변형을 가한 그래프도 있어. 이 주제는 현재 페이지에 벗어나니까 다음에 다뤄보도록 할게
 <br><br>
 
-![untitle](/ML/data_viz/main_1.png) 
 
-<br>
+
 
 이 글의 목적은 궁극적인 목적은 단순해. ROC curve와 PE/RC Curve를 해석하는 방법을 배우고 직접 그려보면서 Confusion matrix 개념을 단단히 하는 것이지. 만약 Confuion Matrix와 관련 용어에 대해 익숙하다고 생각하는 사람 있다면 이 글을 읽기 전 2시간 정도 본인이 직접 그려보는 것을 추천해. 우리의 주된 목적은 Confusion matrix를 이해하는 것이지만 그래프를 그리려면 Sklearn과 matplotlib, seaborn과 같은 visualization tool을 잘 다뤄야 하거든. 그래서 직접 구현한 code별로 알았으면 좋겠거나 설명이 필요하다고 생각되는 부분에 있어서는 설명을 하고 넘어가려고 해. 
 <br><br>
@@ -56,24 +62,27 @@ Precision, Recall, TPR, FPR 같은 용어는 개념으로만 공부해서는 받
 
 <br>
 
-> 최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스 피싱 전담팀은 12명의 용의자들에 대한조사 끝에 12명의 용의자를 가장 범인일 가능성이 높을 것 같은 순으로 **우측부터** 나열하였다. 
+>#### 최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스피싱 전담팀은 12명의 용의자들을 긴급체포하여 조사한 뒤 보이스 피싱범일 가능성이 높은 순으로 12명의 용의자를 나열하였다. 
 
 <br>
 
-![untitle](/ML/data_viz/main_4.png)
-&nbsp;
-{{< center >}}**우측으로 갈수록 범인이라는 확신이 증가한다.**{{< /center >}}
+![untitle](/ML/data_viz/main_5.png) 
+
  
 <br>
 
 해당 그림은 나열한 용의자들이 실제로 범인인지, 무고한 시민인지를 보여준다. 경찰들의 시각에서는 이 안에 누가 범인인지 몇명이 범인인지는 모르고 모두 같은 용의자로 보일뿐이다. 
 <br><br>
 
-A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 고민중에 있다. 평소 신중에 신중을 가하는 전담팀장은 무고한 피해자를 발생시키지 않기 위해, 가장 확실하게 범인 일것 같은 사람만 기소해야한다는 의견이다.팀장의 생각은 빨간 선으로 표현된다.
+A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 고민중에 있다. 평소 신중에 신중을 가하는 전담팀장은 무고한 피해자를 발생시키지 않기 위해, 가장 확실하게 범인 일것 같은 사람만 기소해야한다는 의견이다.`팀장의 생각은 빨간 선으로 표현된다.`
 <br><br>
 
-그의 상관인 수사부장은 대대적인 단속에 나선만큼 어느정도 위험을 감수해야 한다는 입장이다. 그의 입장은 파란색이다. 반면 관할경찰청장은 보이스 피싱으로 인한 피해자가 급증하고 있으니 최대한 범인을 색출해서 더이상 피해자가 발생하지 않도록 철저하게 조사해야하며, 설령 무고한 피해자가 발생하더라도 이는 더큰 선을 위해 감내해야하는 부분이라 생각한다. 그는 초록색의 기준을 주장한다.
+그의 상관인 수사부장은 대대적인 단속에 나선만큼 어느정도 위험을 감수해야 한다는 입장이다. `그의 입장은 파란색이다.` 반면 관할경찰청장은 보이스 피싱으로 인한 피해자가 급증하고 있으니 최대한 범인을 색출해서 더이상 피해자가 발생하지 않도록 철저하게 조사해야하며, 설령 무고한 피해자가 발생하더라도 이는 더큰 선을 위해 감내해야하는 부분이라 생각한다.` 그는 초록색의 기준을 주장한다.`
 <br><br>
+
+![untitle](/ML/data_viz/main_4.png)
+&nbsp;
+{{< center >}}**우측으로 갈수록 범인이라는 확신이 증가한다.**{{< /center >}}
 
 빨간선을 기준으로 용의자를 기소한다면 무고한 피해자 없이 3명의 범인을 색출하겠지만 3명의 범인을 찾지 못한다. 파란선이 기준이라면 6명 중 4명을 색출하지만 그 과정에서 1명이 피해자가 발생한다. 마지막으로 초록색 선은 범인 모두를 색출하지만 2명의 피해자가 발생하게된다. 
 <br><br>
@@ -81,17 +90,13 @@ A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 고민�
 기소하는 기준을 설정하는 것은 쉽지 않다. 무고한 피해자가 발생하지 않기 위해서는 대신 범인 전체를 잡는걸 포기해야한다. 반면 범인 전체를 잡기 위해서는 무고한 피해자가 발생하는 것을 감내해야한다. 둘다 가질 순 없다.
 <br><br><br><br>
 
-**Type 1 error와 Type 2 error**
+{{< note title="Type 1 error와 Type 2 error" content=" 전담팀장의 생각은 무죄추정의 원칙과 동일하다. 두 관점 모두 실제 범인이 무죄가 될 경우를 감내하고서라도 무고한 피해자를 발생시키지 않겠다는 취지이다. 따라서 범인이라고 완전한 확신이 들어야 범인으로 간주한다. 하지만 아무리 그렇다 할지라도 비율이 적다할 뿐 무죄인 사람이 유죄가 되는 경우가 발생하지 않는건 아니다. 100% 범인이라 판단했지만 실제로는 범인이 아닌 경우는 False Positive이다. FP는 다른말로 Type 1 error 또는 False alarm라고 한다. <br><br> 한편으로는 무죄 추정의 원칙은 선량한 피해자를 발생시키지 않기위해, 범인이라고 확신이 들지 않는다면 무죄를 선고한다. 그로인해 실제 범인임에도 무죄를 받고 풀려나는 경우가 있다. 범인이 아니라고 판단하는 경우 N이므로 범인임에도 무죄인 경우는 FN에 해댕한다. FN은 다른말로 Type 2 error 또는 underestimaition이라고 한다. 따라서 범인을 모두 색출하겠다는 경찰청장의 생각을 Type 2 error를 줄이겠다는 말로 표현할 수 있다." >}}
 
-전담팀장의 생각은 무죄추정의 원칙과 동일하다. 두 관점 모두 실제 범인이 무죄가 될 경우를 감내하고서라도 무고한 피해자를 발생시키지 않겠다는 취지이다. 따라서 범인이라고 완전한 확신이 들어야 범인으로 간주한다. 하지만 아무리 그렇다 할지라도 비율이 적다할 뿐 무죄인 사람이 유죄가 되는 경우가 발생하지 않는건 아니다. 100% 범인이라 판단했지만 실제로는 범인이 아닌 경우는 False Positive이다. FP는 다른말로 Type 1 error 또는 False alarm라고 한다.
-<br><br>
-
-한편으로는 무죄 추정의 원칙은 선량한 피해자를 발생시키지 않기위해, 범인이라고 확신이 들지 않는다면 무죄를 선고한다. 그로인해 실제 범인임에도 무죄를 받고 풀려나는 경우가 있다. 범인이 아니라고 판단하는 경우 N이므로 범인임에도 무죄인 경우는 FN에 해댕한다. FN은 다른말로 Type 2 error 또는 underestimaition이라고 한다. 따라서 범인을 모두 색출하겠다는 경찰청장의 생각을 Type 2 error를 줄이겠다는 말로 표현할 수 있다.
-<br><br><br><br>
+<br><br><br>
 
 
 ## Precision과 Recall
-보이스 피싱 사례를 가지고 confusion matrix를 그린 뒤 이를 활용해 precision과 recall을 구해보자. 기준이 달라짐에 따라 confusion matrix 값이 달라지는 것도 함께 주목하자.
+앞서 설명한 보이스 피싱 사례의 precision과 recall을 구하겠다.
 <br><br>
 
 confusion matrix
@@ -262,11 +267,8 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-```
 
-
-```python
-# 데이터 로드
+# 데이터 로드 및 분할
 a = sns.load_dataset('titanic')
 raw_data = a.drop(columns=['alive','who','deck']).dropna()
 data = raw_data.drop(columns='survived')
@@ -297,77 +299,70 @@ from sklearn.pipeline import make_pipeline
 from sklearn.linear_model import LogisticRegression
 model = make_pipeline(preprocessing, LogisticRegression())
 model.fit(data,target) 
-```
 
-
-
-
-    Pipeline(steps=[('columntransformer',
-                     ColumnTransformer(transformers=[('ordinal', OrdinalEncoder(),
-                                                      ['pclass', 'sex', 'embarked',
-                                                       'class', 'adult_male',
-                                                       'embark_town', 'alone']),
-                                                     ('standard', StandardScaler(),
-                                                      ['age', 'sibsp', 'parch',
-                                                       'fare'])])),
-                    ('logisticregression', LogisticRegression())])
-
-
-
-
-```python
 # 모델 성능 및 base_rate 확인
 print(f'logistic : {model.score(data,target)}')
 print(f'base_rate : {target.mean()}')
 
+# logistic : 0.8216292134831461
+# base_rate : 0.4044943820224719
 ```
 
-    logistic : 0.8216292134831461
-    base_rate : 0.4044943820224719
+
     
 
 
 ```python
 from sklearn.metrics import confusion_matrix
-proba_each_row = model.predict_proba(data) # instance별 예측 값 도출
-thereshhold = 0.5 
+proba_each_row = model.predict_proba(data) 
+# predict_proba : instance별 예측 값 도출
 
-con_max = confusion_matrix(y_true=target, y_pred=proba_each_row[:,1] > thereshhold,labels=[1, 0]) # labels=[1, 0] 넣는 이유 기본 세팅은 0,1 0= Negative, 1= Positive를 의미
+thereshhold = 0.5 
+con_max = confusion_matrix(y_true=target, 
+                           y_pred=(proba_each_row[:,1] > thereshhold),
+                           labels=[1, 0]) 
+                           # labels=[1, 0] 넣는 이유 기본 세팅은 0,1 
+                           # 0 = Negative, 1 = Positive를 의미
 
 # confusion matrix 시각화
-sns.heatmap(con_max,xticklabels= ['positive','Negative'],yticklabels=['True','False'], annot=True, cbar=False,cmap='Blues',fmt='g',annot_kws={'size':12},) 
+sns.heatmap(con_max,
+            xticklabels= ['positive','Negative'],
+            yticklabels=['True','False'],
+            annot=True, 
+            cbar=False,
+            cmap='Blues',
+            fmt='g',
+            annot_kws={'size':12}) 
 plt.xlabel('Predict label',fontsize=18) 
 plt.ylabel('True label',fontsize=18)
-
-
 ```    
 
 
 ```python
 from sklearn.metrics import roc_curve
-fpr_logistic,tpr_logistic,thresholds_logistic = roc_curve(target, proba_each_row[:,1])
-
 from sklearn.metrics import precision_recall_curve
 
-pr_logistic,rc_logistic, pr_rc_thre_logistic = precision_recall_curve(y_true=target,probas_pred=proba_each_row[:,1])
+# ROC Curve 자료생성
+fpr_logistic,tpr_logistic,thresholds_logistic = roc_curve(y_true=target, 
+                                                          y_score=proba_each_row[:,1])
+
+# Precision-Recall Curve 자료생성
+pr_logistic,rc_logistic, pr_rc_thre_logistic = precision_recall_curve(y_true=target,
+                                                                      probas_pred=proba_each_row[:,1])
 ```
 
 
 ```python
-#dot
-# plt.plot([fpr_logistic[index],fpr_logistic[index]],[tpr_logistic[index],tpr_logistic[index]],'ro')
-# # y 
-# plt.plot([0,fpr_logistic[index]],[tpr_logistic[index],tpr_logistic[index]],'r--')
-# # x 
-# plt.plot([fpr_logistic[index],fpr_logistic[index]],[0,tpr_logistic[index]],'r--')
-
-### 가장 가까운 값 찾기 => 전체행에 대해 원하는 값을 뺀다음 0에 가장 근접한 경우를 찾는다.
+### 특정 값과 가장 가까운 값 찾기 
 x= 0.2
 difference_array = np.absolute(fpr_logistic-x)
 index = difference_array.argmin()
 
+
 plt.style.use('ggplot')
 plt.figure(figsize=(14,8))
+
+## ROC Curve 그리기
 plt.subplot(121)
 plt.plot(fpr_logistic,tpr_logistic,linewidth=2)
 plt.title('ROC CURVE',fontsize=18,fontweight="bold",y=1.05)
@@ -381,7 +376,8 @@ plt.ylim(-0.01,1.01)
 plt.fill_between(fpr_logistic,tpr_logistic, facecolor='blue',alpha=0.1)
 plt.text(0.55,0.4, 'AUC', fontsize=30)
 
-base_rate = target.mean()
+
+# Precision-Recall Curve 그리기
 plt.subplot(122)
 plt.plot(rc_logistic,pr_logistic)
 plt.title('Precision \ Recall Cureve',fontsize=18,fontweight="bold",y=1.05)
@@ -389,6 +385,7 @@ plt.xlabel('Recall',fontsize=16,labelpad=13)
 plt.ylabel('Precision',fontsize=16,labelpad=13,)
 plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
+base_rate = target.mean()
 plt.plot([0,1],[base_rate,base_rate],'k--')
 plt.xlim(-0.01,1.01)
 plt.ylim(base_rate-0.05,1.01)
@@ -396,8 +393,6 @@ plt.ylim(base_rate-0.05,1.01)
 
 plt.tight_layout()
 ```
-
-
     
 ![png](output_12_0.png)
     
@@ -407,31 +402,10 @@ plt.tight_layout()
 ```python
 from sklearn.metrics import auc
 
-
-
-base_rate = target.mean()
-# plt.subplot(122)
-plt.plot(rc_logistic,pr_logistic)
-plt.title('Precision \ Recall Cureve',fontsize=18,fontweight="bold",y=1.05)
-plt.xlabel('Recall',fontsize=16,labelpad=13)
-plt.ylabel('Precision',fontsize=16,labelpad=13,)
-plt.xticks(fontsize=14)
-plt.yticks(fontsize=14)
-plt.plot([0,1],[base_rate,base_rate],'k--')
-plt.xlim(-0.01,1.01)
-plt.ylim(base_rate-0.05,1.01)
-
 ```
 
 
 
 
     (0.3544943820224719, 1.01)
-
-
-
-
-    
-![png](output_13_1.png)
-    
 

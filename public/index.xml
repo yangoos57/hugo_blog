@@ -5,9 +5,18 @@
     <link>https://yangoos57.github.io/</link>
     <description>Recent content on Leeway</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 10 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yangoos57.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 May 2022 16:55:07 +0900</lastBuildDate><atom:link href="https://yangoos57.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </title>
+      <title>상황에 맞는 filtering 함수 사용하기 </title>
+      <link>https://yangoos57.github.io/python/pandas/row_filtering/</link>
+      <pubDate>Sat, 14 May 2022 16:55:07 +0900</pubDate>
+      
+      <guid>https://yangoos57.github.io/python/pandas/row_filtering/</guid>
+      <description>데이터 분석에서 일상적으로 사용하는 fitering 함수 세가지를 소개한다. pandas는 다양한 filtering 방법을 지원하고 있는데, 이중 연산속도가 빠르고 가독성이 좋은 query, boolean masking, isin를 상황에 맞게 사용하는 방법을 설명한다.</description>
+    </item>
+    
+    <item>
+      <title>Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 </title>
       <link>https://yangoos57.github.io/hugo/tips/prism/</link>
       <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -40,6 +49,15 @@
       
       <guid>https://yangoos57.github.io/hugo/tips/zooming-images/</guid>
       <description>Hugo 게시글에서 이미지를 확대하는 기능을 추가한다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 쉽게 따라할 수 있도록 작성하였다. 이미지 확대를 위해 medium-zoom을 활용한다.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yangoos57.github.io/python/pandas/untitled-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yangoos57.github.io/python/pandas/untitled-1/</guid>
+      <description>import pandas as pd import numpy as np df = pd.DataFrame(10+60.5*np.random.randn(1000000,3)) df.columns = [&amp;#39;num&amp;#39;,&amp;#39;num2&amp;#39;,&amp;#39;num3&amp;#39;] pd.set_option(&amp;#39;float_format&amp;#39;, &amp;#39;{:f}&amp;#39;.format) df.describe()  .dataframe tbody tr th:only-of-type { vertical-align: middle; } .</description>
     </item>
     
   </channel>

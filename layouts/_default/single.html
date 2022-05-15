@@ -38,16 +38,16 @@
     
     {{ define "side" }}
       {{ if and (gt .WordCount 0 ) (default true .Params.toc) }}
-        <div id="toc" class="sticky-lg-top">
+        <!-- <div id="toc" class="sticky-lg-top">
           <div class="toc_line" >
-            <!-- class="Box Box--blue mb-3" -->
+            
             <b>{{ .Title }}</b>
             {{- $toc := .TableOfContents -}}
             {{- $toc := replaceRE `<nav id="TableOfContents">\n<ul>\n<li>\n<ul>` `<nav id="TableOfContents"><ul>` $toc -}}
             {{- $toc := replaceRE `</ul>\n</li>\n</ul>\n</nav>` `</ul>\n</nav>` $toc -}}
             {{- safeHTML $toc -}}
         </div>
-        </div>
+        </div> -->
       {{ end }}
  
       {{partial "disqus.html" . }}

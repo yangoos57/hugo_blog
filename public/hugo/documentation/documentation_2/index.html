@@ -27,14 +27,16 @@
     
     
     
-    <link rel="stylesheet" href="../../../css/prism.css" media="none" onload="this.media='all';">
-    <script defer language="javascript" type="text/javascript"  src="../../../js/prism.js"></script>
-
+    <link rel="stylesheet" href="../../../css/nord.min.css">
+    <script src="../../../js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
     <script defer language="javascript" type="text/javascript"  src="../../../js/medium-zoom.js"></script>
     <script defer language="javascript" type="text/javascript"  src="../../../js/zoom_custom.js"></script>
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
 
     
@@ -213,7 +215,7 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p><strong>Content 폴더 구조</strong></p>
 <p>연습용 블로그에는 총 12개 md 파일이 있다. 5개는 Content 폴더에, 7개는 Content/post 폴더에 있다. Hugo에서는 경로가 곧 URL 주소가 되니 content 폴더 구조를 꼭 확인하고 넘어가자</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">Content 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">Content 
 |   about.md   
 |   contact.md
 |   elements.md
@@ -257,19 +259,19 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p><strong><a href="**https://gohugo.io/about/**">사용자 변수 설정하기</a> | <code>Custom Variable</code></strong></p>
 <p>사용자 변수는 <code>{{ $var := “text” }}</code> 로 정의한 후 <code>{{ $var }}</code>로 불러온다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span>&gt;
-    <span style="color:#75715e">&lt;!--String 변수 설정--&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--String 변수 설정--&gt;</span>
     {{ $drink := &#34;a coffee&#34; }}
     Your drink is {{ $drink }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    <span style="color:#75715e">&lt;!--함수 또는 Hugo 기본 변수를 활용하여 변수를 설정할 수 있다.--&gt;</span>
+    <span class="c">&lt;!--함수 또는 Hugo 기본 변수를 활용하여 변수를 설정할 수 있다.--&gt;</span>
     {{ $title := .Title }}
     your title is {{ $title }}
-    &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -287,12 +289,12 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p><strong><a href="https://gohugo.io/templates/introduction/#access-a-predefined-variable">함수 및 기본 변수 불러오기</a> | <code>Predefined Variables</code></strong></p>
 <p><code>{{ .명령어 }}</code>로 함수 및 기본 변수를 불러온다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span><span class="p">&gt;</span>
     {{ .Title }}
-    &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -319,37 +321,37 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 </blockquote>
   <br>
 <p><code>.IsPage</code> | <code>.IsSection</code> | <code>.IsNode</code> | <code>.IsHome</code>은 페이지 종류에 따라 Boolean(True or False)를 반환한다. 주로 <code>Baseof.html</code>에서 페이지 종류별로 원하는 기능을 실행 또는 중지하기 위해 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span>&gt;
-    <span style="color:#75715e">&lt;!-- {{ .Kind }} 함수를 사용하면 현재 페이지가 어떤 종류인지 알 수 있다.  --&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- {{ .Kind }} 함수를 사용하면 현재 페이지가 어떤 종류인지 알 수 있다.  --&gt;</span>
     현재 페이지 종류 : {{ .Kind }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    <span style="color:#75715e">&lt;!--Home page인 경우 True 반환--&gt;</span>
+    <span class="c">&lt;!--Home page인 경우 True 반환--&gt;</span>
     {{ if .IsHome }}
     This Page is home page
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ end }}
 
-    <span style="color:#75715e">&lt;!--single page가 아닌 경우 True 반환--&gt;</span>
+    <span class="c">&lt;!--single page가 아닌 경우 True 반환--&gt;</span>
     {{ if .IsNode }}
     This Page is not a single page
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ end }}
 
-    <span style="color:#75715e">&lt;!--single page인 경우 True 반환--&gt;</span>
+    <span class="c">&lt;!--single page인 경우 True 반환--&gt;</span>
     {{ if .IsPage }}
     This Page is a single page
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ end }}
 
-    <span style="color:#75715e">&lt;!--section page인 경우 True 반환--&gt;</span>
+    <span class="c">&lt;!--section page인 경우 True 반환--&gt;</span>
     {{ if .IsSection }}
     This Page is a Section page
     {{ end }}
-&lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -365,25 +367,25 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p>and / or</p>
 <p>and와 or을 사용하는 방법에는 두 가지가 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span>&gt;
-        <span style="color:#75715e">&lt;!-- {{ .Kind }} 함수를 사용하면 현재 페이지가 어떤 종류인지 알 수 있다.  --&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- {{ .Kind }} 함수를 사용하면 현재 페이지가 어떤 종류인지 알 수 있다.  --&gt;</span>
         현재 페이지 종류 : {{ .Kind }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
     1번 방법 :
     {{ if .IsPage | or .IsHome }}
         Hello_1
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ end }}
 
     2번 방법 :
     {{ if or (.IsPage) (.IsHome) }}
         Hello_2
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ end }}
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -428,10 +430,10 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span>&gt;
-    <span style="color:#75715e">&lt;!-- 변수 설정--&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.5em;&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- 변수 설정--&gt;</span>
     {{ $drink := &#34;coffee&#34; }}
 
     {{ if eq &#34;coffee&#34; $drink }}
@@ -442,8 +444,8 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 		차 마시는 중
     {{ end }}
 
-    &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -463,20 +465,20 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p><strong><a href="https://gohugo.io/templates/introduction/#example-1-with">with 조건절</a> | <code>Conditional</code></strong></p>
 <p>조건에 만족하는 대상이 있다면 그 대상을 전부 불러온다. if와 range를 함께 쓴다고 생각하면 이해하기 쉽다. 원하는 페이지나 원하는 Parameter를 불러올 때 주로 활용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{range .Pages}}
     {{range .Pages}}
-    <span style="color:#75715e">&lt;!--Single Page 모든 title 불러오기--&gt;</span>
+    <span class="c">&lt;!--Single Page 모든 title 불러오기--&gt;</span>
     {{with .Params.title}}
     {{.}}
-    &lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{end}}{{end}}{{end}}
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -500,19 +502,19 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <p>ex) <code>content/post/subpost/subpost-1/post1.md</code></p>
 </blockquote>
 <br>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">      {{ define &#34;main&#34; }}
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-          &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-          &lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">      {{ define &#34;main&#34; }}
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
           {{ range .Pages }}
-          &lt;<span style="color:#f92672">br</span>&gt;
-          1단계 --- 경로 : {{ .RelPermalink }} &amp;nbsp; &amp;nbsp;&lt;<span style="color:#f92672">br</span>&gt; 
+          <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+          1단계 --- 경로 : {{ .RelPermalink }} <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span> 
           {{ range .Pages }}
-          2단계 --- 경로 : {{ .RelPermalink }} &amp;nbsp; &amp;nbsp;&lt;<span style="color:#f92672">br</span>&gt;
+          2단계 --- 경로 : {{ .RelPermalink }} <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
           {{ range .Pages }}
           3단계 --- 경로 : {{ .RelPermalink }}
           {{ end }}{{ end }}{{ end }}
-      &lt;/<span style="color:#f92672">div</span>&gt;
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
       {{ end }}
 </code></pre></div><p>
 
@@ -530,41 +532,41 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <p><code>{{ .Site.RegularPages }}</code>는 전체 페이지 중 Single page만 불러온다. content 폴더에 있는 markdown 파일 중 _index.md만 제외하고 모두 불러오는 것과 같다.</p>
 <p><code>{{ .Site.Pages }}</code>는 블로그가 가지고 있는 모든 페이지를 불러온다.</p>
 <p><code>{{ with .Getpage arg1 arg2 }}{{ . }}{{ end }}</code>는 조건에 맞는 페이지만 불러온다. | <a href="https://gohugo.io/functions/getpage/">with .Getpage 사용법 더보기</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">    {{ define &#34;main&#34; }}
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">    {{ define &#34;main&#34; }}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-        &lt;<span style="color:#f92672">br</span>&gt;
-        <span style="color:#75715e">&lt;!-- 왼편--&gt;</span>
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 0 100px;&#34;</span>&gt;
-            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34; float:left; &#34;</span>&gt;
-                <span style="color:#75715e">&lt;!--_index.md 제외한 모든 markdown 파일 불러오기--&gt;</span>
-                &lt;<span style="color:#f92672">h3</span>&gt;.Site.RegularPages&lt;/<span style="color:#f92672">h3</span>&gt;
-                &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- 왼편--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 0 100px;&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style </span><span class="o">=</span><span class="s">&#34; float:left; &#34;</span><span class="p">&gt;</span>
+                <span class="c">&lt;!--_index.md 제외한 모든 markdown 파일 불러오기--&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>.Site.RegularPages<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
                 {{ .Site.RegularPages }}
-            &lt;/<span style="color:#f92672">div</span>&gt;
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-            <span style="color:#75715e">&lt;!-- 가운데--&gt;</span>
-            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;float:left; margin: 0 20px;&#34;</span>&gt;
-                <span style="color:#75715e">&lt;!--모든 페이지 불러오기--&gt;</span>
-                &lt;<span style="color:#f92672">h3</span>&gt;.Pages&lt;/<span style="color:#f92672">h3</span>&gt;
-                &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+            <span class="c">&lt;!-- 가운데--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style </span><span class="o">=</span><span class="s">&#34;float:left; margin: 0 20px;&#34;</span><span class="p">&gt;</span>
+                <span class="c">&lt;!--모든 페이지 불러오기--&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>.Pages<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
                 {{ .Site.Pages }}
-            &lt;/<span style="color:#f92672">div</span>&gt;
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-            <span style="color:#75715e">&lt;!-- 오른쪽--&gt;</span>
-            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;float:left; margin: 0 20px;&#34;</span>&gt;
-                &lt;<span style="color:#f92672">h3</span>&gt;with .Site.GetPage&lt;/<span style="color:#f92672">h3</span>&gt;
-                &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
-                <span style="color:#75715e">&lt;!-- 원하는 페이지 불러오기--&gt;</span>
-                <span style="color:#75715e">&lt;!--with .Getpage arg 1 arg 2--&gt;</span>
+            <span class="c">&lt;!-- 오른쪽--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style </span><span class="o">=</span><span class="s">&#34;float:left; margin: 0 20px;&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>with .Site.GetPage<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+                <span class="c">&lt;!-- 원하는 페이지 불러오기--&gt;</span>
+                <span class="c">&lt;!--with .Getpage arg 1 arg 2--&gt;</span>
                 {{ with .Site.GetPage &#34;section&#34; &#34;post&#34; }}
                 {{ . }}
                 {{ end }}
-            &lt;/<span style="color:#f92672">div</span>&gt;
-        &lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;/<span style="color:#f92672">div</span>&gt;
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     {{ end }}
 </code></pre></div><p>
 
@@ -580,56 +582,56 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p>Page 불러오기</p>
 <p>위에서 사용된 명령어처럼 결과값으로 Pages()을 반환하는 경우 <code>{{ range .Pages }}{{ . }}{{ end }}</code> 명령어를 활용해 개별 페이지를 불러올 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#f92672">br</span>&gt;
-    <span style="color:#75715e">&lt;!-- 왼편--&gt;</span>
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 0 auto;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34; float:left; &#34;</span>&gt;
-            <span style="color:#75715e">&lt;!--_index.md 제외한 모든 markdown 파일 불러오기--&gt;</span>
-            &lt;<span style="color:#f92672">h3</span>&gt;.Site.RegularPages&lt;/<span style="color:#f92672">h3</span>&gt;
-            &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- 왼편--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 0 auto;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style </span><span class="o">=</span><span class="s">&#34; float:left; &#34;</span><span class="p">&gt;</span>
+            <span class="c">&lt;!--_index.md 제외한 모든 markdown 파일 불러오기--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>.Site.RegularPages<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
             {{ range .Site.RegularPages }}
-            {{ .File }} <span style="color:#75715e">&lt;!-- 파일경로--&gt;</span>
-            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>&gt;site&lt;/<span style="color:#f92672">a</span>&gt; <span style="color:#75715e">&lt;!-- 페이지 주소--&gt;</span>
-            &lt;<span style="color:#f92672">br</span>&gt;
+            {{ .File }} <span class="c">&lt;!-- 파일경로--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>site<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- 페이지 주소--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
             {{ end }}
-        &lt;/<span style="color:#f92672">div</span>&gt;
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!-- 가운데--&gt;</span>
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;float:left&#34;</span>&gt;
-            <span style="color:#75715e">&lt;!--모든 페이지 불러오기--&gt;</span>
-            &lt;<span style="color:#f92672">h3</span>&gt;.Pages&lt;/<span style="color:#f92672">h3</span>&gt;
-            &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="c">&lt;!-- 가운데--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style </span><span class="o">=</span><span class="s">&#34;float:left&#34;</span><span class="p">&gt;</span>
+            <span class="c">&lt;!--모든 페이지 불러오기--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>.Pages<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
             {{ range .Site.Pages }}
-            {{ .File }} <span style="color:#75715e">&lt;!-- 파일경로--&gt;</span>
-            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>&gt;site&lt;/<span style="color:#f92672">a</span>&gt; <span style="color:#75715e">&lt;!-- 페이지 주소--&gt;</span>
-            &lt;<span style="color:#f92672">br</span>&gt;
+            {{ .File }} <span class="c">&lt;!-- 파일경로--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>site<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- 페이지 주소--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
             {{ end }}
-        &lt;/<span style="color:#f92672">div</span>&gt;
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!-- 오른쪽--&gt;</span>
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;float:left&#34;</span>&gt;
-            &lt;<span style="color:#f92672">h3</span>&gt;with .Site.GetPage&lt;/<span style="color:#f92672">h3</span>&gt;
-            &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
-            <span style="color:#75715e">&lt;!-- Section이 post인 페이지 전부 불러오기&gt;
-</span><span style="color:#75715e">            {{ with .Site.GetPage &#34;section&#34; &#34;post&#34; }}
-</span><span style="color:#75715e">            {{ . }}
-</span><span style="color:#75715e">            &lt;br&gt;
-</span><span style="color:#75715e">            &lt;!-- 개별 post Page 불러오기 --&gt;</span>
+        <span class="c">&lt;!-- 오른쪽--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style </span><span class="o">=</span><span class="s">&#34;float:left&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>with .Site.GetPage<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="c">&lt;!-- Section이 post인 페이지 전부 불러오기&gt;
+</span><span class="c">            {{ with .Site.GetPage &#34;section&#34; &#34;post&#34; }}
+</span><span class="c">            {{ . }}
+</span><span class="c">            &lt;br&gt;
+</span><span class="c">            &lt;!-- 개별 post Page 불러오기 --&gt;</span>
             {{ range .Pages }} 
-            {{ .File }} <span style="color:#75715e">&lt;!-- 파일경로--&gt;</span>
-            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>&gt;site&lt;/<span style="color:#f92672">a</span>&gt; <span style="color:#75715e">&lt;!-- 페이지 주소--&gt;</span>
-            &lt;<span style="color:#f92672">br</span>&gt;        
+            {{ .File }} <span class="c">&lt;!-- 파일경로--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>site<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- 페이지 주소--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>        
             {{ end }}
             {{ end }}
-        &lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;/<span style="color:#f92672">div</span>&gt;
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -645,22 +647,22 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p>First와 Last</p>
 <p>모든 Page를 불러올 필요는 없다. range 함수에 First 또는 Last 명령어를 사용하면 원하는 Page 범위를 정할 수 있다. first n 처음부터 n번째까지 내용을 불러온다. last n 마지막에서 시작해 n번째까지 내용을 불러온다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">    {{ define &#34;main&#34; }}
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span>&gt;
-            <span style="color:#75715e">&lt;!--모든 페이지 불러오기--&gt;</span>
-            &lt;<span style="color:#f92672">h3</span>&gt;.Pages&lt;/<span style="color:#f92672">h3</span>&gt;
-            &lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">    {{ define &#34;main&#34; }}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="c">&lt;!--모든 페이지 불러오기--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>.Pages<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
             {{ range first 3 .Site.Pages }}
-            {{ .File }} <span style="color:#75715e">&lt;!-- 파일경로--&gt;</span>
-            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>&gt;site&lt;/<span style="color:#f92672">a</span>&gt; <span style="color:#75715e">&lt;!-- 페이지 주소--&gt;</span>
-            &lt;<span style="color:#f92672">br</span>&gt;
+            {{ .File }} <span class="c">&lt;!-- 파일경로--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>site<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!-- 페이지 주소--&gt;</span>
+            <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
             {{ end }}
-        &lt;/<span style="color:#f92672">div</span>&gt;
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 
-    &lt;/<span style="color:#f92672">div</span>&gt;
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     {{ end }}
 </code></pre></div><p>
 
@@ -681,42 +683,42 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p><strong><a href="https://gohugo.io/variables/site/">Site 변수</a> | <code>Site Variables</code></strong></p>
 <p>Site 변수는 <code>Config</code>에 저장한 변수를 불러오거나 전역 변수를 불러올 때 사용한다. 자주 사용되는 변수만 예시로 작성했으니 다른 변수는 공식문서에서 확인하자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    <span style="color:#75715e">&lt;!-- Local Server일 경우 True 아닐 경우 False 반환--&gt;</span>
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.IsServer&lt;/<span style="color:#f92672">h4</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- Local Server일 경우 True 아닐 경우 False 반환--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.IsServer<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
     {{ .Site.IsServer }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    <span style="color:#75715e">&lt;!-- 블로그에 있는 모든 Taxonomy 불러오기 --&gt;</span>
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.Taxonomies&lt;/<span style="color:#f92672">h4</span>&gt;
+    <span class="c">&lt;!-- 블로그에 있는 모든 Taxonomy 불러오기 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.Taxonomies<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
     {{ .Site.Taxonomies }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    <span style="color:#75715e">&lt;!-- 블로그에 있는 모든 Page 불러오기 --&gt;</span>
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.Pages&lt;/<span style="color:#f92672">h4</span>&gt;{{ .Site.Pages }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="c">&lt;!-- 블로그에 있는 모든 Page 불러오기 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.Pages<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>{{ .Site.Pages }}
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    <span style="color:#75715e">&lt;!-- 블로그에 있는 모든 single Page 불러오기 --&gt;</span>
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.RegularPages&lt;/<span style="color:#f92672">h4</span>&gt;
+    <span class="c">&lt;!-- 블로그에 있는 모든 single Page 불러오기 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.RegularPages<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
     {{ .Site.RegularPages }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    <span style="color:#75715e">&lt;!--Config 내 Paramter 불러오기--&gt;</span>
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.Params.logo&lt;/<span style="color:#f92672">h4</span>&gt;
+    <span class="c">&lt;!--Config 내 Paramter 불러오기--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.Params.logo<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
     {{ .Site.Params.logo }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.Params.favicon&lt;/<span style="color:#f92672">h4</span>&gt;
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.Params.favicon<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
     {{ .Site.Params.favicon }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#f92672">h4</span>&gt;.Site.Params.variables.primary_color&lt;/<span style="color:#f92672">h4</span>&gt;
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Site.Params.variables.primary_color<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
     {{ .Site.Params.variables.primary_color }}
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -735,69 +737,69 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <p><strong><a href="https://gohugo.io/variables/page/">Page 변수</a> | <code>Page Variables</code></strong></p>
 <p>Page 변수는 페이지가 Markdown 파일에 기반한 경우에만 사용 가능하다. 그러므로 Single page 또는 _index.md 파일이 있는 list page에서 사용 가능하다. 물론 Home page에서 <code>{{ range .Pages }}</code>로 single page를 불러와서도 사용 할 수 있다.</p>
 <p>Page 변수 중 많은 변수들이 Front matter와 연동해 사용된다. Front matter와 연동된 page 변수를 알고 싶으면 공식문서를 참고하자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!-- 하나의 페이지만 불러오는 코드--&gt;</span>
+        <span class="c">&lt;!-- 하나의 페이지만 불러오는 코드--&gt;</span>
         {{ range first 1 .Site.RegularPages }}
 
-        <span style="color:#75715e">&lt;!--Markdown 본문 가져오기--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Content &lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--Markdown 본문 가져오기--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Content <span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         페이지 본문
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!-- Type 또는 Section 이름 불러오기--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Type&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!-- Type 또는 Section 이름 불러오기--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Type<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Type }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;        
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>        
 
-        <span style="color:#75715e">&lt;!--상대주소--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.RelPermalink&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--상대주소--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.RelPermalink<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .RelPermalink }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--절대주소--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Permalink&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--절대주소--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Permalink<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Permalink }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--본문 단어 개수--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.WordCount&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--본문 단어 개수--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.WordCount<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .WordCount }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--Front matter에 있는 title 불러오기--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Title&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--Front matter에 있는 title 불러오기--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Title<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Title }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--Front matter에 있는 date 불러오기--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Date&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--Front matter에 있는 date 불러오기--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Date<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Date }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--Front matter에 있는 description 불러오기--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Description &lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--Front matter에 있는 description 불러오기--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Description <span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Description }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--Page 종류 확인(home,page,section,taxonomy,term)--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Kind&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--Page 종류 확인(home,page,section,taxonomy,term)--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Kind<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Kind }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--읽는 시간 예상--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.ReadingTime&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--읽는 시간 예상--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.ReadingTime<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .ReadingTime }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-        <span style="color:#75715e">&lt;!--첫 문단 요약--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.Summary&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--첫 문단 요약--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Summary<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         첫문단 요약
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
         {{ end }}
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -814,33 +816,33 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <p><strong><a href="https://gohugo.io/variables/files/">File 변수</a> | <code>File Variables</code></strong></p>
 <p>content 폴더와 static 폴더는 경로가 곧 URL주소이다. File 변수는 원하는 URL 주소를 불러오기 위해 주로 사용된다.</p>
 <p>URL 변환 시 자주 사용되는 함수로는 print와 replace 함수가 있다. 자주 사용되는 File 변수를 알아본 후 함께 사용되는 함수를 알아보자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
 
         {{ range first 1 .Site.RegularPages }}
-        <span style="color:#75715e">&lt;!--Content Folder 이후 경로 및 파일--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.File.Path&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--Content Folder 이후 경로 및 파일--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.File.Path<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .File.Path }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;      
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>      
 
-        <span style="color:#75715e">&lt;!-- 파일경로 --&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.File.Dir&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!-- 파일경로 --&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.File.Dir<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .File.Dir }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;        
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>        
 
-        <span style="color:#75715e">&lt;!--파일명 (확장자 포함)--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.File.LogicalName&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!--파일명 (확장자 포함)--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.File.LogicalName<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .File.LogicalName }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;        
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>        
 
-        <span style="color:#75715e">&lt;!-- 파일명(확장자 미포함)--&gt;</span>
-        &lt;<span style="color:#f92672">h4</span>&gt;.File.BaseFileName&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="c">&lt;!-- 파일명(확장자 미포함)--&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.File.BaseFileName<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .File.BaseFileName }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt; 
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span> 
         {{ end }}
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -856,33 +858,33 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <p>File 변수와 함께 자주 사용되는 함수(print, replace)</p>
 <p>Hugo에서는 단어를 이어붙이는 방법이 까다롭다. 이때 print 함수를 활용하면 단어들을 쉽게 이어붙일 수 있다.</p>
 <p>Windows에서 File variables를 사용하면 경로가 Back-slash( \ )로 표현된다. replace는 Back-slash( \ )를 Slash( / )로 변환하기 위해 자주 사용된다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">    {{  define &#34;main&#34; }} 
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">    {{  define &#34;main&#34; }} 
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 
-        <span style="color:#75715e">&lt;!-- Print 함수 이후 변수를 선언하는 절차이므로 총 2번의 과정을 거친다. 
-</span><span style="color:#75715e">        먼저 실행 되는 함수에 괄호를 쳐야한다..  --&gt;</span>
-        <span style="color:#75715e">&lt;!-- print 함수 사용법 : print 문장1 문장2 문장3 문장4... --&gt;</span>
+        <span class="c">&lt;!-- Print 함수 이후 변수를 선언하는 절차이므로 총 2번의 과정을 거친다. 
+</span><span class="c">        먼저 실행 되는 함수에 괄호를 쳐야한다..  --&gt;</span>
+        <span class="c">&lt;!-- print 함수 사용법 : print 문장1 문장2 문장3 문장4... --&gt;</span>
         {{  $sentence := (print &#34;단어를 &#34; &#34;이렇게 &#34; &#34;조합해도 &#34; &#34;됩니다.&#34; ) }}
         {{  $sentence }}
 
         {{ range .Pages }}
-        &lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
         {{ range first 3 .Pages }}
         {{ $site := ( print &#34;/drink/Ice Americano/&#34; .File ) }}
-        &lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
         변경 전 : {{ $site }}
-        &lt;<span style="color:#f92672">br</span>&gt;
-        <span style="color:#75715e">&lt;!-- 두 번 연속으로 바꾸고 싶다면 아래 예시처럼 괄호를 추가해서 사용하자 --&gt;</span>
-        <span style="color:#75715e">&lt;!-- Back-slash를 다른 단어로 바꾸고 싶다면 &#34;//&#34;로 써야한다. --&gt;</span>
-        <span style="color:#75715e">&lt;!-- replace 함수 사용법 : replace 바꾸고 싶은 문장 &#34;바뀔 단어&#34; &#34;바꿀 단어&#34; --&gt;</span>
-        변경 후 : {{ replace ( replace $site &#34;Ice Americano&#34; &#34;Ice Latte&#34; ) &#34;\\&#34; &#34;/&#34; }}&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- 두 번 연속으로 바꾸고 싶다면 아래 예시처럼 괄호를 추가해서 사용하자 --&gt;</span>
+        <span class="c">&lt;!-- Back-slash를 다른 단어로 바꾸고 싶다면 &#34;//&#34;로 써야한다. --&gt;</span>
+        <span class="c">&lt;!-- replace 함수 사용법 : replace 바꾸고 싶은 문장 &#34;바뀔 단어&#34; &#34;바꿀 단어&#34; --&gt;</span>
+        변경 후 : {{ replace ( replace $site &#34;Ice Americano&#34; &#34;Ice Latte&#34; ) &#34;\\&#34; &#34;/&#34; }}<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
         {{ end }}
         {{ end }}
 
-    &lt;/<span style="color:#f92672">div</span>&gt;
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     {{ end }}
 </code></pre></div><p>
 
@@ -904,16 +906,16 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <li>
 <p><strong>HTML에서 이미지 불러오기</strong></p>
 <p>이미지 경로 기본 위치는 static 폴더이다. 그러므로 static 이후 경로만 적어도 이미지를 불러올 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 200px ; height : 200px; margin: 0 auto;&#34;</span>&gt;
-            &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/blog/blog-1.jpg&#34;</span>&gt;
-        &lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 200px ; height : 200px; margin: 0 auto;&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;images/blog/blog-1.jpg&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><br>
 </li>
@@ -926,11 +928,11 @@ Hugo는 사용자가 HTML을 쉽게 사용할 수 있도록 돕는 도구이다.
 <p><strong>HTML에서 CSS, Javascript 불러오기</strong></p>
 <p>누군가가 만든 기능을 똑같이 활용하기 위해서는 CSS와 Javascript도 함께 불러와야한다. 다운 받은 CSS와 JS파일은 static 폴더에 저장한 뒤 html 명령어로 불러오면 된다.
 보통 CSS와 JS는 Head 또는 Footer에서 불러온다. partial 폴더에 들어가 Head.html과 Footer.html 중 아래와 비슷한 코드가 모여있는 파일을 찾고 아래 코드를 통해 파일들을 붙여넣자. 예시 코드의 경우 static 폴더 내 css와 JS폴더를 만들어 다운받은 자료를 넣었다. 만약 경로가 다르다면 CSS와 JS가 저장된 디렉토리로 수정하자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--CSS 불러오기 | css/bootstrap.css를 CSS가 저장된 주소로 바꾸자.--&gt;</span>
-  &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ `css/bootstrap.css` | relURL }}&#34;</span>&gt;   
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--CSS 불러오기 | css/bootstrap.css를 CSS가 저장된 주소로 바꾸자.--&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ `css/bootstrap.css` | relURL }}&#34;</span><span class="p">&gt;</span>   
 
-<span style="color:#75715e">&lt;!--JS 불러오기 | /js/medium-zoom.js를 js가 저장된 주소로 바꾸자.--&gt;</span>
-  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ &#34;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">medium-zoom</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">urlize</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">relURL</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+<span class="c">&lt;!--JS 불러오기 | /js/medium-zoom.js를 js가 저장된 주소로 바꾸자.--&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">language</span><span class="o">=</span><span class="s">&#34;javascript&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span>  <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ &#34;</span><span class="err">/</span><span class="na">js</span><span class="err">/</span><span class="na">medium-zoom</span><span class="err">.</span><span class="na">js</span><span class="err">&#34;</span> <span class="err">|</span> <span class="na">urlize</span> <span class="err">|</span> <span class="na">relURL</span> <span class="err">}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div><br>
 <style>
  
@@ -997,25 +999,25 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
 <li>
 <p><strong>사용자 변수</strong></p>
 <p>사용자는 Front matter에서 변수를 정의해 활용할 수 있다. html에서 변수를 불러오는 방법은 <code>{{.Params.변수명}}</code>이다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">    {{ define &#34;main&#34; }}
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-        &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
-        &lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">    {{ define &#34;main&#34; }}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
                 {{ range first 1 .Site.RegularPages }}
-                &lt;<span style="color:#f92672">h4</span>&gt;.Title&lt;/<span style="color:#f92672">h4</span>&gt;
+                <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Title<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
                 {{ .Title }}
-                &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;        
+                <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>        
 
-                &lt;<span style="color:#f92672">h4</span>&gt;drink&lt;/<span style="color:#f92672">h4</span>&gt;
+                <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>drink<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
                 {{ .Params.drink }}
-                &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;  
-                &lt;<span style="color:#f92672">h4</span>&gt;bread&lt;/<span style="color:#f92672">h4</span>&gt;
+                <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>  
+                <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>bread<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
                 {{ .Params.bread }}
-                &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;  
+                <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>  
                 {{ end }}    
-        &lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;/<span style="color:#f92672">div</span>&gt;
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     {{ end }}
 </code></pre></div><p>
 
@@ -1065,18 +1067,18 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
 <li>
 <p>Section 내 게시글 불러오기</p>
 <p>Section을 둘 이상 활용하다보면 겪게되는 문제가 있다. 내가 원하는건 항목에 포함된 모든 게시글을 불러오는 건데 실제로는  하위 항목으로 연결하는 경로만 생성되는 경우가 그렇다. 아이폰 페이지에 들어가면 아이폰 프로 11, 아이폰 맥스 11 등 아이폰 항목에 있는 모든 게시글이 나오도록 구성하고 싶은데, 실제로 아이폰 페이지에 들어가면 프로, 맥스만 표시되고 게시글은 존재하지 상황이다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;{{.Title}}&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{.Title}}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
     {{range .Pages}}
-    &lt;<span style="color:#f92672">h2</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.Permalink}}&#34;</span>&gt; {{.Title}} &lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">h2</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{.Permalink}}&#34;</span><span class="p">&gt;</span> {{.Title}} <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{end}}
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -1088,20 +1090,20 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
 </div>
 </p>
 <p>현재 이런 상황이라면 아마 <code>{{range .Pages}}</code>를 활용해서 페이지가 구성되어 있을거다. 이 명령어는 바로 아래 게층에 있는 페이지만 불러오기 때문에 프로, 맥스와 같은 하위 section만 불러온다. 이때 <code>{{range .Pages}}</code>를 한번 더 사용한다면 하위 section에 있는 게시글 모두 불러오게 되므로 아이폰으로 분류된 모든 게시글을 불러올 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
     {{ range .Pages }}
-    &lt;<span style="color:#f92672">h2</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.Permalink}}&#34;</span>&gt; {{ .Title }} &lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">h2</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{.Permalink}}&#34;</span><span class="p">&gt;</span> {{ .Title }} <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ range .Pages }}
-    &lt;<span style="color:#f92672">h4</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">h4</span>&gt; &amp;nbsp;
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span> <span class="ni">&amp;nbsp;</span>
     {{ end }}{{ end }}
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -1156,35 +1158,35 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
 <li>
 <p>Taxonomy 불러오기</p>
 <p>front matter에 설정한 태그 별로 페이지를 불러오자.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;{{.Title}}&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{.Title}}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 
-    &lt;<span style="color:#f92672">section</span>&gt;
-        &lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;all-taxonomies&#34;</span>&gt;
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;all-taxonomies&#34;</span><span class="p">&gt;</span>
             {{ range $taxonomy_term, $taxonomy := .Site.Taxonomies }}
                 {{ with $.Site.GetPage (printf &#34;/%s&#34; $taxonomy_term) }}
-                    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span>&gt;Taxonomy : {{ $taxonomy_term }}&lt;/<span style="color:#f92672">a</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt; <span style="color:#75715e">&lt;!--Taxonomy 이름--&gt;</span>
-                        &lt;<span style="color:#f92672">ul</span>&gt;
+                    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>Taxonomy : {{ $taxonomy_term }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span> <span class="c">&lt;!--Taxonomy 이름--&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
                             {{ range $key, $value := $taxonomy }}
-                                &lt;<span style="color:#f92672">li</span>&gt;Term : {{ $key }}&lt;/<span style="color:#f92672">li</span>&gt; <span style="color:#75715e">&lt;!--Terms--&gt;</span>
-                                &lt;<span style="color:#f92672">ul</span>&gt;
+                                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Term : {{ $key }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span> <span class="c">&lt;!--Terms--&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
                                     {{ range $value.Pages }}
-                                        &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">hugo-nav</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .RelPermalink}}&#34;</span>&gt;
-                                            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink}}&#34;</span>&gt;Page : {{ .LinkTitle }}&lt;/<span style="color:#f92672">a</span>&gt; <span style="color:#75715e">&lt;!--Pages--&gt;</span>
-                                        &lt;/<span style="color:#f92672">li</span>&gt;
+                                        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">hugo-nav</span><span class="o">=</span><span class="s">&#34;{{ .RelPermalink}}&#34;</span><span class="p">&gt;</span>
+                                            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink}}&#34;</span><span class="p">&gt;</span>Page : {{ .LinkTitle }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="c">&lt;!--Pages--&gt;</span>
+                                        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
                                     {{ end }}
-                                &lt;/<span style="color:#f92672">ul</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+                                <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
                             {{ end }}
-                        &lt;/<span style="color:#f92672">ul</span>&gt;
-                    &lt;/<span style="color:#f92672">li</span>&gt;
+                        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
                 {{ end }}
             {{ end }}
-        &lt;/<span style="color:#f92672">ul</span>&gt;
-    &lt;/<span style="color:#f92672">section</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -1208,30 +1210,30 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
 
 </div>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ range .Pages }}
-    <span style="color:#75715e">&lt;!--테스트용 페이지 하나 불러오기 --&gt;</span>
+    <span class="c">&lt;!--테스트용 페이지 하나 불러오기 --&gt;</span>
     {{ range last 1 .Pages }}
     {{.Title}}
-    &lt;<span style="color:#f92672">br</span>&gt;
-    <span style="color:#75715e">&lt;!--Single page에 사용하려면 여기서부터 --&gt;</span>
-    <span style="color:#75715e">&lt;!--.frontmatter에서 categories 대신 tags를 썼다면 Params.tags와 /tags/로 변경--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--Single page에 사용하려면 여기서부터 --&gt;</span>
+    <span class="c">&lt;!--.frontmatter에서 categories 대신 tags를 썼다면 Params.tags와 /tags/로 변경--&gt;</span>
     {{ with .Params.categories }}
     {{ range . }}
-        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{ &#34;/categories/&#34; | relLangURL }}{{. | urlize }}&#39;</span>&gt;
-        &lt;<span style="color:#f92672">span</span> &gt;{{. | upper }}&lt;/<span style="color:#f92672">span</span>&gt;
-        &lt;/<span style="color:#f92672">a</span>&gt;
-        &lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;{{ &#34;/categories/&#34; | relLangURL }}{{. | urlize }}&#39;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="p">&gt;</span>{{. | upper }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
     {{ end }}{{ end }}
-    <span style="color:#75715e">&lt;!-- 여기까지 복사--&gt;</span>
+    <span class="c">&lt;!-- 여기까지 복사--&gt;</span>
 
     {{ end }}{{ end }}
 
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{end }}
 </code></pre></div></li>
 </ul>
@@ -1252,46 +1254,46 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
 
 </div>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--하위 페이지 별 페이지 개수 불러오기--&gt;</span>
-&lt;<span style="color:#f92672">h5</span>&gt;전체보기 {{ len .Site.RegularPages }}개&lt;/<span style="color:#f92672">h5</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--하위 페이지 별 페이지 개수 불러오기--&gt;</span>
+<span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span>전체보기 {{ len .Site.RegularPages }}개<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
 
-<span style="color:#75715e">&lt;!--Section 별 페이지 개수 불러오기--&gt;</span>
-&lt;<span style="color:#f92672">ul</span>&gt;
+<span class="c">&lt;!--Section 별 페이지 개수 불러오기--&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
     {{ range .Site.Sections }} 
-    &lt;<span style="color:#f92672">li</span>&gt;
-      &lt;<span style="color:#f92672">h5</span>&gt; {{ .Title }} --- {{ len .Pages }}개 &lt;/<span style="color:#f92672">h5</span>&gt; 
-    &lt;/<span style="color:#f92672">li</span>&gt;
-    &lt;<span style="color:#f92672">ul</span>&gt;
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span> {{ .Title }} --- {{ len .Pages }}개 <span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span> 
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
         {{ range .Pages }}
-      &lt;<span style="color:#f92672">li</span>&gt;
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
         {{ .File }} --- {{ .Title }} --- {{ len .Pages }}개
-      &lt;/<span style="color:#f92672">li</span>&gt;
+      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
         {{ end }}
-    &lt;/<span style="color:#f92672">ul</span>&gt;
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
     {{ end }}
-&lt;/<span style="color:#f92672">ul</span>&gt;
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </code></pre></div></li>
 </ul>
 <br>    
 <ul>
 <li>
 <p><strong><a href="https://gohugo.io/functions/dateformat/#datetime-formatting-layouts">날짜 표현 방법 변경하기</a> | <code>date fortmat</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center; height: 1000px;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">div</span>  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span>&gt;
-    &lt;<span style="color:#f92672">h1</span>&gt;결과&lt;/<span style="color:#f92672">h1</span>&gt;
-    &lt;<span style="color:#f92672">br</span>&gt;
-        <span style="color:#75715e">&lt;!-- 페이지 불러오기--&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; height: 1000px;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin: 200px auto; font-size: 1.1em;&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>결과<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- 페이지 불러오기--&gt;</span>
         {{ range first 1 .Site.RegularPages }}
-        &lt;<span style="color:#f92672">h4</span>&gt;.Date&lt;/<span style="color:#f92672">h4</span>&gt;
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>.Date<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {{ .Date }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
         {{ .Date | time.Format &#34;:date_long&#34; }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
         {{ .Date | time.Format &#34;:date_short&#34; }}
-        &lt;<span style="color:#f92672">br</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;      
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>      
         {{ end }}
-&lt;/<span style="color:#f92672">div</span>&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 {{ end }}
 </code></pre></div><p>
 
@@ -1399,13 +1401,13 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
           <div class="img-box col-2 p-1">
             <a href="https://yangoos57.github.io/hugo/tips/prism/">
               <img loading="lazy" class="img-fluid" src="https://yangoos57.github.io/"
-                onerror="this.onerror=null;this.src='https:\/\/yangoos57.github.io\/images\/home\/hugo1.jpg'" alt="Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 ">
+                onerror="this.onerror=null;this.src='https:\/\/yangoos57.github.io\/images\/home\/hugo1.jpg'" alt="Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 ">
             </a>
           </div>
           <div class="col-10">
             <div class="card-body">
     
-              <h3 class="card-title mt-1 mb-1 fw-bolder"><a href="https://yangoos57.github.io/hugo/tips/prism/" style="color:#37352f !important;">Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </a></h3>
+              <h3 class="card-title mt-1 mb-1 fw-bolder"><a href="https://yangoos57.github.io/hugo/tips/prism/" style="color:#37352f !important;">Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 </a></h3>
       
               <div>
                 <span class="post-date">10 Mar, 2022&nbsp;</span>
@@ -1455,35 +1457,7 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
         <aside class="pr-3">
           
       
-        <div id="toc" class="sticky-lg-top">
-          <div class="toc_line" >
-            
-            <b>2부 Hugo Docs 활용을 위한 문법 정리</b><nav id="TableOfContents">
-  <ul>
-    <li><a href="#연습환경-구축하기">연습환경 구축하기</a>
-      <ul>
-        <li><a href="#연습장-만들기">연습장 만들기</a></li>
-      </ul>
-    </li>
-    <li><a href="#hugo-기본문법">Hugo 기본문법</a>
-      <ul>
-        <li><a href="#변수-설정-및-불러오기">변수 설정 및 불러오기</a></li>
-        <li><a href="#조건절">조건절</a></li>
-        <li><a href="#page-불러오기">Page 불러오기</a></li>
-        <li><a href="#hugo-기본-변수">Hugo 기본 변수</a></li>
-        <li><a href="#자료-불러오기">자료 불러오기</a></li>
-        <li><a href="#front-matter">Front matter</a></li>
-        <li><a href="#section과-taxonomy">Section과 Taxonomy</a></li>
-        <li><a href="#기타-유용한-함수">기타 유용한 함수</a>
-          <ul>
-            <li><a href="#이상으로-hugo-기본-문법에-대해-다뤘다-이-글을-읽고-hugo를-이해하는데-작은-도움이라도-됐으면-좋겠다">이상으로 Hugo 기본 문법에 대해 다뤘다. 이 글을 읽고 Hugo를 이해하는데 작은 도움이라도 됐으면 좋겠다.</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-        </div>
+        
       
  
       <div id="disqus_thread"></div>
@@ -1571,7 +1545,7 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
           <h4>
             <a href="../../../">🌏 전체보기
             <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
-              4
+              6
             </span>
             </a>
           </h4>
@@ -1580,6 +1554,22 @@ Description: 'description은 검색엔진이 페이지를 참조할 때 사용�
           <br><br>
           <ul class="ps-0" style="list-style: none;">
             
+            <li>
+              <h5><a href="../../../python">🔗&nbsp;PYTHON</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
             <li>
               <h5><a href="../../../hugo">🔗&nbsp;HUGO</a> </h5>
             </li>

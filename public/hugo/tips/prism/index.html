@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </title>
+    <title>Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="Hugo 게시글 내 syntax highlighter를 변경하는 글이다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 이 글을 보고 설치할 수 있도록 작성했다. syntax highlighter로 prism을 활용한다.">
+    <meta name="description" content="Hugo 게시글 내 syntax highlighter를 변경하는 글이다. HTML, CSS, Hugo에 익숙하지 않은 사용자들도 이 글을 보고 설치할 수 있도록 작성했다. syntax highlighter로 prism을 활용한다. code block, 코드블록, 코드블럭">
     
     <meta name="google-site-verification" content="cGIJ_4UB82a6wkT0s71AkXfCqej5-Svsic6s2N0YrLk" />  
 
@@ -27,14 +27,16 @@
     
     
     
-    <link rel="stylesheet" href="../../../css/prism.css" media="none" onload="this.media='all';">
-    <script defer language="javascript" type="text/javascript"  src="../../../js/prism.js"></script>
-
+    <link rel="stylesheet" href="../../../css/nord.min.css">
+    <script src="../../../js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
     <script defer language="javascript" type="text/javascript"  src="../../../js/medium-zoom.js"></script>
     <script defer language="javascript" type="text/javascript"  src="../../../js/zoom_custom.js"></script>
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
 
     
@@ -67,7 +69,7 @@
     
     <div class="Subhead">
       <div class="Subhead-heading">
-        <div class="h1 mt-3 mb-3">Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </div>
+        <div class="h1 mt-3 mb-3">Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 </div>
       </div>
       <div class="Subhead-description">
         
@@ -88,8 +90,8 @@
 
 
 
-<a href='../../../tags/%EC%BD%94%EB%93%9C-%EB%B0%95%EC%8A%A4' class="muted-link">
-  <span class="badge text-white" style="background-color: #84aec4;" >코드 박스</span>
+<a href='../../../tags/%EC%BD%94%EB%93%9C-%EB%B8%94%EB%9F%AD' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >코드 블럭</span>
 </a>
 
 <a href='../../../tags/syntax-highlighter' class="muted-link">
@@ -98,6 +100,10 @@
 
 <a href='../../../tags/prism' class="muted-link">
   <span class="badge text-white" style="background-color: #84aec4;" >PRISM</span>
+</a>
+
+<a href='../../../tags/code-block' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >CODE BLOCK</span>
 </a>
 
         
@@ -116,35 +122,22 @@
       <section class="markdown-body">
         <br>
 <h2 id="구현하고자-하는-기능">구현하고자 하는 기능</h2>
-<p><strong>Syntax highlighter 예시</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-<span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
-<span style="color:#f92672">import</span> os
+<h3 id="syntax-highlighter-예시">Syntax highlighter 예시</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
-<span style="color:#75715e">### 현재 경로</span>
-os<span style="color:#f92672">.</span>getcwd()
+<span class="c1">### 현재 경로</span>
+<span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 
-<span style="color:#75715e">### 변수 불러오기</span>
-continent_poss <span style="color:#f92672">=</span> country_df<span style="color:#f92672">.</span>Continent<span style="color:#f92672">.</span>unique()
-bycontinentyear_df <span style="color:#f92672">=</span> country_df<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Continent&#39;</span>, <span style="color:#e6db74">&#39;year&#39;</span>])[<span style="color:#e6db74">&#39;Perceptions_of_corruption&#39;</span>]<span style="color:#f92672">.</span>mean()
-print(bycontinentyear_df<span style="color:#f92672">.</span>loc[<span style="color:#e6db74">&#39;Asia&#39;</span>,[<span style="color:#ae81ff">2010</span>,<span style="color:#ae81ff">2019</span>]])
+<span class="c1">### 변수 불러오기</span>
+<span class="n">continent_poss</span> <span class="o">=</span> <span class="n">country_df</span><span class="o">.</span><span class="n">Continent</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">bycontinentyear_df</span> <span class="o">=</span> <span class="n">country_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Continent&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])[</span><span class="s1">&#39;Perceptions_of_corruption&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bycontinentyear_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Asia&#39;</span><span class="p">,[</span><span class="mi">2010</span><span class="p">,</span><span class="mi">2019</span><span class="p">]])</span>
 
-<span style="color:#75715e">### 옵션</span>
-markers_options <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;o&#39;</span>,<span style="color:#e6db74">&#39;^&#39;</span>,<span style="color:#e6db74">&#39;p&#39;</span>,<span style="color:#e6db74">&#39;8&#39;</span>,<span style="color:#e6db74">&#39;s&#39;</span>,<span style="color:#e6db74">&#39;p&#39;</span>,<span style="color:#e6db74">&#39;*&#39;</span>]
+<span class="c1">### 옵션</span>
+<span class="n">markers_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">]</span>
 
-<span style="color:#75715e">### lineplot 구현</span>
-<span style="color:#66d9ef">for</span> i, c <span style="color:#f92672">in</span> enumerate(continent_poss):
-    plt<span style="color:#f92672">.</span>plot([<span style="color:#ae81ff">2010</span>,<span style="color:#ae81ff">2019</span>], bycontinentyear_df<span style="color:#f92672">.</span>loc[c,[<span style="color:#ae81ff">2010</span>,<span style="color:#ae81ff">2019</span>]], label<span style="color:#f92672">=</span>c, marker <span style="color:#f92672">=</span> markers_options[i])
-
-<span style="color:#75715e">### plot 수정</span>
-plt<span style="color:#f92672">.</span>xticks([<span style="color:#ae81ff">2010</span>,<span style="color:#ae81ff">2019</span>])
-plt<span style="color:#f92672">.</span>legend(bbox_to_anchor<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1.05</span>, <span style="color:#ae81ff">1.0</span>))
-plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Perceptions_of_corruption&#39;</span>)
-
-
-plt<span style="color:#f92672">.</span>show()
 </code></pre></div><p><br><br></p>
 <h2 id="설치-절차">설치 절차</h2>
 <h3 id="1-prismjs와-prismcss-다운로드">1. prism.js와 prism.css 다운로드</h3>
@@ -211,12 +204,12 @@ plt<span style="color:#f92672">.</span>show()
 <ul>
 <li>
 <p><code>head.html</code>을 vscode와 같은 에디터에서 불러온 뒤 맨 하단에 아래 코드를 붙여 넣는다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:3;-o-tab-size:3;tab-size:3"><code class="language-html" data-lang="html">{{if .IsPage}}  <span style="color:#75715e">&lt;!-- Single Page에만 작동하도록 설정하는 Hugo 명령어 --&gt;</span>
-<span style="color:#75715e">&lt;!--Prism--&gt;</span>
-&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ &#34;</span><span style="color:#a6e22e">css</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">prism</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">css</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">relURL</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#a6e22e">media</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span> <span style="color:#a6e22e">onload</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;this.media=&#39;all&#39;;&#34;</span>&gt;
-<span style="color:#75715e">&lt;!-- 저장된 경로가 static/css/prism.css이 아니라면 src 경로를 수정해야한다. --&gt;</span>
-&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ &#34;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">prism</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">urlize</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">relURL</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-<span style="color:#75715e">&lt;!-- 저장된 경로가 static/js/prism.js이 아니라면 src 경로를 수정해야한다. --&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{if .IsPage}}  <span class="c">&lt;!-- Single Page에만 작동하도록 설정하는 Hugo 명령어 --&gt;</span>
+<span class="c">&lt;!--Prism--&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ &#34;</span><span class="na">css</span><span class="err">/</span><span class="na">prism</span><span class="err">.</span><span class="na">css</span><span class="err">&#34;</span> <span class="err">|</span> <span class="na">relURL</span> <span class="err">}}&#34;</span> <span class="na">media</span><span class="o">=</span><span class="s">&#34;none&#34;</span> <span class="na">onload</span><span class="o">=</span><span class="s">&#34;this.media=&#39;all&#39;;&#34;</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- 저장된 경로가 static/css/prism.css이 아니라면 src 경로를 수정해야한다. --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">language</span><span class="o">=</span><span class="s">&#34;javascript&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span>  <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ &#34;</span><span class="err">/</span><span class="na">js</span><span class="err">/</span><span class="na">prism</span><span class="err">.</span><span class="na">js</span><span class="err">&#34;</span> <span class="err">|</span> <span class="na">urlize</span> <span class="err">|</span> <span class="na">relURL</span> <span class="err">}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- 저장된 경로가 static/js/prism.js이 아니라면 src 경로를 수정해야한다. --&gt;</span>
 {{end}}
 </code></pre></div><p>
 
@@ -256,8 +249,8 @@ plt<span style="color:#f92672">.</span>show()
 
 
 
-<a href='../../../tags/%EC%BD%94%EB%93%9C-%EB%B0%95%EC%8A%A4' class="muted-link">
-  <span class="badge text-white" style="background-color: #84aec4;" >코드 박스</span>
+<a href='../../../tags/%EC%BD%94%EB%93%9C-%EB%B8%94%EB%9F%AD' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >코드 블럭</span>
 </a>
 
 <a href='../../../tags/syntax-highlighter' class="muted-link">
@@ -266,6 +259,10 @@ plt<span style="color:#f92672">.</span>show()
 
 <a href='../../../tags/prism' class="muted-link">
   <span class="badge text-white" style="background-color: #84aec4;" >PRISM</span>
+</a>
+
+<a href='../../../tags/code-block' class="muted-link">
+  <span class="badge text-white" style="background-color: #84aec4;" >CODE BLOCK</span>
 </a>
  
   <h2>😶‍🌫️ Related Posts</h2>
@@ -378,23 +375,7 @@ plt<span style="color:#f92672">.</span>show()
         <aside class="pr-3">
           
       
-        <div id="toc" class="sticky-lg-top">
-          <div class="toc_line" >
-            
-            <b>Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </b><nav id="TableOfContents">
-  <ul>
-    <li><a href="#구현하고자-하는-기능">구현하고자 하는 기능</a></li>
-    <li><a href="#설치-절차">설치 절차</a>
-      <ul>
-        <li><a href="#1-prismjs와-prismcss-다운로드">1. prism.js와 prism.css 다운로드</a></li>
-        <li><a href="#2-다운받은-prismjs-prismcss를-static폴더로-이동">2. 다운받은 prism.js, prism.css를 static폴더로 이동</a></li>
-        <li><a href="#3-html에서-js파일과-css파일-불러오기">3. html에서 js파일과 css파일 불러오기</a></li>
-        <li><a href="#4-작동여부-확인">4. 작동여부 확인</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-        </div>
+        
       
  
       <div id="disqus_thread"></div>
@@ -433,9 +414,13 @@ plt<span style="color:#f92672">.</span>show()
     
     <div id="toc" class="sticky-lg-top">
       
-      <b>Hugo 게시글 내 코드 박스(syntax highlighter) 사용하기 </b><nav id="TableOfContents">
+      <b>Hugo 게시글 내 코드 블럭(syntax highlighter) 사용하기 </b><nav id="TableOfContents">
   <ul>
-    <li><a href="#구현하고자-하는-기능">구현하고자 하는 기능</a></li>
+    <li><a href="#구현하고자-하는-기능">구현하고자 하는 기능</a>
+      <ul>
+        <li><a href="#syntax-highlighter-예시">Syntax highlighter 예시</a></li>
+      </ul>
+    </li>
     <li><a href="#설치-절차">설치 절차</a>
       <ul>
         <li><a href="#1-prismjs와-prismcss-다운로드">1. prism.js와 prism.css 다운로드</a></li>
@@ -470,7 +455,7 @@ plt<span style="color:#f92672">.</span>show()
           <h4>
             <a href="../../../">🌏 전체보기
             <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
-              4
+              6
             </span>
             </a>
           </h4>
@@ -479,6 +464,22 @@ plt<span style="color:#f92672">.</span>show()
           <br><br>
           <ul class="ps-0" style="list-style: none;">
             
+            <li>
+              <h5><a href="../../../python">🔗&nbsp;PYTHON</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
             <li>
               <h5><a href="../../../hugo">🔗&nbsp;HUGO</a> </h5>
             </li>

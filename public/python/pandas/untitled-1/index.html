@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="데이터 관리">
+    
+    <meta name="google-site-verification" content="cGIJ_4UB82a6wkT0s71AkXfCqej5-Svsic6s2N0YrLk" />  
+
+    
+    <link rel="shortcut icon" href="https://yangoos57.github.io/images/icon/icon.webp" type="image/x-icon">
+    <link rel="icon" href="https://yangoos57.github.io/images/icon/icon.webp" type="image/x-icon">
+
+
+    
+    <link rel="stylesheet" href="../../../css/primer.css">
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="../../../css/styles.css">
+
+    
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <script defer language="javascript" type="text/javascript"  src="../../../js/bootstrap.js"></script>
+
+    
+    
+    
+    <link rel="stylesheet" href="../../../css/nord.min.css">
+    <script src="../../../js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script defer language="javascript" type="text/javascript"  src="../../../js/medium-zoom.js"></script>
+    <script defer language="javascript" type="text/javascript"  src="../../../js/zoom_custom.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+
+    
+    <link rel="stylesheet" type="text/css" href='https://yangoos57.github.io/css/lightgallery.min.css' />
+    <link rel="stylesheet" type="text/css" href='https://yangoos57.github.io/css/lightslider.min.css' />
+    
+
+    
+
+
+</head>
+
+
+
+  <body>
+    <div id="holy">
+      <header id="header" class="col-12 px-1">
+        <div OnClick="location.href ='/'" class = "title">
+    <div class='title_img'style="width: 55%; margin: 25px auto;">
+      <img src="\images\title\Picture7.png" class="img-fluid" ></a>
+    </div>
+</div>
+      </header>
+      
+      <div id="sidea_list"></div>
+      
+      <main role="main" id="main" class="holy-main markdown-body mt-2 px-4">
+        
+
+    
+    <div class="Subhead">
+      <div class="Subhead-heading">
+        <div class="h1 mt-3 mb-3"></div>
+      </div>
+      <div class="Subhead-description">
+        
+
+
+
+
+<a href="https://yangoos57.github.io/python/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PYTHON</span>
+</a>
+
+
+
+<a href="https://yangoos57.github.io/python/pandas/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PANDAS</span>
+</a>
+
+
+
+        
+        <div class="float-end"> 
+          <span title="Lastmod: 0001-01-01. Published at: 0001-01-01.">
+            
+              Published: 0001-01-01
+            
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <article>
+      
+      <section class="markdown-body">
+        <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mf">60.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000000</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">,</span><span class="s1">&#39;num2&#39;</span><span class="p">,</span><span class="s1">&#39;num3&#39;</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;float_format&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>num</th>
+      <th>num2</th>
+      <th>num3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1000000.000000</td>
+      <td>1000000.000000</td>
+      <td>1000000.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10.007589</td>
+      <td>10.056873</td>
+      <td>9.939045</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>60.415315</td>
+      <td>60.521844</td>
+      <td>60.451203</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-282.352587</td>
+      <td>-287.677283</td>
+      <td>-300.389316</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-30.753797</td>
+      <td>-30.790218</td>
+      <td>-30.822618</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>9.997371</td>
+      <td>10.014887</td>
+      <td>9.953583</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>50.746170</td>
+      <td>50.891101</td>
+      <td>50.660364</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>308.740897</td>
+      <td>292.197571</td>
+      <td>294.566926</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 10 &lt; num &lt; 100</span>
+<span class="c1"># 0.5 &lt; num2 &lt; 10</span>
+<span class="c1"># 255 &lt; num3 &lt; 50</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;10 &lt; num &lt; 100 &amp; 0.5 &lt; num2 &lt; 10 &amp; 25&lt; num3 &lt; 50&#39;</span><span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="o">&gt;&gt;&gt;</span>  <span class="mi">3982</span>
+
+<span class="n">BM</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">BM2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">BM3</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num3&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num3&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">BM</span> <span class="o">&amp;</span> <span class="n">BM2</span> <span class="o">&amp;</span> <span class="n">BM3</span><span class="p">]</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="o">&gt;&gt;&gt;</span> <span class="mi">3982</span> 
+
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># query도 변수 사용 가능</span>
+<span class="c1">#10 &lt; num &lt; 20</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;@a &lt; num &lt;@b&#39;</span><span class="p">)</span> <span class="c1">#  @를 붙이면 변수 취급</span>
+
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">sub_station</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;\sub_station.csv&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;CP949&#39;</span><span class="p">)</span>
+
+<span class="c1"># 검색용 Good!!</span>
+<span class="n">sub_station</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;역사명 == &#34;김포공항&#34;&#39;</span><span class="p">)</span>
+
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>역사_ID</th>
+      <th>역사명</th>
+      <th>호선</th>
+      <th>경도</th>
+      <th>위도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>4929</td>
+      <td>김포공항</td>
+      <td>김포골드라인</td>
+      <td>126.801868</td>
+      <td>37.562360</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>4207</td>
+      <td>김포공항</td>
+      <td>공항철도1호선</td>
+      <td>126.801904</td>
+      <td>37.561842</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>4102</td>
+      <td>김포공항</td>
+      <td>9호선</td>
+      <td>126.802152</td>
+      <td>37.561916</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>2513</td>
+      <td>김포공항</td>
+      <td>5호선</td>
+      <td>126.801292</td>
+      <td>37.562384</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 여러 value 동시 검색 가능</span>
+
+<span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;김포공항&#39;</span><span class="p">,</span> <span class="s1">&#39;신논현&#39;</span><span class="p">]</span>
+<span class="n">sub_station</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;역사명 == @stations&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>역사_ID</th>
+      <th>역사명</th>
+      <th>호선</th>
+      <th>경도</th>
+      <th>위도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>107</th>
+      <td>4125</td>
+      <td>신논현</td>
+      <td>9호선</td>
+      <td>127.025060</td>
+      <td>37.504598</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4929</td>
+      <td>김포공항</td>
+      <td>김포골드라인</td>
+      <td>126.801868</td>
+      <td>37.562360</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>4207</td>
+      <td>김포공항</td>
+      <td>공항철도1호선</td>
+      <td>126.801904</td>
+      <td>37.561842</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>4102</td>
+      <td>김포공항</td>
+      <td>9호선</td>
+      <td>126.802152</td>
+      <td>37.561916</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>2513</td>
+      <td>김포공항</td>
+      <td>5호선</td>
+      <td>126.801292</td>
+      <td>37.562384</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># matplotlib 폰트설정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumGothic&#39;</span><span class="p">)</span> <span class="c1"># For Windows</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span>
+
+<span class="c1"># plt 스타일 </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+
+<span class="n">asd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mf">10.44</span><span class="p">,</span><span class="mf">7.55</span><span class="p">,</span><span class="mf">5.02</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">asd</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;boolean_mask&#39;</span><span class="p">,</span><span class="s1">&#39;isin&#39;</span><span class="p">,</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">asd</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">asd</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span><span class="s1">&#39;tab:green&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;number of iteration/Sec&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre></div><p>
+
+<div style="background-color: white;border: 1px solid black; text-align: center; padding: 2px">
+
+<img src="https://yangoos57.github.io/images/output_10_0.png">
+
+
+</div>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">## query</span>
+<span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;김포공항&#39;</span><span class="p">,</span> <span class="s1">&#39;신논현&#39;</span><span class="p">,</span><span class="s1">&#39;여의도&#39;</span><span class="p">,</span><span class="s1">&#39;여의나루&#39;</span><span class="p">]</span>
+<span class="n">sub_station</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;역사명 == @stations&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">## isin</span>
+<span class="n">stations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;김포공항&#39;</span><span class="p">,</span> <span class="s1">&#39;신논현&#39;</span><span class="p">,</span><span class="s1">&#39;여의도&#39;</span><span class="p">,</span><span class="s1">&#39;여의나루&#39;</span><span class="p">]</span>
+
+<span class="n">BM</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">stations</span><span class="p">)</span>
+<span class="n">sub_station</span><span class="p">[</span><span class="n">BM</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="c1">## boolean mask</span>
+<span class="n">BM1</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;김포공항&#39;</span>
+<span class="n">BM2</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;신논현&#39;</span>
+<span class="n">BM3</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;여의도&#39;</span>
+<span class="n">BM4</span> <span class="o">=</span> <span class="n">sub_station</span><span class="p">[</span><span class="s1">&#39;역사명&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;여의나루&#39;</span>
+
+<span class="n">sub_station</span><span class="p">[</span><span class="n">BM1</span> <span class="o">|</span> <span class="n">BM2</span> <span class="o">|</span> <span class="n">BM3</span> <span class="o">|</span> <span class="n">BM4</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;역사명&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>역사_ID</th>
+      <th>역사명</th>
+      <th>호선</th>
+      <th>경도</th>
+      <th>위도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>117</th>
+      <td>4115</td>
+      <td>여의도</td>
+      <td>9호선</td>
+      <td>126.924030</td>
+      <td>37.521760</td>
+    </tr>
+    <tr>
+      <th>338</th>
+      <td>2527</td>
+      <td>여의도</td>
+      <td>5호선</td>
+      <td>126.924357</td>
+      <td>37.521747</td>
+    </tr>
+    <tr>
+      <th>337</th>
+      <td>2528</td>
+      <td>여의나루</td>
+      <td>5호선</td>
+      <td>126.932901</td>
+      <td>37.527098</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>4125</td>
+      <td>신논현</td>
+      <td>9호선</td>
+      <td>127.025060</td>
+      <td>37.504598</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4929</td>
+      <td>김포공항</td>
+      <td>김포골드라인</td>
+      <td>126.801868</td>
+      <td>37.562360</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>4207</td>
+      <td>김포공항</td>
+      <td>공항철도1호선</td>
+      <td>126.801904</td>
+      <td>37.561842</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>4102</td>
+      <td>김포공항</td>
+      <td>9호선</td>
+      <td>126.802152</td>
+      <td>37.561916</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>2513</td>
+      <td>김포공항</td>
+      <td>5호선</td>
+      <td>126.801292</td>
+      <td>37.562384</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+        <br><br><br><br><br>
+        <div class ='rel-post'>
+  <h3 style="display: inline;">🕊️</h3>
+
+
+
+
+<a href="https://yangoos57.github.io/python/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PYTHON</span>
+</a>
+
+
+
+<a href="https://yangoos57.github.io/python/pandas/">
+  <span class="badge text-dark" style="background-color: #d9e8f5;">PANDAS</span>
+</a>
+
+
+ 
+  <h2>😶‍🌫️ Related Posts</h2>
+  <div>
+     
+    
+  </div>
+
+  <br>
+
+      </section>
+    
+      <section>
+        
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yangoos92" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+      </section>
+    </article>
+    
+      </main>
+      
+      
+      <div id="sideb_list" class="mt-2 pr-1">
+        <aside class="pr-3">
+          
+      
+        
+      
+ 
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function () {
+    
+    
+    if (window.location.hostname == "localhost") return;
+
+    var dsq = document.createElement("script");
+    dsq.type = "text/javascript";
+    dsq.async = true;
+    var disqus_shortname = "yangoos92";
+    dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    (
+      document.getElementsByTagName("head")[0] ||
+      document.getElementsByTagName("body")[0]
+    ).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+        </aside>
+      </div>
+      <div id="sideb_single"><aside class="offcan-right" style="z-index: 10;">
+<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+  </svg>
+</button>
+
+
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+  <div class="offcanvas-body">
+    
+    <div id="toc" class="sticky-lg-top">
+      
+      <b></b><nav id="TableOfContents"></nav></div>
+  
+  </div>
+</div>
+</div>
+      
+    </div>
+    <div id="sidea_single">  <aside class="offcan-left">
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+    <div class='menu-icon_mobile'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </div>
+    <div class='menu-icon_pc'>
+      <svg style = "position:absolute; top:30%; left :35%;"version="1.0" xmlns="http://www.w3.org/2000/svg" fill = "gray"width="55" height="55" viewBox="0 0 512 512"><path d="M11.2 1.7C9.9 2 7.1 3.9 5.1 5.9-1.2 12.2-1.3 19.7 5 26c2 2 5.2 4 7 4.3 1.8.4 63.1.7 136.2.7 111.7 0 133.4.2 136.2 1.4 4.9 2 11.2 8.1 13.5 13 2.1 4.2 2.1 4.3 2.1 210.4 0 172.8-.2 206.8-1.4 209.6-1.8 4.3-6.8 10-11.4 12.8l-3.7 2.3-136.5.5-136.5.5-3.1 2.2C2.7 487 .6 490.9.6 496c0 5.1 2.1 9 6.8 12.3l3.1 2.2H147c129.4 0 136.8-.1 142.5-1.8a57.14 57.14 0 0 0 38.2-38.2c1.7-5.7 1.8-15.3 1.8-214.5 0-199.6-.1-208.8-1.8-214.5C322 23 308.8 9.6 290 3.4c-5.2-1.8-12.5-1.9-141-2-74.5-.1-136.5 0-137.8.3z"/><path d="M11.2 81.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 161.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM413.7 161.8c-3.8.5-10.3 7.1-10.9 11.1-1.2 8.1-1.8 7.3 37 46.3l36.6 36.8-36.6 36.7c-38.8 39.1-38.2 38.3-37 46.4.6 4.2 6.9 10.5 11.1 11.1 8.2 1.2 6.8 2.4 53.2-44.1 36.7-36.6 43.8-44.1 44.1-46.9 1.1-8.4 2.2-7-42.1-51.5-22.9-23-42.7-42.6-44.1-43.6-2.8-2-7.1-2.9-11.3-2.3zM11.2 241.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 321.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 401.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3z"/></svg>
+    </div>
+    </button>
+  
+  <div class="offcanvas offcanvas-start"  data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-body nav-box">
+        <div>
+          <h4>
+            <a href="../../../">🌏 전체보기
+            <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+              6
+            </span>
+            </a>
+          </h4>
+          
+
+          <br><br>
+          <ul class="ps-0" style="list-style: none;">
+            
+            <li>
+              <h5><a href="../../../python">🔗&nbsp;PYTHON</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../../hugo">🔗&nbsp;HUGO</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/hugo/tips/">‣ DO IT YOURSELF&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+              <li>
+                <h6><a href="https://yangoos57.github.io/hugo/documentation/">‣ 공식문서 활용하기&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../../ml">🔗&nbsp;ML</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/ml/data_viz/">‣ 데이터 시각화&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      0
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../../statistics">🔗&nbsp;STATISTICS</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/statistics/basic/">‣ BASIC&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      0
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            </ul>
+        </div>  
+    </div>
+  </div>
+
+</aside>
+<script>$(document).mouseup(function (e){
+  var LayerPopup = $(".offcanvas");
+  if(LayerPopup.has(e.target).length === 0){
+    LayerPopup.removeClass("show");
+  }
+});</script>
+
+</div>
+    <div id="footer" class="pt-2 pb-3 text-center">
+      
+
+
+  <div class="m-5 text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </div>
+
+
+    </div>
+  </body>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K109LYQBX3"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-K109LYQBX3', { 'anonymize_ip': false });
+}
+</script>
+
+  
+</html>
