@@ -1,12 +1,10 @@
 ---
-title: "예시로 나오는 ROC Curve와 Precision-Recall Curve 그리기"
+title: "예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기"
 date: 2022-05-11T13:47:07+09:00
-image: "images/home/statistic.png"
-Tags: ['Confusion Matrix','Data Visualization']
-draft: true
+image: "images/home/ML1.png"
+Tags: ['Confusion Matrix','Data Visualization', Precision-Recall Curve, ROC Curve,Machine Learning,Matplotlip, Plotly]
+draft: False
 ---
-
-
 <br>
 
 >### ROC Curve와 Precision Recall Curve
@@ -104,7 +102,7 @@ A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 의견�
 <br><br>
 
 ### Precision과 Recall
-  앞서 구한 값으로 Confusion matrix를 만들었다. Confusion Matrix를 읽을때는 label을 주의깊게 봐야한다. 지금 보이는 matrix는 X축이 예측 값이고 Y축이 실제 값이지만 X축과 Y축이 바뀐 confusion matrix도 자주 보이며, 그럴 경우 값들이 모두 뒤바뀌므로 주의하지 않는 한 잘못된 해석을 하게된다.
+  앞서 구한 값으로 Confusion matrix를 만들었다. Confusion Matrix를 읽을때는 label을 주의깊게 봐야한다. 지금 보이는 matrix는 X축이 예측 값이고 Y축이 실제 값이지만 X축과 Y축이 바뀐 confusion matrix도 자주 활용되며, 그런 경우 TP,FP,FP,FN 모두 뒤바뀌므로 주의하지 않는 한 잘못된 해석을 하게된다.
 
 ![untitle](/ML/data_viz/main_7.png)
 
@@ -113,15 +111,15 @@ A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 의견�
 
   <br>
 
-  {{< center >}}$\frac{실제로 \\ True인 \\ 값}{P로\ 예측한\ 값} = \frac{TP}{TP+FP} = \frac{TP}{P} ${{< /center >}}
+  {{< center >}}$\large\frac{실제로 \\ True인 \\ 값}{P로\ 예측한\ 값} = \frac{TP}{TP+FP} = \frac{TP}{Predict \ Positive} ${{< /center >}}
 
   <br><br>
 
-  ▸ 전담팀장의 Precision은 3명을 범인으로 예측했고 세명 모두 범인이므로 100%이다.
+  ▸ 전담팀장의 Precision은 3명을 범인으로 예측했고(`P=3`), 3명 모두 범인(`TP=3`)이므로 100%이다.
 
-  ▸ 수사부장의 Precision은 5명을 범인으로 예측했고 그중 4명이 범인이므로 80%이다.
+  ▸ 수사부장의 Precision은 5명을 범인으로 예측했고(`P=5`), 4명이 범인이므로(`TP=4`) 80%이다.
 
-  ▸ 관할청장의 Precision은 8명을 범인으로 예측했고 그중 6명이 범인이므로 75%이다.
+  ▸ 관할청장의 Precision은 8명을 범인으로 예측했고(`P=8`), 6명이 범인이므로(`TP=6`) 75%이다.
   
   <br><br>
 
@@ -130,100 +128,133 @@ A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 의견�
 
   <br>
 
-  {{< center >}} $\frac{실제로  \ True인  \ 값}{전체 \ True} = \frac{TP}{TP+FN} = \frac{TP}{T}$ {{< /center >}}
+  {{< center >}} $\large \frac{실제로  \ True인  \ 값}{전체 \ True} = \frac{TP}{TP+FN} = \frac{TP}{True}$ {{< /center >}}
   
   <br><br>
 
-  ▸ 전담팀장의 Recall은 범인 6명 중 실제론 3명만을 찾았기에 50%이다.
+  ▸ 전담팀장의 Recall은 범인 6명 중(`T=6`) 실제론 3명만을 찾았기에(`TP=3`) 50%이다.
 
-  ▸ 수사부장의 Recall은 범인 6명 중 실제론 4명만을 찾았기에 67%이다.
+  ▸ 수사부장의 Recall은 범인 6명 중(`T=6`) 실제론 4명만을 찾았기에(`TP=4`) 67%이다.
 
-  ▸ 관할청장의 Recall은 범인 6명 중 실제로 6명을 찾았으므로 100%이다.
+  ▸ 관할청장의 Recall은 범인 6명 중(`T=6`) 실제로 6명을 찾았으므로(`TP=6`) 100%이다.
 
 <br><br>
 
+  > ### 종합
 
-표 그리기
-         전담팀장   수사부장  청장
-Precision
-Recall 
+세명의 Precision과 Recall을 종합하였다.Precision이 높다면 Recall은 낮아지고 Recall이 높다면 Presion이 낮아지는 현상을 발견할 수 있다. Precision과 Recall은 한쪽이 높아지면 한쪽이 낮아지는 Trade off 관계임을 알 수 있다.
+<br><br>
 
-<br>
+|      	| Precision 	| Recall 	|
+|-------:	|------------:	|----------:	|
+| 팀장 	|      100% 	|    50% 	|
+| 부장 	|       80% 	|    67% 	|
+| 청장 	|       75% 	|   100% 	|
 
-세명의 Precision과 Recall을 종합해보니 추세가 보인다. Precision이 높다면 Recall은 낮아지고 Recall이 높다면 Presion이 낮아진다. Precision과 Recall은 한쪽이 높아지면 한쪽이 낮아지는 Trade off 관계임을 알 수 있다.
 
-<br><br><br><br>
+<br><br><br>
 
 
 
 ## ROC Curve, PE/RC Curve 해석하기 
-confusion matrix를 복습했으니 이제 그래프를 해석할 준비가 됐다. confusion matrix를 활용한 그래프가 직관적이지 않은 이유에 대해선 앞서 언급한바 있다. 하지만 용어를 안다고 할지라도 어떤 생각 하나가 자리잡고 있으면 그래프 해석에 큰 방해가 된다. 어쩌면 용어보다 어떠한 생각 하나가 그래프를 직관적으로 이해하는데 더 큰 방해가 되는지도 모른다. 
-<br><br>
+<br>
 
-그 생각은 바로 x가 변하고 난 뒤 y값이 변한다는 생각이다. 우리는 $y=ax^2+bx+c$와 같은 함수에 익숙하다. x값을 넣으면 y값이 나온다. 그리고 이를 그래프로 그린다. 그러기 때문에 x값이 변한 뒤 y값이 변하는 상황에 익숙하다. 
-<br><br>
+> ### 직관적인 이해를 방해하는 요소
+Confusion matrix는 Classification 모델의 성능을 파악하는데 매우 유용한 도구이다. 하지만 데이터 분석에 익숙하지 않은 조직 구성원들과  Confusion matrix를 활용해 소통을 하기엔 어려움이 있다. 
 
-하지만 지금배울 Curve는 그렇게 생각하면 곤란하다. 물론 PE/RC curve에서 RC가 변하면 PE도 변하는게 맞다. 그렇지만 RC가 우선적으로 변하는 건 아니다. 우리는 앞서 범인을 색출하는 과정에서 PE/RC를 도출해본 경험이 있다. 이를 활용해 PE/RC Curve를 그려보자.
-<br><br>
+용어를 처음 접하거나 익숙하지 않는 구성원들에게는 TP,TN,FP,FN과 같은 용어가 바로 와닿지 않으며 이를 응용한 용어들 또한 바로 이해하는데 어려움을 겪는다. 
+
+ROC curve와 Precision recall curve를 이해하는데는 용어 말고도 그래프를 이해하는데 방해하는 추가적인 요소가 있다. 어쩌면 그래프를 이해하는데 있어 이 요소가 용어가 주는 어려움보다 더 클 수도 있다. 
+
+그 생각은 바로 x가 변하고 난 뒤 y값이 변한다는 생각이다. 우리는 $y=ax^2+bx+c$와 같이 x값에 따라 y 값이 변하는 함수에 익숙하다. 하지만 우리가 그릴 그래프는 이러한 사고로 해석하려다보면 앞뒤가 맞지 않는 듯한 느낌을 받는다. Precision과 Recall은 기본적으로 trade off 관계이므로 반비례 관계가 성립되긴 하나 Recall이 변하기 때문에 Precision이 변하는 관계는 아니이기 때문이다. 
+
+아래 그래프의 Threshold를 100%에서 0%로 천천히 옮겨보자. Threshold가 변하면서 Confusion matrix가 달라지게 되고, 그에따라 Precision과 Recall이 동시에 변하게 된다. 
+
+Threshold는 앞서 설명한 예시에서 범인을 선정하는 기준이라고 보면 된다. 100% threshold는 100%라고 확신이 드는 범인이지 않는 한 범인으로 예측하지 않는다는 말이다. threshold가 점점 낮아지면서 범인으로 예측하는 수가 늘어나게 되고 0%에 도달해서는 모든 용의자를 범인으로 여기는 순간에 도달하게 된다. 
+
+  <iframe src="https://ploteaxamples.herokuapp.com/" style='width:100%; height: 800px'></iframe>
+
 
 <br>
 
-경찰 PE/RC curve 그려서 설명하기 + 테이블도 만들어서 더 쉽게 표현하기
+이처럼 confsion matrix에 기반한 그래프는 threshold가 변함에 따라 confusion matrix가 새롭게 계산되고 그에따라 PE/RC 또는 TPR/FPR이 계산된다. 따라서 x값이 변하면 y값이 변한다는 생각으로 그래프를 해석하려다보면 이해가 되는듯 하지만 앞뒤가 맞지않는 상황에 놓이게 되는 것이다. 
 
-<br>
+이러한점에 익숙한 구성원들과의 대화에는 confusion matrix와 관련 그래프가 매우 유용하게 사용될 수 있으나 익숙하지 않은 구성원들에게 이를 설명하고자 할 때는 이를 고려해 사전에 충분한 설명이나 차라리 다른 방법으로 설명해야한다.
 
-PE와 RC를 계산하려면 우선 confusion matrix가 필요하다. 그리고 confusion matrix는 기준을 가지고 만들어진다. 기준(=Treshold)이 달라져야 confusion matrix도 달라지고 PE와 RC도 달라진다. 따라서 그래프를 그리기 위해서는 Treshold 먼저 달라져야 한다. 우리가 threshold의 존재를 생각하지 않고서 원래 생각하던 방식대로 PE/RC curve를 해석하려고 하면 해석이 무척 난해해진다. 심지어 ROC Curve나 PE/RC Curve에는 Threshold에 대한 언급이 일절 없기에 이를 모르는 사람들은 어떻게 해석해야할지 힌트를 얻지도 못한다.
+confusion matrix를 보다 직관적으로 이해하고자 하는 시도로 lift classifier와 curmulative curve 등이 있지만 글의 주제와는 벗어나는 내용이므로 생략한다.
 
 <br><br>
 
 
-### TPR과 FPR을 함께 사용하는 이유
+### ROC Curve
 
 <br>
 
 
-> ### True Positive Rate = Sensitivity = Recall
+  > ### True Positive Rate = Sensitivity = Recall
+  True Positive Rate는 전체 True 중에서 TP를 얼마만큼 식별했는지 관심이 있다. confusion matrix에서 가장 중요한 항목이 TP이다 보니 True Positive를 활용한 방법에는 여러 이름이 붙게되었다. True Positive Rate를 부르는 다른 중 자주 쓰이는 이름으로는 Recall, Sensitivity이 있다.  
 
-  TP,TN,FP,FN 중 가장 중요한 값은 TP이다. 우리는 미래를 예측하고 싶어하고 그 예측이 맞기를 바라기 때문이다. 그러다보니 TPR은 쓰임이 많아 불리는 이름도 여러가지다. 우리는 앞에서 이미 Recall을 배웠다. 내용을 다시 상기하면, Recall은 True를 얼마나 찾았는지에 관심있다고 했다. 그래서 TP를 전체 T로 나눈다. 여기서 소소한 팁을 주자면 뒤에 Rate가 붙는 용어는 모두 True labels를 분모로 한다. FNR은 FN을 전체 T로 나눈다. TNR은 TN을 전체 F로 나눈다. 
+  용어 이해를 위한 작은 팁을 주자면, 뒤에 Rate가 붙는 용어들 모두 True labels를 분모로 가진다. TPR은 전체 True 중(TP+FN) TP의 비율을 뜻하며 FPR은 전체 False 중(FP+TN) FP의 비율을 뜻한다. 
 
 <br><br>
 
 
   > ### False Positive Rate
   
-  FPR도 Rate가 들어갔기 때문에 FP를 전체 F로 나눠서 구한다. FPR은 TPR과 다르게 다른 이름이 없다. 그만큼 중요도가 낮아서 그렇다. 그럼 중요도가 낮음에도 왜 사용되는 걸까? ROC Curve에 쓰이는 이유는 아래 ROC Curve를 보면 쉽게 알 수 있다. 
+  FPR은 전체 False(FP+FN)에서 예측이 틀린 경우(FP)가 얼마나 되는지에 관심있다. 
   <br><br>
 
-  그래프 시작점인 Threshold = 1 에서는 어떤 값도 예측하지 않은 상태다. 그래서 Positive 라인이 모두 (0,0)이다. 따라서 TPR과 FPR 모두 0이다. Threshold는 Positive로 예측하는 기준이라 했다. 범인이라고 100%로 확신이 드는 용의자가 없기에 (0,0)이었다. 이제 threshold를 내려보자. 범인이라 판단하는 기준이 낮아질수록 예측이 많아면서 TP와 FP 모두 증가한다. 그러다가 결국에는 0% 까지 기준을 낮추면 결국 모든 값이 왼편으로 간다.
+  > ### 그래프 해석
+
+  그래프 시작인 Threshold = 100%인 상태는 어떤 값도 용의자도 범인으로 지목되지 않은 경우이다. Confusion matrix의 Positive 라인이 모두 (0,0)를 확인 할 수 있으며, 따라서 TPR과 FPR 모두 0이된다. 
+  
+  hreshold를 내릴수록 범인이라 판단하는 기준이 낮아지고, 범인으로 지목된 용의자가 많아지면서 TP와 FP 모두 증가한다. FPR과 TPR이 증가하고, 0% 까지 기준을 낮추면 결국 모든 값이 Predict로 이동하여 TPR과 FPR 모두 1에 도달한다.
+
+   ROC Curve에서 우리가 관심있게 봐야하는 점은 FPR 대비 TPR의 변화량이다. 모델이 좋을수록 같은 FPR에서 더 높은 TPR을 갖게 된다.
+   
+   <br><br>
+
+  {{< test dir="/plotly/test" >}}
+
+
   <br><br>
 
-  중요도가 높은 TPR을 FPR과 사용하는 이유는 결국 Threshold를 100%에서 0%으로 낮추는 과정을, 다른말로 표현한다면 P로 예측한 값이 0 에서 전체(12)로 이동하면서 TP와 FP의 변화를 보여주기 위함이다. 
-  <br><br>
 
-> ### 다른 모델과 비교하기
 
-  이번엔 ROC Curve를 활용해 여러 모델을 비교해보자. 이번에는 전국에는 보이스 피싱 전담팀이 A팀 말고도 두 팀더 있다고 해보자. B팀은 경찰청장 직속 팀이라 유능한 형사들로만 팀을 꾸렸고 C팀은 경험이 많이 없는 형사들이 주로 있는 팀이다. 
+  > ### 다른 모델과 비교하기
+
+  이번엔 ROC Curve를 활용해 여러 모델을 비교해보자. 이번에는 전국에는 보이스 피싱 전담팀이 A팀 말고도 두 팀이 더 있다. B팀은 경찰청장 직속 팀이라 유능한 형사들로만 팀을 꾸렸고 C팀은 신설된지 얼마되지 않아 경험이 많이 없는 형사들이 주로 있는 팀이다. 
   <br><br>
 
   A팀 처럼 B팀,C팀도 12명의 용의자를 붙잡고 가장 범인일 것 같은 순으로 나열하였다. 
   <br><br>
 
-  <br>
+  
   B팀의 예상과 실제 범인 분포이다.
+    ![untitle](/ML/data_viz/main_8.png)
+
 
   C팀 예상과 실제 범인 분포이다. 
-  <br><br>
+    ![untitle](/ML/data_viz/main_9.png)
 
-  A,B,C팀의 ROC Curve만 보더라도 어떤 팀의 성과가 좋은지 바로 알 수 있다. FP Rate 0.2를 기준으로 보면 B팀의 TP Rate는 1이다. A팀은 최소한의 희생으로 범인 모두를 색출해내는 진정한 실력을 기진 팀이라는 사실을 알 수 있다.
-  <br><br>
+  이렇게 나열한 그림만 본다면 어느 팀이 더 유능한 팀인지 분간하기 어렵다. A~C 세 팀 중 피해자 발생이 적으면서 최대한 많은 범인을 잡아내는 팀은 어디일까?
+
+  {{< plotly json="\plotly\ROC_Curve.json" height="400px" >}}
+
+  
+
+  A,B,C팀의 ROC Curve를 그려보니 어떤 팀의 성과가 좋은지 바로 확인된다. B팀은 FP Rate 0.2에서 이미 TP Rate가 1에 도달한다. 이에 비해 A팀과 C팀의 TP Rate는 현저히 낮다. 그러므로 B팀이 가장 능력있는 팀이다.
+
+
+  <!-- <br><br>
 
   굳이 그래프를 그리지 않고도 모델 성능을 비교할 수 있다.
-  누군가에게 설명하거나 지금처럼 연습하지 않는 이상 ROC Curve를 굳이 그릴 필요는 없다. AUC Score을 계산해서 가장 큰 값을 가진 모델이 가장 성능 좋은 모델이다. AUC(Area Under Curve)는 문자 그대로  커브 아래 파란색으로 칠한 면적을 의미한다. AUC가 높아지려면 y값이 빠르게 1에 도달해야 하기 때문에 모델 성능을 보여주는 좋은 지표가 된다. Sklearn에서 AUC를 계산하는 함수가 있으니 이를 사용해 모델 성능을 비교하면 된다. 
+  누군가에게 설명하거나 지금처럼 연습하지 않는 이상 ROC Curve를 굳이 그릴 필요는 없다. AUC Score을 계산해서 가장 큰 값을 가진 모델이 가장 성능 좋은 모델이다. AUC(Area Under Curve)는 문자 그대로  커브 아래 파란색으로 칠한 면적을 의미한다. AUC가 높아지려면 y값이 빠르게 1에 도달해야 하기 때문에 모델 성능을 보여주는 좋은 지표가 된다. Sklearn에서 AUC를 계산하는 함수가 있으니 이를 사용해 모델 성능을 비교하면 된다.  -->
   <br><br><br><br>
 
 
-### Precision과 Recall을 함께 사용하는 이유
-ROC Curve는 예측 모델이 실제 True를 많이 찾아내는 동시에 동시에 실수를 얼마나 적게 발생시키는지 확인하는 지표라면 PE/RC Curve는 모델이 얼마나 예측을 잘하는지를 확인하기 위해 사용하는 지표이다. Y축에 표시되는 Precision은 비율이 올라갈수록 예측 대비 실제 True 비율이 높다는 말이다. 
+### Precision-Recall Curve
+ROC Curve는 예측 모델이 실제 True를 많이 찾아내는 동시에 동시에 실수를 얼마나 적게 발생시키는지 확인하기 위해 활용한다면 PE/RC Curve는 모델이 얼마나 예측을 잘하는지를 확인하기 위해 사용하는 지표이다. Y축에 표시되는 Precision은 비율이 올라갈수록 예측 대비 실제 True 비율이 높다는 말이다. 
 <br><br>
 
 1000개 instance 중에 50개를 Positive로 예측할때 그중 48개가 맞으면 모델 정확도는 $\frac{48}{50}=0.96$이 되는 것이다. 경우에 따은 많은 True를 찾아내는 모델보다 일단 Positive로 예측하면 실제로 True일 확률이 높아야 할 때가 있다. 앞서 보이스 피싱범을 찾는 사례나 마케팅 대상을 선별하는 비지니스 문제를 해결할때 Precision을 좋은 지표로 사용할 수 있다.
@@ -243,21 +274,24 @@ Precision의 한계는 얼마나 많이 예측했는지를 알려주지 못하�
 
 따라서 Recall을 Precision과 함께 표기한다면 Precision에서 설명하지 못하는 Positive로 예측한 instance 개수를 알 수 있다. 100,000개 중 True가 5000개인 표본에서 예측 모델의 Precision이 90%, Recall이 72%이라면, 4000개를 Positive로 예측했고 이중 3600개는 True, 400개는 False라는 계산이 나온다. 물론 PE/RC Curve에서 이러한 계산은 중요하지 않다. Recall과 Precision 모두 높으면 높을수록 좋다. 
 <br><br>
-=> x =4000
 
 {{< center >}} $5000*72 = x * 0.9 ==> x = 4000$ {{< /center >}}
 
 <br><br>
 
 PE/RC Curve도 ROC Curve와 마찬가지로 Treshold 변화에 따라 그래프가 그려진다. 
+<그래프 추가>
 
 <br><br><br><br>
 
 
 ## 예시 Code
 
+    
+<br>
 
 
+>### Titanic 데이터 불러오기
 ```python
 import pandas as pd
 import numpy as np
@@ -270,8 +304,11 @@ raw_data = a.drop(columns=['alive','who','deck']).dropna()
 data = raw_data.drop(columns='survived')
 target = raw_data['survived']
 ```
+    
+<br><br>
 
 
+>### 인코딩
 ```python
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
@@ -287,8 +324,11 @@ preprocessing = ColumnTransformer([
     ('standard', standard,standard_col)
 ])
 ```
+    
+<br><br>
 
 
+>### Logistic Regression으로 모델 학습
 ```python
 #모델 학습
 from sklearn.pipeline import make_pipeline
@@ -306,8 +346,10 @@ print(f'base_rate : {target.mean()}')
 
 
     
+<br><br>
 
 
+>### Sklearn 모듈에 있는 Confusion Matrix 활용하기
 ```python
 from sklearn.metrics import confusion_matrix
 proba_each_row = model.predict_proba(data) 
@@ -317,8 +359,10 @@ thereshhold = 0.5
 con_max = confusion_matrix(y_true=target, 
                            y_pred=(proba_each_row[:,1] > thereshhold),
                            labels=[1, 0]) 
-                           # labels=[1, 0] 넣는 이유 기본 세팅은 0,1 
-                           # 0 = Negative, 1 = Positive를 의미
+                           # labels=[1, 0] 넣는 이유 : 
+                           # 0 = Negative, 1 = Positive를 의미하므로 
+                           # Positive와 Negative가 뒤바껴서 나옴
+
 
 # confusion matrix 시각화
 sns.heatmap(con_max,
@@ -332,8 +376,13 @@ sns.heatmap(con_max,
 plt.xlabel('Predict label',fontsize=18) 
 plt.ylabel('True label',fontsize=18)
 ```    
+![untitle](/ML/data_viz/ML1.png) 
 
 
+    
+<br><br>
+
+>### Sklearn 모듈에 있는 ROC Curve와 Precision_Recall Curve 사용하기
 ```python
 from sklearn.metrics import roc_curve
 from sklearn.metrics import precision_recall_curve
@@ -347,7 +396,9 @@ pr_logistic,rc_logistic, pr_rc_thre_logistic = precision_recall_curve(y_true=tar
                                                                       probas_pred=proba_each_row[:,1])
 ```
 
+<br><br>
 
+>### ROC Curve와 Precision-Recall Curve 그리기
 ```python
 ### 특정 값과 가장 가까운 값 찾기 
 x= 0.2
@@ -390,20 +441,7 @@ plt.ylim(base_rate-0.05,1.01)
 plt.tight_layout()
 ```
     
-![png](output_12_0.png)
-    
-
-
-
-```python
-from sklearn.metrics import auc
-
-```
-
-
-
-
-    (0.3544943820224719, 1.01)
+![untitle](/ML/data_viz/main_1.png) 
 
 
 

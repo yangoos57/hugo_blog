@@ -24,6 +24,10 @@
 
     <!--Page 전용 Script-->
     {{ if .IsPage }}
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
     <!--code box-->
     <link rel="stylesheet" href="{{ "css/nord.min.css" | relURL }}">
     <script src="{{ "/js/highlight.min.js" | urlize | relURL }}"></script>
@@ -42,7 +46,8 @@
     <link rel="stylesheet" type="text/css" href='{{ "css/lightslider.min.css" | absURL }}' />
     <!-- end hugo lightslider -->
 
-    {{end}}
+
+    {{ end }}
 
 
 </head>

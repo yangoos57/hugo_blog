@@ -1,0 +1,4 @@
+<div style="display: block;">
+{{ $file := .Get 0 }}
+{{ $file | readFile | safeHTML }}
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Confusion Matrix on Leeway</title>
+    <link>https://yangoos57.github.io/tags/confusion-matrix/</link>
+    <description>Recent content in Confusion Matrix on Leeway</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 11 May 2022 13:47:07 +0900</lastBuildDate><atom:link href="https://yangoos57.github.io/tags/confusion-matrix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기</title>
+      <link>https://yangoos57.github.io/ml/data_viz/roc_curve_and_pe_re_curve/</link>
+      <pubDate>Wed, 11 May 2022 13:47:07 +0900</pubDate>
+      
+      <guid>https://yangoos57.github.io/ml/data_viz/roc_curve_and_pe_re_curve/</guid>
+      <description>ROC Curve와 Precision Recall Curve  이 글의 목적 Confusion matrix는 classification 유형에서 유용하게 사용되며 모델의 실질적인 성능을 판단하는데 매우 효과적이다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Confusion Matrix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="데이터 관리">
+    
+    <meta name="google-site-verification" content="cGIJ_4UB82a6wkT0s71AkXfCqej5-Svsic6s2N0YrLk" />  
+
+    
+    <link rel="shortcut icon" href="https://yangoos57.github.io/images/icon/icon.webp" type="image/x-icon">
+    <link rel="icon" href="https://yangoos57.github.io/images/icon/icon.webp" type="image/x-icon">
+
+
+    
+    <link rel="stylesheet" href="../../css/primer.css">
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+
+    
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <script defer language="javascript" type="text/javascript"  src="../../js/bootstrap.js"></script>
+
+    
+    
+
+
+</head>
+
+
+
+  <body>
+    <div id="holy">
+      <header id="header" class="col-12 px-1">
+        <div OnClick="location.href ='/'" class = "title">
+    <div class='title_img'style="width: 55%; margin: 25px auto;">
+      <img src="\images\title\Picture7.png" class="img-fluid" ></a>
+    </div>
+</div>
+      </header>
+      
+      <main role="main" id="main" class="holy-main markdown-body mt-2 px-4">
+        
+<section id="section">
+    <div class="list-title">
+    <h1>CONFUSION MATRIX</h1>
+    </div>
+        <br>
+        
+        <br>
+        
+        <article class="card border-0 p-1 mb-3 shadow-sm" style="  background-color: #ffffff;">
+  <div class="row g-0 align-items-center">
+    <div class="img-box col-3 p-1">
+      <a href="https://yangoos57.github.io/ml/data_viz/roc_curve_and_pe_re_curve/">
+        <img loading="lazy" class="img-fluid" src="https://yangoos57.github.io/"
+          onerror="this.onerror=null;this.src='https:\/\/yangoos57.github.io\/images\/home\/ML1.png'" alt="예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기">
+      </a>
+    </div>
+    <div class="col-9">
+      <div class="card-body">
+
+        
+
+        
+        <a href="https://yangoos57.github.io/ml/">
+          <span class="badge text-dark" style="background-color: #d9e8f5;">ML</span>
+        </a>
+        
+        
+        
+        <a href="https://yangoos57.github.io/ml/data_viz/">
+          <span class="badge text-dark" style="background-color: #d9e8f5;">데이터 시각화</span>
+        </a>
+        
+        <h2 class="card-title mt-1 mb-1 fw-bolder"><a href="https://yangoos57.github.io/ml/data_viz/roc_curve_and_pe_re_curve/" style="color:#37352f !important;">예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기</a></h2>
+
+        <div>
+          <span class="post-date">11 May, 2022&nbsp;</span>
+        </div >
+          <p class="summary card-text text-left mb-1 mt-2">ROC Curve와 Precision Recall Curve  이 글의 목적 Confusion matrix는 classification 유형에서 유용하게 사용되며 모델의 실질적인 성능을 판단하는데 매우 효과적이다....</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+         
+        
+
+
+
+      </div>
+      
+<h1>
+  <a href="https://yangoos57.github.io/hugo/tips/">site</a></h1>
+
+</section>
+
+      </main>
+      
+      
+    </div>
+    <div id="sidea_single">  <aside class="offcan-left">
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+    <div class='menu-icon_mobile'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </div>
+    <div class='menu-icon_pc'>
+      <svg style = "position:absolute; top:30%; left :35%;"version="1.0" xmlns="http://www.w3.org/2000/svg" fill = "gray"width="55" height="55" viewBox="0 0 512 512"><path d="M11.2 1.7C9.9 2 7.1 3.9 5.1 5.9-1.2 12.2-1.3 19.7 5 26c2 2 5.2 4 7 4.3 1.8.4 63.1.7 136.2.7 111.7 0 133.4.2 136.2 1.4 4.9 2 11.2 8.1 13.5 13 2.1 4.2 2.1 4.3 2.1 210.4 0 172.8-.2 206.8-1.4 209.6-1.8 4.3-6.8 10-11.4 12.8l-3.7 2.3-136.5.5-136.5.5-3.1 2.2C2.7 487 .6 490.9.6 496c0 5.1 2.1 9 6.8 12.3l3.1 2.2H147c129.4 0 136.8-.1 142.5-1.8a57.14 57.14 0 0 0 38.2-38.2c1.7-5.7 1.8-15.3 1.8-214.5 0-199.6-.1-208.8-1.8-214.5C322 23 308.8 9.6 290 3.4c-5.2-1.8-12.5-1.9-141-2-74.5-.1-136.5 0-137.8.3z"/><path d="M11.2 81.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 161.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM413.7 161.8c-3.8.5-10.3 7.1-10.9 11.1-1.2 8.1-1.8 7.3 37 46.3l36.6 36.8-36.6 36.7c-38.8 39.1-38.2 38.3-37 46.4.6 4.2 6.9 10.5 11.1 11.1 8.2 1.2 6.8 2.4 53.2-44.1 36.7-36.6 43.8-44.1 44.1-46.9 1.1-8.4 2.2-7-42.1-51.5-22.9-23-42.7-42.6-44.1-43.6-2.8-2-7.1-2.9-11.3-2.3zM11.2 241.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 321.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3zM11.2 401.7c-1.3.3-4.1 2.2-6.1 4.2-6.4 6.4-6.4 13.8 0 20.2 2.8 2.8 4.9 3.9 8.1 4.4 2.4.3 54.2.5 115.3.3l111-.3 3.1-2.2c4.7-3.3 6.8-7.2 6.8-12.3 0-5.1-2.1-9-6.8-12.3l-3.1-2.2-113-.1c-62.1-.1-114 .1-115.3.3z"/></svg>
+    </div>
+    </button>
+  
+  <div class="offcanvas offcanvas-start"  data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-body nav-box">
+        <div>
+          <h4>
+            <a href="../../">🌏 전체보기
+            <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+              7
+            </span>
+            </a>
+          </h4>
+          
+
+          <br><br>
+          <ul class="ps-0" style="list-style: none;">
+            
+            <li>
+              <h5><a href="../../python">🔗&nbsp;PYTHON</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../ml">🔗&nbsp;ML</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/ml/data_viz/">‣ 데이터 시각화&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      1
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../hugo">🔗&nbsp;HUGO</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/hugo/tips/">‣ DO IT YOURSELF&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+              <li>
+                <h6><a href="https://yangoos57.github.io/hugo/documentation/">‣ 공식문서 활용하기&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      2
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            <li>
+              <h5><a href="../../statistics">🔗&nbsp;STATISTICS</a> </h5>
+            </li>
+            <ul class="ps-2" style="list-style: none;">
+              <li>
+                <h6><a href="https://yangoos57.github.io/statistics/basic/">‣ BASIC&nbsp;
+                    <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
+                      0
+                    </span>
+                  </a>
+                </h6>
+              </li>
+            
+           </ul>
+              <br>
+              
+            </ul>
+        </div>  
+    </div>
+  </div>
+
+</aside>
+<script>$(document).mouseup(function (e){
+  var LayerPopup = $(".offcanvas");
+  if(LayerPopup.has(e.target).length === 0){
+    LayerPopup.removeClass("show");
+  }
+});</script>
+
+</div>
+    <div id="footer" class="pt-2 pb-3 text-center">
+      
+
+
+  <div class="m-5 text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </div>
+
+
+    </div>
+  </body>
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K109LYQBX3"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-K109LYQBX3', { 'anonymize_ip': false });
+}
+</script>
+
+  
+</html>
