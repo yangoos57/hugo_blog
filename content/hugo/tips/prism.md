@@ -11,7 +11,7 @@ Summary: 'Hugo 게시글 내 syntax highlighter를 변경하는 글이다. HTML,
 
 ## 구현하고자 하는 기능
 
-### Syntax highlighter 예시
+### 코드 블럭 예시
 
 ```python
 import pandas as pd

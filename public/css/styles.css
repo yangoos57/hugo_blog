@@ -46,7 +46,7 @@ blockquote > ul > li > p {font-size: 0.9em !important }
   padding: 10px;
   margin: 0 auto;
   /* box-shadow: 0px 2px 7px #c4c4c4;  */
-  background-color:#FBFBFB;
+  background-color:#ffffff;
 }
 /* Home & list page */
 /* #section{
@@ -70,7 +70,7 @@ blockquote > ul > li > p {font-size: 0.9em !important }
 
 #sidea_list {
   grid-area: sidea;
-  background-color:#FBFBFB ;
+  background-color:#ffffff ;
   width: 50px;
   justify-self: right;
   border-left: 2px solid #c4c4c43f ;
@@ -82,7 +82,7 @@ blockquote > ul > li > p {font-size: 0.9em !important }
   width: 50px ;
   justify-self: left;
   padding-left: 25px;
-  background-color:#FBFBFB ;
+  background-color:#ffffff ;
   border-right: 2px solid #c4c4c43f ;
   /* margin-top: 100px; */
   /* padding-top: 100px; */
