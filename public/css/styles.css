@@ -6,7 +6,7 @@
 
 /* custom css here */
 html,
-body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1.1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f; text-decoration: none;}
+body, h1,h2,h3,h4,h5,h6,p, ul >li { font-family: 'IBM-Regular','San-Regular' !important; font-size: 1.1em; line-height: 1.7em; letter-spacing: 0.2px; word-spacing: 0.5px; color: #37352f; text-decoration: none; text-align: justify;}
 
 a{ color: #0969da ;text-decoration: none !important;}
 blockquote > p {font-size: 1em; color:#57606a !important; font-weight: 600;}
@@ -230,7 +230,6 @@ position: fixed; left:1% ; top:40% ;
   filter: brightness(50%);
 }
 
-
 /* ********************************* */
 /* ********************************* */
 @media screen  and (max-width: 1200px) {
@@ -270,6 +269,8 @@ position: fixed; left:1% ; top:40% ;
 }
 
 @media screen and (max-width: 500px) {
+  html,body, p, ul >li {font-size: 0.95em;}
+  h1,h2,h3,h4,h5,h6 {font-size: 1.1em !important;}
   #section > article{margin-bottom: 0;}
   .summary{display: none !important}
   .float-md-right{margin:10px 0 0 0;}

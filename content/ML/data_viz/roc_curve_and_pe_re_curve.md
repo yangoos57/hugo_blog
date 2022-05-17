@@ -1,15 +1,20 @@
 ---
-title: "예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기"
+title: "ROC Curve와 Precision-Recall Curve 직접 그려보기"
 date: 2022-05-11T13:47:07+09:00
 image: "images/home/ML1.png"
 Tags: ['Confusion Matrix','Data Visualization', Precision-Recall Curve, ROC Curve,Machine Learning,Matplotlip, Plotly]
 draft: False
+Description: '예시로 자주 활용되는 plot을 그려보는 시리즈의 첫 시작이다. ROC Curve, Precision-Recall Curve를 직접 그려보며 개념을 이해하고 시각화 하는 방법을 익히고 sklearn, pandas, matplotlib 등 data science 관련 툴에 익숙해지는 시간을 갖는다. 이 글은 Confusion matrix 개념에서부터 plot이 그려지는 과정, plot 해석, 예제 코드를 포함하고 있다.  '
+Summary: '예시로 자주 활용되는 plot을 그려보는 시리즈의 첫 시작이다. ROC Curve, Precision-Recall Curve를 직접 그려보며 개념을 이해하고 시각화 하는 방법을 익히고 sklearn, pandas, matplotlib 등 data science 관련 툴에 익숙해지는 시간을 갖는다. 이 글은 Confusion matrix 개념에서부터 plot이 그려지는 과정, plot 해석, 예제 코드를 포함하고 있다.  '
 ---
 <br>
 
 >### ROC Curve와 Precision Recall Curve
 
-![untitle](/ML/data_viz/main_1.png) 
+
+{{< test tick="false" name="intro_curves" dir="\images\ML\plot\intro_curves"  >}}
+
+
 
 <br>
 
@@ -46,7 +51,7 @@ Confusion matrix를 볼때 x축과 y축 먼저 보라했지? x축은 Predict lab
 
 <br>
 
-> #### 최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스피싱 전담팀은 12명의 용의자들을 긴급체포하여 조사한 뒤 보이스 피싱범일 가능성이 높은 순으로 나열하였다. 
+> #### 최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스피싱 전담팀은 12명의 용의자들을 조사한 뒤 보이스 피싱범일 가능성이 높은 순으로 나열하였다. 
 
 ![untitle](/ML/data_viz/main_5.png) 
 {{< center >}}**우측으로 갈수록 범인이라는 확신이 증가한다.**{{< /center >}}
@@ -64,7 +69,7 @@ A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 의견�
 
 <br><br>
 
-### TP, FP, TN, FN
+### TP, FP, TN, FN 짚고 넘어가기
 
 ![untitle](/ML/data_viz/main_4.png)
 
@@ -111,7 +116,7 @@ A 경찰청 전담팀은 누구까지를 범인으로 간주해야할지 의견�
 
   <br>
 
-  {{< center >}}$\large\frac{실제로 \\ True인 \\ 값}{P로\ 예측한\ 값} = \frac{TP}{TP+FP} = \frac{TP}{Predict \ Positive} ${{< /center >}}
+  {{< center >}}$\frac{실제로 \\ True인 \\ 값}{P로\ 예측한\ 값} = \frac{TP}{TP+FP} = \frac{TP}{Predict \ Positive} ${{< /center >}}
 
   <br><br>
 
@@ -172,7 +177,7 @@ ROC curve와 Precision recall curve를 이해하는데는 용어 말고도 그�
 
 Threshold는 앞서 설명한 예시에서 범인을 선정하는 기준이라고 보면 된다. 100% threshold는 100%라고 확신이 드는 범인이지 않는 한 범인으로 예측하지 않는다는 말이다. threshold가 점점 낮아지면서 범인으로 예측하는 수가 늘어나게 되고 0%에 도달해서는 모든 용의자를 범인으로 여기는 순간에 도달하게 된다. 
 
-  <iframe src="https://ploteaxamples.herokuapp.com/" style='width:100%; height: 800px'></iframe>
+  {{< test tick="true" name="making_curve" dir="\images\ML\plot\making_curve" >}}
 
 
 <br>
@@ -202,6 +207,7 @@ confusion matrix를 보다 직관적으로 이해하고자 하는 시도로 lift
   > ### False Positive Rate
   
   FPR은 전체 False(FP+FN)에서 예측이 틀린 경우(FP)가 얼마나 되는지에 관심있다. 
+
   <br><br>
 
   > ### 그래프 해석
@@ -214,7 +220,8 @@ confusion matrix를 보다 직관적으로 이해하고자 하는 시도로 lift
    
    <br><br>
 
-  {{< test dir="/plotly/test" >}}
+  {{< test tick="true" name="roc_curve" dir="\images\ML\plot\roc_curve" >}}
+  
 
 
   <br><br>
@@ -239,9 +246,7 @@ confusion matrix를 보다 직관적으로 이해하고자 하는 시도로 lift
 
   이렇게 나열한 그림만 본다면 어느 팀이 더 유능한 팀인지 분간하기 어렵다. A~C 세 팀 중 피해자 발생이 적으면서 최대한 많은 범인을 잡아내는 팀은 어디일까?
 
-  {{< plotly json="\plotly\ROC_Curve.json" height="400px" >}}
-
-  
+  ![untitle](/ML/data_viz/Roc_compare.png)
 
   A,B,C팀의 ROC Curve를 그려보니 어떤 팀의 성과가 좋은지 바로 확인된다. B팀은 FP Rate 0.2에서 이미 TP Rate가 1에 도달한다. 이에 비해 A팀과 C팀의 TP Rate는 현저히 낮다. 그러므로 B팀이 가장 능력있는 팀이다.
 
@@ -250,43 +255,28 @@ confusion matrix를 보다 직관적으로 이해하고자 하는 시도로 lift
 
   굳이 그래프를 그리지 않고도 모델 성능을 비교할 수 있다.
   누군가에게 설명하거나 지금처럼 연습하지 않는 이상 ROC Curve를 굳이 그릴 필요는 없다. AUC Score을 계산해서 가장 큰 값을 가진 모델이 가장 성능 좋은 모델이다. AUC(Area Under Curve)는 문자 그대로  커브 아래 파란색으로 칠한 면적을 의미한다. AUC가 높아지려면 y값이 빠르게 1에 도달해야 하기 때문에 모델 성능을 보여주는 좋은 지표가 된다. Sklearn에서 AUC를 계산하는 함수가 있으니 이를 사용해 모델 성능을 비교하면 된다.  -->
-  <br><br><br><br>
+  <br><br><br>
 
 
 ### Precision-Recall Curve
-ROC Curve는 예측 모델이 실제 True를 많이 찾아내는 동시에 동시에 실수를 얼마나 적게 발생시키는지 확인하기 위해 활용한다면 PE/RC Curve는 모델이 얼마나 예측을 잘하는지를 확인하기 위해 사용하는 지표이다. Y축에 표시되는 Precision은 비율이 올라갈수록 예측 대비 실제 True 비율이 높다는 말이다. 
+ROC Curve는 실제 True를 얼마나 찾는지와 동시에 실수를 얼마나 적게 하는지를 그래프를 통해 파악한다면, PE/RC Curve는 모델이 얼마나 정확한 예측을 하는지를 그래프를 통해 파악한다. 
 <br><br>
 
-1000개 instance 중에 50개를 Positive로 예측할때 그중 48개가 맞으면 모델 정확도는 $\frac{48}{50}=0.96$이 되는 것이다. 경우에 따은 많은 True를 찾아내는 모델보다 일단 Positive로 예측하면 실제로 True일 확률이 높아야 할 때가 있다. 앞서 보이스 피싱범을 찾는 사례나 마케팅 대상을 선별하는 비지니스 문제를 해결할때 Precision을 좋은 지표로 사용할 수 있다.
+Precision은 모델의 정확도를 확인하는 좋은 지표이다. 하지만 예측 대비 정확도를 판단하는 Precision의 특성 상 판단 기준을 엄격하게 한다면(threshold를 높힌다면) 필연적으로 Precision을 올라갈 수밖에 없다. Precision이 90%인 모델이 실제로는 1000개 Instance 중 10개만을 Positive로 예측해서 나온 결과라면, 이 모델 좋은 모델인지 판단하기 어렵다. 
 <br><br>
 
-하지만 Precision만 활용해서는 모델의 제대로된 성능을 확인하기 어렵다. 모델의 정확도(=Accuracy)를 가지고 모델을 파악할 때 높은 정확도에 현혹당하는 것처럼 Precision 또한 수치에 현혹당하기 쉽다. 성능이 그다지 뛰어나지 않은 모델이라도 예측 기준을 엄격하게 둔다면 Precision은 얼마든 조작 가능하다. 
+따라서 Precision을 지표로 활용하기 위해서는 단점을 보완해주는 Recall과 함께 사용해야한다. Recall은 실제 Positive 중 예측으로 실제 Positive를 식별한 경우이다. Recall에는 얼마나 많은 Instance를 예측했는지 설명할 수 있기 때문에 Precision과 함께 사용하면 모델의 예측 정확도를 파악할 수 있다.
 <br><br>
 
-1,000,000개 instance 중 가장 가능성 높은 50개만  Positive로 예측하고 그중 48개가 실제 True라면 96%라는 매우 높은 Precision을 가지게 되지만 이 수치가 과연 모델의 실제 성능을 제대로 반영하는지는 의문이 발생한다. 그래서 Precision의 이러한 한계를 보완하기 위해 사용하는게 Recall이다.
-<br><br>
+PE/RC Curve도 ROC Curve와 마찬가지로 Treshold 변화에 따라 그래프가 그려진다. 기준이 엄격할수록 Precision이 높아지게 되므로 1에서부터 시작하는데, 기준이 낮아질수록 실제 Positive가 포함된 instance와 그렇지 않은 instance가 함께 포함되므로 Precision이 낮아지게 된다. 기준이 낮아질수록 포함하는 instance 수가 증가하고 자연히 Recall도 높아지게 된다. 계속해서 Threshold를 낮춰가다가 0에 도달하게 되면 모든 값을 Positive로 예측하게 되면 Base rate에 도달하게 된다.
 
-Precision의 한계는 얼마나 많이 예측했는지를 알려주지 못하는데 있다. Precision이 96%라는 것만 보고 이 모델이 1000개를 Positive로 예측했는데 이중 960개를 맞춘건지 50개를 Positive로 예측했는데 48개를 맞춘건지 알 방법이 없다. Recall이 사용되는 이유도 Precision이 설명하지 못하는 부분을 보완하기 때문이다. Recall은 모델이 True를 얼마나 많이 식별 했는지 확인하는 지표라 했다. 
-<br><br>
-
-100,000개 instance 중 5,000개가 True이고 그중 Positive로 예측한 instance 중에 3,600개가 실제 True이면 모델의 Recall은 72%가 된다. Recall이 72%라는 의미에는 아무리 못해도 최소한 3,600개는 Positive로 예측했다는 말이 내포되어 있다.
-<br><br>
-
-따라서 Recall을 Precision과 함께 표기한다면 Precision에서 설명하지 못하는 Positive로 예측한 instance 개수를 알 수 있다. 100,000개 중 True가 5000개인 표본에서 예측 모델의 Precision이 90%, Recall이 72%이라면, 4000개를 Positive로 예측했고 이중 3600개는 True, 400개는 False라는 계산이 나온다. 물론 PE/RC Curve에서 이러한 계산은 중요하지 않다. Recall과 Precision 모두 높으면 높을수록 좋다. 
-<br><br>
-
-{{< center >}} $5000*72 = x * 0.9 ==> x = 4000$ {{< /center >}}
-
-<br><br>
-
-PE/RC Curve도 ROC Curve와 마찬가지로 Treshold 변화에 따라 그래프가 그려진다. 
-<그래프 추가>
+{{< test name="pe_rc_curve" dir="/images/ML/plot/pe_rc_curve" >}}
 
 <br><br><br><br>
 
 
 ## 예시 Code
-
+이제는 앞선 설명의 이해를 바탕으로 plot을 그려보자. 제공하는 code는 하나의 참고로서만 활용하고 스스로 그려봤으면 좋겠다. plot을 그려보면서 헷갈리는 개념이 무엇인지, plot을 그리려면 어떤 함수를 써야하는지, 어떤 type의 변수를 넣어야 함수가 작동하는지를 고민하다보면 개념과 실력 모두 내것이 될 수 있다. 
     
 <br>
 
@@ -329,6 +319,9 @@ preprocessing = ColumnTransformer([
 
 
 >### Logistic Regression으로 모델 학습
+plot을 그리는게 주목적이므로 Cross_validaion은 생략했다. 
+
+
 ```python
 #모델 학습
 from sklearn.pipeline import make_pipeline
@@ -349,7 +342,9 @@ print(f'base_rate : {target.mean()}')
 <br><br>
 
 
->### Sklearn 모듈에 있는 Confusion Matrix 활용하기
+>### Sklearn 모듈에 있는 Confusion Matrix 활용
+알고리즘에 따라 instance를 구분하는 방법이 다르다. logistic regression의 경우 확률을 활용해 대상을 구분한다면 SGDclassifier는 점수를 활용해 대상을 구분한다. 개별 instance별 확률 또는 점수를 알고 싶으면 .predict_proba 또는 .predict_score 함수를 사용하면 된다. 예시에는 Logistic regression을 활용했기 때문에 .predict_probar를 사용했다.
+
 ```python
 from sklearn.metrics import confusion_matrix
 proba_each_row = model.predict_proba(data) 
@@ -359,9 +354,9 @@ thereshhold = 0.5
 con_max = confusion_matrix(y_true=target, 
                            y_pred=(proba_each_row[:,1] > thereshhold),
                            labels=[1, 0]) 
-                           # labels=[1, 0] 넣는 이유 : 
+                           # labels=[1, 0] 넣은 이유 : 
                            # 0 = Negative, 1 = Positive를 의미하므로 
-                           # Positive와 Negative가 뒤바껴서 나옴
+                           # label을 설정하지 않으면 Positive와 Negative가 바뀐체로 나온다.
 
 
 # confusion matrix 시각화
@@ -382,7 +377,7 @@ plt.ylabel('True label',fontsize=18)
     
 <br><br>
 
->### Sklearn 모듈에 있는 ROC Curve와 Precision_Recall Curve 사용하기
+>### Sklearn 모듈에 있는 ROC Curve와 Precision_Recall Curve 사용
 ```python
 from sklearn.metrics import roc_curve
 from sklearn.metrics import precision_recall_curve
@@ -400,10 +395,6 @@ pr_logistic,rc_logistic, pr_rc_thre_logistic = precision_recall_curve(y_true=tar
 
 >### ROC Curve와 Precision-Recall Curve 그리기
 ```python
-### 특정 값과 가장 가까운 값 찾기 
-x= 0.2
-difference_array = np.absolute(fpr_logistic-x)
-index = difference_array.argmin()
 
 
 plt.style.use('ggplot')
@@ -413,6 +404,10 @@ plt.figure(figsize=(14,8))
 plt.subplot(121)
 plt.plot(fpr_logistic,tpr_logistic,linewidth=2)
 plt.title('ROC CURVE',fontsize=18,fontweight="bold",y=1.05)
+plt.fill_between(fpr_logistic,tpr_logistic, facecolor='blue',alpha=0.1)
+plt.text(0.55,0.4, 'AUC', fontsize=30)
+
+# styling figure
 plt.xlabel('False Positive Rate',fontsize=16,labelpad=13,)
 plt.ylabel('True Positive Rate',fontsize=16,labelpad=13)
 plt.xticks(fontsize=14)
@@ -420,20 +415,21 @@ plt.yticks(fontsize=14)
 plt.plot([0,1],[0,1],'k--')
 plt.xlim(-0.01,1.01)
 plt.ylim(-0.01,1.01)
-plt.fill_between(fpr_logistic,tpr_logistic, facecolor='blue',alpha=0.1)
-plt.text(0.55,0.4, 'AUC', fontsize=30)
+
 
 
 # Precision-Recall Curve 그리기
 plt.subplot(122)
 plt.plot(rc_logistic,pr_logistic)
+base_rate = target.mean()
+plt.plot([0,1],[base_rate,base_rate],'k--')
+
+#styling figure
 plt.title('Precision \ Recall Cureve',fontsize=18,fontweight="bold",y=1.05)
 plt.xlabel('Recall',fontsize=16,labelpad=13)
 plt.ylabel('Precision',fontsize=16,labelpad=13,)
 plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
-base_rate = target.mean()
-plt.plot([0,1],[base_rate,base_rate],'k--')
 plt.xlim(-0.01,1.01)
 plt.ylim(base_rate-0.05,1.01)
 

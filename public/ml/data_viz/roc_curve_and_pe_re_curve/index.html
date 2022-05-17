@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기</title>
+    <title>ROC Curve와 Precision-Recall Curve 직접 그려보기</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="데이터 관리">
+    <meta name="description" content="예시로 자주 활용되는 plot을 그려보는 시리즈의 첫 시작이다. ROC Curve, Precision-Recall Curve를 직접 그려보며 개념을 이해하고 시각화 하는 방법을 익히고 sklearn, pandas, matplotlib 등 data science 관련 툴에 익숙해지는 시간을 갖는다. 이 글은 Confusion matrix 개념에서부터 plot이 그려지는 과정, plot 해석, 예제 코드를 포함하고 있다.  ">
     
     <meta name="google-site-verification" content="cGIJ_4UB82a6wkT0s71AkXfCqej5-Svsic6s2N0YrLk" />  
 
@@ -74,7 +74,7 @@
     
     <div class="Subhead">
       <div class="Subhead-heading">
-        <div class="h1 mt-3 mb-3">예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기</div>
+        <div class="h1 mt-3 mb-3">ROC Curve와 Precision-Recall Curve 직접 그려보기</div>
       </div>
       <div class="Subhead-description">
         
@@ -140,15 +140,191 @@
 <blockquote>
 <h3 id="roc-curve와-precision-recall-curve">ROC Curve와 Precision Recall Curve</h3>
 </blockquote>
-<p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
 
-<div style="background-color: white;border: 0px solid black; text-align: center; padding: 30px">
+<style>
 
-    <img src="https://yangoos57.github.io/images/ML/data_viz/main_1.png">
+input.range {
+    -webkit-appearance: none;
+    bottom: -10px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  input.range:focus {
+    outline: 0;
+  }
+  input.range::-moz-focus-outer {
+    border: 0;
+  }
+  
+  input.range::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7.5px;
+  }
+  
+  input.range::-moz-range-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+  }
+  
+  input.range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    background: #84aec4;
+    border-radius: 20px;
+    border: 0;
+  }
+  
+  input.range::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    background: #84aec4;
+    border-radius: 20px;
+    border: 0;
+  }
+  
+  input.range::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  input.range::-ms-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    height: 5px;
+  }
+  
+  input.range::-ms-fill-lower,
+  input.range::-ms-fill-upper {
+    background: #84aec4;
+    border: 0;
+    border-radius: 40px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+  }
+  
+  .range__tick {
+    fill: #a0a0a0;
+  }
+  .range__tick:first-child {
+    -webkit-transform: translateX(2px);
+    -moz-transform: translateX(2px);
+    -ms-transform: translateX(2px);
+    -o-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  .range__tick:last-child {
+    -webkit-transform: translateX(-3px);
+    -moz-transform: translateX(-3px);
+    -ms-transform: translateX(-3px);
+    -o-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  
+  .range__field {
+    border: 0;
+    width: 80%;
+    margin: 0 auto ;
+    text-align: center ;
+  }
+  .range__point{
+    font-size: 14px ;
+  }
+  
+  @media screen  and (max-width: 1200px) {
+
+  }
+ .img{
+    width : 70% ;
+    height : 70% ;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  @media screen  and (max-width: 500px) {
+    .img{
+    width : 100% ;
+    height : 100% ;
+    }
+    .range__point{
+    font-size: 12px ;
+    }
+  } 
+</style>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="margin: 0 auto; text-align: center;">
+  <fieldset class="range__field">
+      <input class="range" type="range" min="1" max="20" value="1" id ="intro_curves_range">
+
+        
+        
+      </svg>
+
+  </fieldset>
+
+  <img src="https://yangoos57.github.io//images/ML/plot/intro_curves/1.png" id='intro_curves_img' class="img">
+  
 </div>
-</p>
+
+
+
+<script>
+       
+$(document).on("input change", "#intro_curves_range", function() {
+   var v=$(this).val(); 
+  
+   $("#intro_curves_img").prop("src","\/images\/ML\/plot\/intro_curves/"+String(v)+".png");
+   });
+
+</script>
+
+
+
 <br>
 <h2 id="이-글의-목적">이 글의 목적</h2>
 <p>Confusion matrix는 classification 유형에서 유용하게 사용되며 모델의 실질적인 성능을 판단하는데 매우 효과적이다. 이에 기반한 Roc Curve와 Precision Recall Curve는 Confusion matri를 보다 직관적으로 이해할 수 있도록 돕는다.</p>
@@ -184,7 +360,7 @@ Confusion matrix를 볼때 x축과 y축 먼저 보라했지? x축은 Predict lab
 <br><br><br><br> -->
 <br>
 <blockquote>
-<h4 id="최근-보이스피싱-사기가-급증함에-따라-경찰은-대대적인-단속에-나섰다-서울-a-경찰청의-보이스피싱-전담팀은-12명의-용의자들을-긴급체포하여-조사한-뒤-보이스-피싱범일-가능성이-높은-순으로-나열하였다">최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스피싱 전담팀은 12명의 용의자들을 긴급체포하여 조사한 뒤 보이스 피싱범일 가능성이 높은 순으로 나열하였다.</h4>
+<h4 id="최근-보이스피싱-사기가-급증함에-따라-경찰은-대대적인-단속에-나섰다-서울-a-경찰청의-보이스피싱-전담팀은-12명의-용의자들을-조사한-뒤-보이스-피싱범일-가능성이-높은-순으로-나열하였다">최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스피싱 전담팀은 12명의 용의자들을 조사한 뒤 보이스 피싱범일 가능성이 높은 순으로 나열하였다.</h4>
 </blockquote>
 <p>
 
@@ -211,7 +387,7 @@ Confusion matrix를 볼때 x축과 y축 먼저 보라했지? x축은 Predict lab
 </p>
 <p>위 그림은 어디까지를 범인으로 간주할지에 대한 전담팀장, 수사부장, 경찰청장 기준을 보여준다. 가장 신중한 전담팀장은 빨간색 기준으로 3명의 용의자만 기소해야한다는 의견이다. 수사부장의 생각은 파란색 기준으로 5명의 용의자를 기소해야한다는 의견이다. 범인 색출에 혈안이 된 경찰청장은 12명의 용의자 중 절반인 6명을 기소해야한다는 의견이다.</p>
 <p><br><br></p>
-<h3 id="tp-fp-tn-fn">TP, FP, TN, FN</h3>
+<h3 id="tp-fp-tn-fn-짚고-넘어가기">TP, FP, TN, FN 짚고 넘어가기</h3>
 <p>
 
 <div style="background-color: white;border: 0px solid black; text-align: center; padding: 30px">
@@ -272,7 +448,7 @@ Confusion matrix를 볼때 x축과 y축 먼저 보라했지? x축은 Predict lab
 </blockquote>
 <p>Precision은 예측한 값이 얼마나 잘 맞았는지에 관심있다. 즉 Positive로 예측한 것들 중에 실제로는 얼마나 맞췄는지에 관심있다.</p>
   <br>
-<div class="text-center">$\large\frac{실제로 \ True인 \ 값}{P로\ 예측한\ 값} = \frac{TP}{TP+FP} = \frac{TP}{Predict \ Positive} $</div>
+<div class="text-center">$\frac{실제로 \ True인 \ 값}{P로\ 예측한\ 값} = \frac{TP}{TP+FP} = \frac{TP}{Predict \ Positive} $</div>
 <p><br><br></p>
 <p>▸ 전담팀장의 Precision은 3명을 범인으로 예측했고(<code>P=3</code>), 3명 모두 범인(<code>TP=3</code>)이므로 100%이다.</p>
 <p>▸ 수사부장의 Precision은 5명을 범인으로 예측했고(<code>P=5</code>), 4명이 범인이므로(<code>TP=4</code>) 80%이다.</p>
@@ -332,7 +508,304 @@ Confusion matrix를 볼때 x축과 y축 먼저 보라했지? x축은 Predict lab
 <p>그 생각은 바로 x가 변하고 난 뒤 y값이 변한다는 생각이다. 우리는 $y=ax^2+bx+c$와 같이 x값에 따라 y 값이 변하는 함수에 익숙하다. 하지만 우리가 그릴 그래프는 이러한 사고로 해석하려다보면 앞뒤가 맞지 않는 듯한 느낌을 받는다. Precision과 Recall은 기본적으로 trade off 관계이므로 반비례 관계가 성립되긴 하나 Recall이 변하기 때문에 Precision이 변하는 관계는 아니이기 때문이다.</p>
 <p>아래 그래프의 Threshold를 100%에서 0%로 천천히 옮겨보자. Threshold가 변하면서 Confusion matrix가 달라지게 되고, 그에따라 Precision과 Recall이 동시에 변하게 된다.</p>
 <p>Threshold는 앞서 설명한 예시에서 범인을 선정하는 기준이라고 보면 된다. 100% threshold는 100%라고 확신이 드는 범인이지 않는 한 범인으로 예측하지 않는다는 말이다. threshold가 점점 낮아지면서 범인으로 예측하는 수가 늘어나게 되고 0%에 도달해서는 모든 용의자를 범인으로 여기는 순간에 도달하게 된다.</p>
-  <iframe src="https://ploteaxamples.herokuapp.com/" style='width:100%; height: 800px'></iframe>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
+
+<style>
+
+input.range {
+    -webkit-appearance: none;
+    bottom: -10px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  input.range:focus {
+    outline: 0;
+  }
+  input.range::-moz-focus-outer {
+    border: 0;
+  }
+  
+  input.range::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7.5px;
+  }
+  
+  input.range::-moz-range-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+  }
+  
+  input.range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    background: #84aec4;
+    border-radius: 20px;
+    border: 0;
+  }
+  
+  input.range::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    background: #84aec4;
+    border-radius: 20px;
+    border: 0;
+  }
+  
+  input.range::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  input.range::-ms-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    height: 5px;
+  }
+  
+  input.range::-ms-fill-lower,
+  input.range::-ms-fill-upper {
+    background: #84aec4;
+    border: 0;
+    border-radius: 40px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+  }
+  
+  .range__tick {
+    fill: #a0a0a0;
+  }
+  .range__tick:first-child {
+    -webkit-transform: translateX(2px);
+    -moz-transform: translateX(2px);
+    -ms-transform: translateX(2px);
+    -o-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  .range__tick:last-child {
+    -webkit-transform: translateX(-3px);
+    -moz-transform: translateX(-3px);
+    -ms-transform: translateX(-3px);
+    -o-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  
+  .range__field {
+    border: 0;
+    width: 80%;
+    margin: 0 auto ;
+    text-align: center ;
+  }
+  .range__point{
+    font-size: 14px ;
+  }
+  
+  @media screen  and (max-width: 1200px) {
+
+  }
+ .img{
+    width : 70% ;
+    height : 70% ;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  @media screen  and (max-width: 500px) {
+    .img{
+    width : 100% ;
+    height : 100% ;
+    }
+    .range__point{
+    font-size: 12px ;
+    }
+  } 
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="margin: 0 auto; text-align: center;">
+  <fieldset class="range__field">
+      <input class="range" type="range" min="1" max="8" value="1" id ="making_curve_range">
+
+      
+      <svg role="presentation" width="100%" height="10" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="0%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="14%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="29%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="43%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="57%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="71%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="86%" y="3" width="1" height="10"></rect>
+        
+        
+        
+        
+        
+        
+        
+        <rect class="range__tick" x="100%" y="3" width="1" height="10"></rect>
+         
+        
+        </svg>
+      
+      <svg role="presentation" width="100%" height="14" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+        
+        
+        
+        
+        <text class="range__point" x="0%" y="14" text-anchor="middle">0%</text>
+        
+        
+        
+        
+        <text class="range__point" x="14%" y="14" text-anchor="middle">14%</text>
+        
+        
+        
+        
+        <text class="range__point" x="29%" y="14" text-anchor="middle">29%</text>
+        
+        
+        
+        
+        <text class="range__point" x="43%" y="14" text-anchor="middle">43%</text>
+        
+        
+        
+        
+        <text class="range__point" x="57%" y="14" text-anchor="middle">57%</text>
+        
+        
+        
+        
+        <text class="range__point" x="71%" y="14" text-anchor="middle">71%</text>
+        
+        
+        
+        
+        <text class="range__point" x="86%" y="14" text-anchor="middle">86%</text>
+        
+        
+        
+        
+        <text class="range__point" x="100%" y="14" text-anchor="middle">100%</text>
+         
+        
+        
+      </svg>
+
+  </fieldset>
+
+  <img src="https://yangoos57.github.io//images/ML/plot/making_curve/1.png" id='making_curve_img' class="img">
+  
+</div>
+
+
+
+<script>
+       
+$(document).on("input change", "#making_curve_range", function() {
+   var v=$(this).val(); 
+  
+   $("#making_curve_img").prop("src","\/images\/ML\/plot\/making_curve/"+String(v)+".png");
+   });
+
+</script>
+
+
+
 <br>
 <p>이처럼 confsion matrix에 기반한 그래프는 threshold가 변함에 따라 confusion matrix가 새롭게 계산되고 그에따라 PE/RC 또는 TPR/FPR이 계산된다. 따라서 x값이 변하면 y값이 변한다는 생각으로 그래프를 해석하려다보면 이해가 되는듯 하지만 앞뒤가 맞지않는 상황에 놓이게 되는 것이다.</p>
 <p>이러한점에 익숙한 구성원들과의 대화에는 confusion matrix와 관련 그래프가 매우 유용하게 사용될 수 있으나 익숙하지 않은 구성원들에게 이를 설명하고자 할 때는 이를 고려해 사전에 충분한 설명이나 차라리 다른 방법으로 설명해야한다.</p>
@@ -349,8 +822,8 @@ Confusion matrix를 볼때 x축과 y축 먼저 보라했지? x축은 Predict lab
 <blockquote>
 <h3 id="false-positive-rate">False Positive Rate</h3>
 </blockquote>
-<p>FPR은 전체 False(FP+FN)에서 예측이 틀린 경우(FP)가 얼마나 되는지에 관심있다.
-<br><br></p>
+<p>FPR은 전체 False(FP+FN)에서 예측이 틀린 경우(FP)가 얼마나 되는지에 관심있다.</p>
+<p><br><br></p>
 <blockquote>
 <h3 id="그래프-해석">그래프 해석</h3>
 </blockquote>
@@ -477,7 +950,35 @@ input.range {
     font-size: 14px ;
   }
   
+  @media screen  and (max-width: 1200px) {
+
+  }
+ .img{
+    width : 70% ;
+    height : 70% ;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  @media screen  and (max-width: 500px) {
+    .img{
+    width : 100% ;
+    height : 100% ;
+    }
+    .range__point{
+    font-size: 12px ;
+    }
+  } 
 </style>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -489,7 +990,9 @@ input.range {
 
 <div style="margin: 0 auto; text-align: center;">
   <fieldset class="range__field">
-      <input class="range" type="range" min="1" max="8" value="1">
+      <input class="range" type="range" min="1" max="8" value="1" id ="roc_curve_range">
+
+      
       <svg role="presentation" width="100%" height="10" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
         
         
@@ -558,8 +1061,8 @@ input.range {
         <rect class="range__tick" x="100%" y="3" width="1" height="10"></rect>
          
         
-      </svg>
-
+        </svg>
+      
       <svg role="presentation" width="100%" height="14" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
         
         
@@ -608,65 +1111,23 @@ input.range {
 
   </fieldset>
 
+  <img src="https://yangoos57.github.io//images/ML/plot/roc_curve/1.png" id='roc_curve_img' class="img">
   
-  <img src="../../../plotly/test/1.png" id='img' style='width : 70% ; height : 70% ; margin: 20px auto; text-align: center;'>
 </div>
 
+
+
 <script>
-
-
-var imageUrl = new Array();
-
-    
-    
-    
-    imageUrl["1"] =  '\/plotly\/test/1.png';
-  
-    
-    
-    
-    imageUrl["2"] =  '\/plotly\/test/2.png';
-  
-    
-    
-    
-    imageUrl["3"] =  '\/plotly\/test/3.png';
-  
-    
-    
-    
-    imageUrl["4"] =  '\/plotly\/test/4.png';
-  
-    
-    
-    
-    imageUrl["5"] =  '\/plotly\/test/5.png';
-  
-    
-    
-    
-    imageUrl["6"] =  '\/plotly\/test/6.png';
-  
-    
-    
-    
-    imageUrl["7"] =  '\/plotly\/test/7.png';
-  
-    
-    
-    
-    imageUrl["8"] =  '\/plotly\/test/8.png';
-   
-
-
        
-$(document).on("input change", ".range", function() {
+$(document).on("input change", "#roc_curve_range", function() {
    var v=$(this).val(); 
-   $('#sliderStatus').html( $(this).val() ); 
-   $("#img").prop("src", imageUrl[v]);
+  
+   $("#roc_curve_img").prop("src","\/images\/ML\/plot\/roc_curve/"+String(v)+".png");
    });
 
 </script>
+
+
 
 <p><br><br></p>
 <blockquote>
@@ -697,47 +1158,217 @@ $(document).on("input change", ".range", function() {
 </div>
 </p>
 <p>이렇게 나열한 그림만 본다면 어느 팀이 더 유능한 팀인지 분간하기 어렵다. A~C 세 팀 중 피해자 발생이 적으면서 최대한 많은 범인을 잡아내는 팀은 어디일까?</p>
-<style>
-.plotly{margin: 0 auto; text-align : center}
+<p>
 
-</style>
+<div style="background-color: white;border: 0px solid black; text-align: center; padding: 30px">
+
+    <img src="https://yangoos57.github.io/images/ML/data_viz/Roc_compare.png">
 
 
-
-<div id="\plotly\ROC_Curve.json" class="plotly" style="margin: 0 auto; text-align : center">
-<script>
-Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
-    Plotly.plot('\\plotly\\ROC_Curve.json', fig.data, fig.layout, {responsive: true});
-});
-</script>
 </div>
+</p>
 <p>A,B,C팀의 ROC Curve를 그려보니 어떤 팀의 성과가 좋은지 바로 확인된다. B팀은 FP Rate 0.2에서 이미 TP Rate가 1에 도달한다. 이에 비해 A팀과 C팀의 TP Rate는 현저히 낮다. 그러므로 B팀이 가장 능력있는 팀이다.</p>
   <!-- <br><br>
 
   굳이 그래프를 그리지 않고도 모델 성능을 비교할 수 있다.
   누군가에게 설명하거나 지금처럼 연습하지 않는 이상 ROC Curve를 굳이 그릴 필요는 없다. AUC Score을 계산해서 가장 큰 값을 가진 모델이 가장 성능 좋은 모델이다. AUC(Area Under Curve)는 문자 그대로  커브 아래 파란색으로 칠한 면적을 의미한다. AUC가 높아지려면 y값이 빠르게 1에 도달해야 하기 때문에 모델 성능을 보여주는 좋은 지표가 된다. Sklearn에서 AUC를 계산하는 함수가 있으니 이를 사용해 모델 성능을 비교하면 된다.  -->
-<p><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="precision-recall-curve">Precision-Recall Curve</h3>
-<p>ROC Curve는 예측 모델이 실제 True를 많이 찾아내는 동시에 동시에 실수를 얼마나 적게 발생시키는지 확인하기 위해 활용한다면 PE/RC Curve는 모델이 얼마나 예측을 잘하는지를 확인하기 위해 사용하는 지표이다. Y축에 표시되는 Precision은 비율이 올라갈수록 예측 대비 실제 True 비율이 높다는 말이다.
+<p>ROC Curve는 실제 True를 얼마나 찾는지와 동시에 실수를 얼마나 적게 하는지를 그래프를 통해 파악한다면, PE/RC Curve는 모델이 얼마나 정확한 예측을 하는지를 그래프를 통해 파악한다.
 <br><br></p>
-<p>1000개 instance 중에 50개를 Positive로 예측할때 그중 48개가 맞으면 모델 정확도는 $\frac{48}{50}=0.96$이 되는 것이다. 경우에 따은 많은 True를 찾아내는 모델보다 일단 Positive로 예측하면 실제로 True일 확률이 높아야 할 때가 있다. 앞서 보이스 피싱범을 찾는 사례나 마케팅 대상을 선별하는 비지니스 문제를 해결할때 Precision을 좋은 지표로 사용할 수 있다.
+<p>Precision은 모델의 정확도를 확인하는 좋은 지표이다. 하지만 예측 대비 정확도를 판단하는 Precision의 특성 상 판단 기준을 엄격하게 한다면(threshold를 높힌다면) 필연적으로 Precision을 올라갈 수밖에 없다. Precision이 90%인 모델이 실제로는 1000개 Instance 중 10개만을 Positive로 예측해서 나온 결과라면, 이 모델 좋은 모델인지 판단하기 어렵다.
 <br><br></p>
-<p>하지만 Precision만 활용해서는 모델의 제대로된 성능을 확인하기 어렵다. 모델의 정확도(=Accuracy)를 가지고 모델을 파악할 때 높은 정확도에 현혹당하는 것처럼 Precision 또한 수치에 현혹당하기 쉽다. 성능이 그다지 뛰어나지 않은 모델이라도 예측 기준을 엄격하게 둔다면 Precision은 얼마든 조작 가능하다.
+<p>따라서 Precision을 지표로 활용하기 위해서는 단점을 보완해주는 Recall과 함께 사용해야한다. Recall은 실제 Positive 중 예측으로 실제 Positive를 식별한 경우이다. Recall에는 얼마나 많은 Instance를 예측했는지 설명할 수 있기 때문에 Precision과 함께 사용하면 모델의 예측 정확도를 파악할 수 있다.
 <br><br></p>
-<p>1,000,000개 instance 중 가장 가능성 높은 50개만  Positive로 예측하고 그중 48개가 실제 True라면 96%라는 매우 높은 Precision을 가지게 되지만 이 수치가 과연 모델의 실제 성능을 제대로 반영하는지는 의문이 발생한다. 그래서 Precision의 이러한 한계를 보완하기 위해 사용하는게 Recall이다.
-<br><br></p>
-<p>Precision의 한계는 얼마나 많이 예측했는지를 알려주지 못하는데 있다. Precision이 96%라는 것만 보고 이 모델이 1000개를 Positive로 예측했는데 이중 960개를 맞춘건지 50개를 Positive로 예측했는데 48개를 맞춘건지 알 방법이 없다. Recall이 사용되는 이유도 Precision이 설명하지 못하는 부분을 보완하기 때문이다. Recall은 모델이 True를 얼마나 많이 식별 했는지 확인하는 지표라 했다.
-<br><br></p>
-<p>100,000개 instance 중 5,000개가 True이고 그중 Positive로 예측한 instance 중에 3,600개가 실제 True이면 모델의 Recall은 72%가 된다. Recall이 72%라는 의미에는 아무리 못해도 최소한 3,600개는 Positive로 예측했다는 말이 내포되어 있다.
-<br><br></p>
-<p>따라서 Recall을 Precision과 함께 표기한다면 Precision에서 설명하지 못하는 Positive로 예측한 instance 개수를 알 수 있다. 100,000개 중 True가 5000개인 표본에서 예측 모델의 Precision이 90%, Recall이 72%이라면, 4000개를 Positive로 예측했고 이중 3600개는 True, 400개는 False라는 계산이 나온다. 물론 PE/RC Curve에서 이러한 계산은 중요하지 않다. Recall과 Precision 모두 높으면 높을수록 좋다.
-<br><br></p>
-<div class="text-center">$5000*72 = x * 0.9 ==&gt; x = 4000$</div>
-<p><br><br></p>
-<p>PE/RC Curve도 ROC Curve와 마찬가지로 Treshold 변화에 따라 그래프가 그려진다.
-&lt;그래프 추가&gt;</p>
+<p>PE/RC Curve도 ROC Curve와 마찬가지로 Treshold 변화에 따라 그래프가 그려진다. 기준이 엄격할수록 Precision이 높아지게 되므로 1에서부터 시작하는데, 기준이 낮아질수록 실제 Positive가 포함된 instance와 그렇지 않은 instance가 함께 포함되므로 Precision이 낮아지게 된다. 기준이 낮아질수록 포함하는 instance 수가 증가하고 자연히 Recall도 높아지게 된다. 계속해서 Threshold를 낮춰가다가 0에 도달하게 되면 모든 값을 Positive로 예측하게 되면 Base rate에 도달하게 된다.</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
+
+<style>
+
+input.range {
+    -webkit-appearance: none;
+    bottom: -10px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  input.range:focus {
+    outline: 0;
+  }
+  input.range::-moz-focus-outer {
+    border: 0;
+  }
+  
+  input.range::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7.5px;
+  }
+  
+  input.range::-moz-range-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+  }
+  
+  input.range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    background: #84aec4;
+    border-radius: 20px;
+    border: 0;
+  }
+  
+  input.range::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    background: #84aec4;
+    border-radius: 20px;
+    border: 0;
+  }
+  
+  input.range::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  input.range::-ms-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    height: 5px;
+  }
+  
+  input.range::-ms-fill-lower,
+  input.range::-ms-fill-upper {
+    background: #84aec4;
+    border: 0;
+    border-radius: 40px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+  }
+  
+  .range__tick {
+    fill: #a0a0a0;
+  }
+  .range__tick:first-child {
+    -webkit-transform: translateX(2px);
+    -moz-transform: translateX(2px);
+    -ms-transform: translateX(2px);
+    -o-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  .range__tick:last-child {
+    -webkit-transform: translateX(-3px);
+    -moz-transform: translateX(-3px);
+    -ms-transform: translateX(-3px);
+    -o-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  
+  .range__field {
+    border: 0;
+    width: 80%;
+    margin: 0 auto ;
+    text-align: center ;
+  }
+  .range__point{
+    font-size: 14px ;
+  }
+  
+  @media screen  and (max-width: 1200px) {
+
+  }
+ .img{
+    width : 70% ;
+    height : 70% ;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  @media screen  and (max-width: 500px) {
+    .img{
+    width : 100% ;
+    height : 100% ;
+    }
+    .range__point{
+    font-size: 12px ;
+    }
+  } 
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="margin: 0 auto; text-align: center;">
+  <fieldset class="range__field">
+      <input class="range" type="range" min="1" max="8" value="1" id ="pe_rc_curve_range">
+
+        
+        
+      </svg>
+
+  </fieldset>
+
+  <img src="https://yangoos57.github.io//images/ML/plot/pe_rc_curve/1.png" id='pe_rc_curve_img' class="img">
+  
+</div>
+
+
+
+<script>
+       
+$(document).on("input change", "#pe_rc_curve_range", function() {
+   var v=$(this).val(); 
+  
+   $("#pe_rc_curve_img").prop("src","\/images\/ML\/plot\/pe_rc_curve/"+String(v)+".png");
+   });
+
+</script>
+
+
+
 <p><br><br><br><br></p>
 <h2 id="예시-code">예시 Code</h2>
+<p>이제는 앞선 설명의 이해를 바탕으로 plot을 그려보자. 제공하는 code는 하나의 참고로서만 활용하고 스스로 그려봤으면 좋겠다. plot을 그려보면서 헷갈리는 개념이 무엇인지, plot을 그리려면 어떤 함수를 써야하는지, 어떤 type의 변수를 넣어야 함수가 작동하는지를 고민하다보면 개념과 실력 모두 내것이 될 수 있다.</p>
 <br>
 <blockquote>
 <h3 id="titanic-데이터-불러오기">Titanic 데이터 불러오기</h3>
@@ -773,6 +1404,7 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 <blockquote>
 <h3 id="logistic-regression으로-모델-학습">Logistic Regression으로 모델 학습</h3>
 </blockquote>
+<p>plot을 그리는게 주목적이므로 Cross_validaion은 생략했다.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">#모델 학습</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
@@ -787,8 +1419,9 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 <span class="c1"># base_rate : 0.4044943820224719</span>
 </code></pre></div><p><br><br></p>
 <blockquote>
-<h3 id="sklearn-모듈에-있는-confusion-matrix-활용하기">Sklearn 모듈에 있는 Confusion Matrix 활용하기</h3>
+<h3 id="sklearn-모듈에-있는-confusion-matrix-활용">Sklearn 모듈에 있는 Confusion Matrix 활용</h3>
 </blockquote>
+<p>알고리즘에 따라 instance를 구분하는 방법이 다르다. logistic regression의 경우 확률을 활용해 대상을 구분한다면 SGDclassifier는 점수를 활용해 대상을 구분한다. 개별 instance별 확률 또는 점수를 알고 싶으면 .predict_proba 또는 .predict_score 함수를 사용하면 된다. 예시에는 Logistic regression을 활용했기 때문에 .predict_probar를 사용했다.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="n">proba_each_row</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
 <span class="c1"># predict_proba : instance별 예측 값 도출</span>
@@ -797,9 +1430,9 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 <span class="n">con_max</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> 
                            <span class="n">y_pred</span><span class="o">=</span><span class="p">(</span><span class="n">proba_each_row</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thereshhold</span><span class="p">),</span>
                            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> 
-                           <span class="c1"># labels=[1, 0] 넣는 이유 : </span>
+                           <span class="c1"># labels=[1, 0] 넣은 이유 : </span>
                            <span class="c1"># 0 = Negative, 1 = Positive를 의미하므로 </span>
-                           <span class="c1"># Positive와 Negative가 뒤바껴서 나옴</span>
+                           <span class="c1"># label을 설정하지 않으면 Positive와 Negative가 바뀐체로 나온다.</span>
 
 
 <span class="c1"># confusion matrix 시각화</span>
@@ -824,7 +1457,7 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 </p>
 <p><br><br></p>
 <blockquote>
-<h3 id="sklearn-모듈에-있는-roc-curve와-precision_recall-curve-사용하기">Sklearn 모듈에 있는 ROC Curve와 Precision_Recall Curve 사용하기</h3>
+<h3 id="sklearn-모듈에-있는-roc-curve와-precision_recall-curve-사용">Sklearn 모듈에 있는 ROC Curve와 Precision_Recall Curve 사용</h3>
 </blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
@@ -840,11 +1473,7 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 <blockquote>
 <h3 id="roc-curve와-precision-recall-curve-그리기">ROC Curve와 Precision-Recall Curve 그리기</h3>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">### 특정 값과 가장 가까운 값 찾기 </span>
-<span class="n">x</span><span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">difference_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">fpr_logistic</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">difference_array</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -853,6 +1482,10 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_logistic</span><span class="p">,</span><span class="n">tpr_logistic</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ROC CURVE&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s2">&#34;bold&#34;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">fpr_logistic</span><span class="p">,</span><span class="n">tpr_logistic</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;AUC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># styling figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">13</span><span class="p">,)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
@@ -860,20 +1493,21 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.01</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.01</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">fpr_logistic</span><span class="p">,</span><span class="n">tpr_logistic</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;AUC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
 
 
 <span class="c1"># Precision-Recall Curve 그리기</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rc_logistic</span><span class="p">,</span><span class="n">pr_logistic</span><span class="p">)</span>
+<span class="n">base_rate</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="n">base_rate</span><span class="p">,</span><span class="n">base_rate</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+
+<span class="c1">#styling figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Precision \ Recall Cureve&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s2">&#34;bold&#34;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Recall&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precision&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">13</span><span class="p">,)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">base_rate</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="n">base_rate</span><span class="p">,</span><span class="n">base_rate</span><span class="p">],</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.01</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">base_rate</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">1.01</span><span class="p">)</span>
 
@@ -1040,71 +1674,7 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
     
         </aside>
       </div>
-      <div id="sideb_single"><aside class="offcan-right" style="z-index: 10;">
-<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-  </svg>
-</button>
-
-
-
-<div class="offcanvas offcanvas-end" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
-  <div class="offcanvas-body">
-    
-    <div id="toc" class="sticky-lg-top">
       
-      <b>예시에 나오는 ROC Curve와 Precision-Recall Curve 그려보기</b><nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#roc-curve와-precision-recall-curve">ROC Curve와 Precision Recall Curve</a></li>
-      </ul>
-    </li>
-    <li><a href="#이-글의-목적">이 글의 목적</a></li>
-    <li><a href="#예시로-confusion-matrix-이해하기">예시로 Confusion matrix 이해하기</a>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#최근-보이스피싱-사기가-급증함에-따라-경찰은-대대적인-단속에-나섰다-서울-a-경찰청의-보이스피싱-전담팀은-12명의-용의자들을-긴급체포하여-조사한-뒤-보이스-피싱범일-가능성이-높은-순으로-나열하였다">최근 보이스피싱 사기가 급증함에 따라 경찰은 대대적인 단속에 나섰다. 서울 A 경찰청의 보이스피싱 전담팀은 12명의 용의자들을 긴급체포하여 조사한 뒤 보이스 피싱범일 가능성이 높은 순으로 나열하였다.</a></li>
-          </ul>
-        </li>
-        <li><a href="#tp-fp-tn-fn">TP, FP, TN, FN</a></li>
-        <li><a href="#true-positive와-false-positive">True Positive와 False Positive</a></li>
-        <li><a href="#true-negative와-false-negative">True Negative와 False Negative</a></li>
-        <li><a href="#precision과-recall">Precision과 Recall</a></li>
-        <li><a href="#precision">Precision</a></li>
-        <li><a href="#recall">Recall</a></li>
-        <li><a href="#종합">종합</a></li>
-      </ul>
-    </li>
-    <li><a href="#roc-curve-perc-curve-해석하기">ROC Curve, PE/RC Curve 해석하기</a>
-      <ul>
-        <li><a href="#직관적인-이해를-방해하는-요소">직관적인 이해를 방해하는 요소</a></li>
-        <li><a href="#roc-curve">ROC Curve</a></li>
-        <li><a href="#true-positive-rate--sensitivity--recall">True Positive Rate = Sensitivity = Recall</a></li>
-        <li><a href="#false-positive-rate">False Positive Rate</a></li>
-        <li><a href="#그래프-해석">그래프 해석</a></li>
-        <li><a href="#다른-모델과-비교하기">다른 모델과 비교하기</a></li>
-        <li><a href="#precision-recall-curve">Precision-Recall Curve</a></li>
-      </ul>
-    </li>
-    <li><a href="#예시-code">예시 Code</a>
-      <ul>
-        <li><a href="#titanic-데이터-불러오기">Titanic 데이터 불러오기</a></li>
-        <li><a href="#인코딩">인코딩</a></li>
-        <li><a href="#logistic-regression으로-모델-학습">Logistic Regression으로 모델 학습</a></li>
-        <li><a href="#sklearn-모듈에-있는-confusion-matrix-활용하기">Sklearn 모듈에 있는 Confusion Matrix 활용하기</a></li>
-        <li><a href="#sklearn-모듈에-있는-roc-curve와-precision_recall-curve-사용하기">Sklearn 모듈에 있는 ROC Curve와 Precision_Recall Curve 사용하기</a></li>
-        <li><a href="#roc-curve와-precision-recall-curve-그리기">ROC Curve와 Precision-Recall Curve 그리기</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-  
-  </div>
-</div>
-</div>
       
     </div>
     <div id="sidea_single">  <aside class="offcan-left">
@@ -1125,7 +1695,7 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
           <h4>
             <a href="../../../">🌏 전체보기
             <span class="badge bg-light text-dark rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
-              7
+              6
             </span>
             </a>
           </h4>
@@ -1141,7 +1711,7 @@ Plotly.d3.json("\\plotly\\ROC_Curve.json", function(err, fig) {
               <li>
                 <h6><a href="https://yangoos57.github.io/python/pandas/">‣ PANDAS&nbsp;
                     <span class="badge rounded-pill" style="background-color: #f0f2f4;color: #404b59; border: 1px solid #f0f2f4;">
-                      2
+                      1
                     </span>
                   </a>
                 </h6>

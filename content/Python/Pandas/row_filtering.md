@@ -1,5 +1,5 @@
 ---
-title: "상황에 맞는 filtering 함수 사용하기 "
+title: "상황에 맞는 적절한 filtering 함수 사용하기 "
 date: 2022-05-14T16:55:07+09:00
 image: "images/home/pandas-python.png"
 Tags: ['query','isin','boolean masking','filter']

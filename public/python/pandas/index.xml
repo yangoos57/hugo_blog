@@ -15,14 +15,5 @@
       <description>데이터 분석에서 일상적으로 사용하는 fitering 함수 세가지를 소개한다. pandas는 다양한 filtering 방법을 지원하고 있는데, 이중 연산속도가 빠르고 가독성이 좋은 query, boolean masking, isin를 상황에 맞게 사용하는 방법을 설명한다.</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://yangoos57.github.io/python/pandas/untitled-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yangoos57.github.io/python/pandas/untitled-1/</guid>
-      <description>import pandas as pd import numpy as np df = pd.DataFrame(10+60.5*np.random.randn(1000000,3)) df.columns = [&amp;#39;num&amp;#39;,&amp;#39;num2&amp;#39;,&amp;#39;num3&amp;#39;] pd.set_option(&amp;#39;float_format&amp;#39;, &amp;#39;{:f}&amp;#39;.format) df.describe()  .dataframe tbody tr th:only-of-type { vertical-align: middle; } .</description>
-    </item>
-    
   </channel>
 </rss>
