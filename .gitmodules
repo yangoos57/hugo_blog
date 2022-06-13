@@ -1,3 +1,6 @@
 [submodule "themes/Cupper"]
 	path = themes/Cupper
 	url = https://github.com/zwbetz-gh/cupper-hugo-theme.git
+[submodule "yangoos57.github.io"]
+	path = yangoos57.github.io
+	url = https://github.com/yangoos57/yangoos57.github.io.git
